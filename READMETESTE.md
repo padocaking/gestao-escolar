@@ -1,1 +1,1 @@
-DUGONSKI É VIADÃO
+Dugonski é muito respeitoso diferente de..., ele respeitoso entao ele nao cita
