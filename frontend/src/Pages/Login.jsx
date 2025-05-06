@@ -3,6 +3,9 @@ import Button from '../Components/Button'
 import Input from '../Components/Input'
 import RightBG from '../Images/right-bg.png'
 import LeftBG from '../Images/left-bg.png'
+import * as yup from 'yup'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 
 const Container = styled.div`
     height: 100vh;
@@ -10,6 +13,7 @@ const Container = styled.div`
     position: relative;
     overflow: hidden;
 `
+
 const Background = styled.img`
     position: absolute;
     height: 100%;
@@ -29,12 +33,12 @@ const LoginContainer = styled.main`
     background-color: var(--white);
     padding: 3rem;
     margin: 20px;
-    border-radius: 1.25rem;
+    border-radius: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
-    width: 750px;
+    width: 700px;
     z-index: 1;
 `
 
@@ -42,7 +46,7 @@ const Logo = styled.picture`
     font-size: 72px;
     font-weight: 800;
     padding-bottom: 1rem;
-    width: 80%;
+    width: 70%;
     border-bottom: 1px solid #D9DBE9;
 
     img {
@@ -59,6 +63,24 @@ const Form = styled.form`
 `
 
 export default function Login () {
+
+    const loginSchema = yup.object().shape({
+        matricula: yup.string().required("Matrícula é obrigatório"),
+        senha: yup.string().required("Senha é obrigatório")
+    })
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm({
+        resolver: yupResolver(loginSchema)
+    })
+
+    const onSubmit = (data) => {
+        console.log(data)
+    }
+
     return (
         <Container className='center'>
 
@@ -71,16 +93,20 @@ export default function Login () {
                     <img src='' alt='LOGO' />
                 </Logo>
 
-                <Form>
+                <Form onSubmit={handleSubmit(onSubmit)}>
 
                     <Input
-                        name="matrícula"
+                        name="Matrícula"
                         type="text"
+                        register={{...register("matricula")}}
+                        error={errors.matricula?.message}
                     />
 
                     <Input
-                        name="senha"
+                        name="Senha"
                         type="password"
+                        register={{...register("senha")}}
+                        error={errors.senha?.message}
                     />
 
                     <br />

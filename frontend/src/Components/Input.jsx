@@ -16,7 +16,6 @@ const InputContainer = styled.div`
     input {
         font-size: 15px;
         color: var(--main-three);
-        text-transform: capitalize;
         border: none;
         border-radius: 3px;
         padding: 15px;
@@ -25,11 +24,12 @@ const InputContainer = styled.div`
     }
 `
 
-export default function Input ({ name, type }) {
+export default function Input ({ name, type, register, error }) {
     return (
         <InputContainer>
             <label>{name}</label>
-            <input type={type} placeholder={name} />
+            <input {...register} type={type} placeholder={name} />
+            <span>{error}</span>
         </InputContainer>
     )
 }
