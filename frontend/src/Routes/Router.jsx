@@ -1,20 +1,34 @@
+import styled from 'styled-components';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Login from '../Pages/Login';
 import Dashboard from '../Pages/Dashboard';
 import Header from '../Components/Header';
+import Nagivation from '../Components/Navigation';
+
+const Container = styled.div`
+
+`
+
+const Page = styled.div`
+    padding-top: ${props => props.showHeader ? 'var(--header-height)' : '0'};
+    margin-left: var(--nav-width-opened);
+`
 
 function AppRoutes () {
     const location = useLocation()
-    const showHeader = location.pathname === '/login'
+    const showHeader = location.pathname != '/login'
 
     return (
-        <>
-        {!showHeader && <Header />}
-        <Routes>
-            <Route path='/login' element={<Login />} />
-            <Route path='/' element={<Dashboard />} />
-        </Routes>
-        </>
+        <Container>
+            {showHeader && <Header />}
+            {showHeader && <Nagivation />}
+            <Page showHeader={showHeader}>
+                <Routes>
+                    <Route path='/login' element={<Login />} />
+                    <Route path='/' element={<Dashboard />} />
+                </Routes>
+            </Page>
+        </Container>
     )
 }
 

@@ -9,6 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 const Container = styled.div`
     height: 100vh;
+    width: 100%;
     background: var(--background);
     position: relative;
     overflow: hidden;
@@ -43,6 +44,7 @@ const LoginContainer = styled.main`
 `
 
 const Logo = styled.picture`
+    letter-spacing: -3px;
     font-size: 72px;
     font-weight: 800;
     padding-bottom: 1rem;
