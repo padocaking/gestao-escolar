@@ -11,7 +11,7 @@ const Container = styled.div`
 
 const Page = styled.div`
     padding-top: ${props => props.showHeader ? 'var(--header-height)' : '0'};
-    margin-left: var(--nav-width-opened);
+    margin-left: ${props => props.showHeader ? 'var(--nav-width-opened)' : '0'};
 `
 
 function AppRoutes () {
@@ -21,7 +21,7 @@ function AppRoutes () {
     return (
         <Container>
             {showHeader && <Header />}
-            {showHeader && <Nagivation />}
+            {showHeader && <Nagivation texto="teste" />}
             <Page showHeader={showHeader}>
                 <Routes>
                     <Route path='/login' element={<Login />} />
@@ -34,10 +34,8 @@ function AppRoutes () {
 
 export default function Router () {
     return (
-        <>
         <BrowserRouter>
             <AppRoutes />
         </BrowserRouter>
-        </>
     )
 }

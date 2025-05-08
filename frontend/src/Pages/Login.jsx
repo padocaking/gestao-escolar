@@ -122,3 +122,17 @@ export default function Login () {
         </Container>
     )
 }
+
+function app () {
+    return (
+        <div>
+            <form>
+                <h1>LOGO</h1>
+                <div>
+                    <label>MATRÍCULA</label>
+                    <input placeholder='matricula' />
+                </div>
+            </form>
+        </div>
+    )
+}
