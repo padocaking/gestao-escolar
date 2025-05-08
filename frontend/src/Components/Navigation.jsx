@@ -5,8 +5,7 @@ import { WiTime4 } from "react-icons/wi";           // time
 import { HiOutlineDocumentCurrencyDollar } from "react-icons/hi2";  // financeiro
 import { RiGraduationCapLine } from "react-icons/ri";   // central
 import { FaRegUser } from "react-icons/fa6";        // user
-import { IoIosArrowUp } from "react-icons/io";      // ARROW UP
-import { IoIosArrowDown } from "react-icons/io";    // ARROW DOWN
+import NavItem from './NavItem';
 
 const Container = styled.nav`
     position: fixed;
@@ -23,38 +22,17 @@ const NavList = styled.ul`
     padding: 20px 0;
 `
 
-const NavItem = styled.li`
-    cursor: pointer;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-    padding: 20px 0 20px 22px;
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--gray);
+const SubNavList = styled.ul`
+    position: relative;
+    margin-left: 35px;
 
-    span {
-        letter-spacing: -1px;
-    }
-
-    svg {
-        font-size: 22px;
-        font-weight: 200;
-    }
-
-    &.active {
-        color: black;
-        font-weight: 600;
-        box-shadow: inset 0 0 20px 5px var(--white);
-        background-color: #ececec;
-    }
-
-    &:hover {
-        span {
-            letter-spacing: 0;
-            transition: letter-spacing 0.1s linear;
-        }
+    &:after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 75%;
+        background-color: lightgray;
+        top: 10%;
     }
 `
 
@@ -62,30 +40,22 @@ export default function Nagivation () {
     return (
         <Container>
             <NavList>
-                <NavItem className='active'>
-                    <IoHomeOutline />
-                    <span>Início</span>
-                </NavItem>
-                <NavItem>
-                    <IoDocumentTextOutline />
-                    <span>Requerimento</span>
-                </NavItem>
-                <NavItem>
-                    <WiTime4 />
-                    <span>Horários</span>
-                </NavItem>
-                <NavItem>
-                    <HiOutlineDocumentCurrencyDollar />
-                    <span>Financeiro</span>
-                </NavItem>
-                <NavItem>
-                    <RiGraduationCapLine />
-                    <span>Central Aluno</span>
-                </NavItem>
-                <NavItem>
-                    <FaRegUser />
-                    <span>Aluno</span>
-                </NavItem>
+                <NavItem icon={<IoHomeOutline />} text="Início" />
+
+                <NavItem icon={<IoDocumentTextOutline />} text="Requerimento" />
+
+                <NavItem icon={<WiTime4 />} text="Horários" />
+
+                <NavItem icon={<HiOutlineDocumentCurrencyDollar />} text="Financeiro" />
+
+                <NavItem icon={<RiGraduationCapLine />} text="Central Aluno" active />
+
+                <SubNavList>
+                    <NavItem text="Faltas" />
+                    <NavItem text="Notas" />
+                </SubNavList>
+
+                <NavItem icon={<FaRegUser />} text="Aluno" />
             </NavList>
         </Container>
     )
