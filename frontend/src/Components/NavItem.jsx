@@ -1,8 +1,6 @@
 import styled from 'styled-components'
-import { IoIosArrowUp } from "react-icons/io";      // ARROW UP
-import { IoIosArrowDown } from "react-icons/io";    // ARROW DOWN
+import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
 import useNavStore from '../Service/useNavStore';
-import { useState } from 'react';
 
 const Container = styled.li`
     position: relative;
@@ -94,10 +92,7 @@ export default function NavItem ({
                 )
             } 
         }
-
-        //if (mult) {
-        //    subNavActive ? <IoIosArrowUp className='arrow' /> : <IoIosArrowDown className='arrow' />
-        //}
+        
     }
 
     return (
