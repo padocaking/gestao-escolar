@@ -6,6 +6,7 @@ import { HiOutlineDocumentCurrencyDollar } from "react-icons/hi2";  // financeir
 import { RiGraduationCapLine } from "react-icons/ri";   // central
 import { FaRegUser } from "react-icons/fa6";        // user
 import NavItem from './NavItem';
+import useNavStore from '../Service/useNavStore'
 
 const Container = styled.nav`
     position: fixed;
@@ -25,6 +26,8 @@ const NavList = styled.ul`
 const SubNavList = styled.ul`
     position: relative;
     margin-left: 35px;
+    overflow: hidden;
+    height: ${props => props.height};
 
     &:after {
         position: absolute;
@@ -37,9 +40,13 @@ const SubNavList = styled.ul`
 `
 
 export default function Nagivation () {
+
+    const { subNavActive } = useNavStore()
+
     return (
         <Container>
             <NavList>
+
                 <NavItem icon={<IoHomeOutline />} text="Início" />
 
                 <NavItem icon={<IoDocumentTextOutline />} text="Requerimento" />
@@ -48,14 +55,15 @@ export default function Nagivation () {
 
                 <NavItem icon={<HiOutlineDocumentCurrencyDollar />} text="Financeiro" />
 
-                <NavItem icon={<RiGraduationCapLine />} text="Central Aluno" active />
+                <NavItem icon={<RiGraduationCapLine />} text="Central Aluno" active mult />
 
-                <SubNavList>
-                    <NavItem text="Faltas" />
-                    <NavItem text="Notas" />
+                <SubNavList height={subNavActive ? "120px" : "0px"}>
+                    <NavItem text="Faltas" subNavItem />
+                    <NavItem text="Notas" subNavItem />
                 </SubNavList>
 
                 <NavItem icon={<FaRegUser />} text="Aluno" />
+
             </NavList>
         </Container>
     )

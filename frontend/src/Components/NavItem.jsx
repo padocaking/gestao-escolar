@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { IoIosArrowUp } from "react-icons/io";      // ARROW UP
 import { IoIosArrowDown } from "react-icons/io";    // ARROW DOWN
+import useNavStore from '../Service/useNavStore';
+import { useState } from 'react';
 
 const Container = styled.li`
     position: relative;
@@ -9,8 +11,16 @@ const Container = styled.li`
     display: flex;
     align-items: center;
     gap: 13px;
-    padding: 18px 0 18px 25px;
     color: var(--gray);
+    padding: 18px 0 18px 25px;
+    height: auto;
+    overflow: hidden;
+    user-select: none;
+
+    &.subItem {
+        padding: 0 0 0 25px;
+        height: 0px;
+    }
 
     span {
         letter-spacing: 0px;
@@ -42,16 +52,64 @@ const Container = styled.li`
     .arrow {
         position: absolute;
         right: 30px;
+        transition: all 0.1s linear;
     }
 `
 
-export default function NavItem ({ icon, text, active, mult }) {
+const SubNavList = styled.ul`
+    position: relative;
+    margin-left: 35px;
+    overflow: hidden;
+    height: ${props => props.height};
+
+    &:after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 75%;
+        background-color: lightgray;
+        top: 10%;
+    }
+`
+
+export default function NavItem ({
+    icon,
+    text,
+    active,
+    mult
+}) {
+
+    const { subNavActive, openSubNav } = useNavStore()
+
+    const renderArrow = () => {
+        
+        if (mult) {
+            if (subNavActive) {
+                return (
+                    <IoIosArrowDown className='arrow' />
+                )
+            } else {
+                return (
+                    <IoIosArrowDown className='arrow' style={{transform: 'rotate(-90deg)'}} />
+                )
+            } 
+        }
+
+        //if (mult) {
+        //    subNavActive ? <IoIosArrowUp className='arrow' /> : <IoIosArrowDown className='arrow' />
+        //}
+    }
+
     return (
         <>
-        <Container className={active ? "active" : ""}>
+        <Container className={active ? "active" : ""} onClick={() => mult ? openSubNav() : null}>
+
             {icon}
+
             <span>{text}</span>
-            <IoIosArrowUp className='arrow' />
+
+            {renderArrow()}
+            
         </Container>
         </>
     )
