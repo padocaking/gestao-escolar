@@ -1,25 +1,30 @@
-import { RiGraduationCapLine } from "react-icons/ri";
+import { IoHomeOutline } from "react-icons/io5";    // home
+import { IoDocumentTextOutline } from "react-icons/io5";   // req
+import { WiTime4 } from "react-icons/wi";           // time
+import { HiOutlineDocumentCurrencyDollar } from "react-icons/hi2";  // financeiro
+import { RiGraduationCapLine } from "react-icons/ri";   // central
+import { FaRegUser } from "react-icons/fa6";        // user
 
 const MenuItems = {
 
     aluno: [
         { 
-            icon: <RiGraduationCapLine />,
+            icon: <IoHomeOutline />,
             text: "Início",
             subItem: []
         },
         { 
-            icon: <RiGraduationCapLine />,
+            icon: <IoDocumentTextOutline />,
             text: "Requerimento",
             subItem: []
         },
         { 
-            icon: <RiGraduationCapLine />,
+            icon: <WiTime4 />,
             text: "Horários",
             subItem: []
         },
         { 
-            icon: <RiGraduationCapLine />,
+            icon: <HiOutlineDocumentCurrencyDollar />,
             text: "Financeiro",
             subItem: []
         },
@@ -27,20 +32,12 @@ const MenuItems = {
             icon: <RiGraduationCapLine />,
             text: "Central Aluno",
             subItem: [
-                { 
-                    icon: <RiGraduationCapLine />,
-                    text: "Faltas",
-                    subItem: []
-                },
-                { 
-                    icon: <RiGraduationCapLine />,
-                    text: "Notas",
-                    subItem: []
-                },
+                "Faltas",
+                "Notas"
             ]
         },
         { 
-            icon: <RiGraduationCapLine />,
+            icon: <FaRegUser />,
             text: "Aluno",
             subItem: []
         },

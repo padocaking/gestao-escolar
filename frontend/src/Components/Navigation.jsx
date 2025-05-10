@@ -3,6 +3,7 @@ import { IoHomeOutline } from "react-icons/io5";    // home
 import NavItem from './NavItem';
 import NavItemSub from './NavItemSub';
 import { useState } from 'react';
+import MenuItems from '../Naoseidarnome/MenuItems';
 
 const Container = styled.nav`
     position: fixed;
@@ -23,24 +24,30 @@ export default function Nagivation () {
     return (
         <Container>
 
-            <NavItem
-                icon={<IoHomeOutline />}
-                text="Início"
-                setPage={() => clickHandler("Início")}
-                active={currPage === "Início"}
-            />
-
-            <NavItem
-                icon={<IoHomeOutline />}
-                text="Requerimentos"
-                setPage={() => clickHandler("Requerimentos")}
-                active={currPage === "Requerimentos"}
-            />
-
-            <NavItemSub
-                clickHandler={clickHandler}
-                currPage={currPage}
-            />
+            {MenuItems.aluno.map((item, i) => {
+                if (item.subItem.length === 0) {
+                    return (
+                        <NavItem
+                            key={i}
+                            icon={item.icon}
+                            text={item.text}
+                            setPage={() => setCurrPage(item.text)}
+                            active={currPage === item.text}
+                        />
+                    )
+                } else {
+                    return (
+                        <NavItemSub
+                            key={i}
+                            clickHandler={setCurrPage}
+                            currPage={currPage}
+                            icon={item.icon}
+                            text={item.text}
+                            subText={item.subItem}
+                        />
+                    )
+                }
+            })}
 
         </Container>
     )

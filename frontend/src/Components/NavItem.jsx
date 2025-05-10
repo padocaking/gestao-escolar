@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
-import useNavStore from '../Service/useNavStore';
-import { useState } from 'react';
 
 const Container = styled.li`
     position: relative;
@@ -15,11 +13,6 @@ const Container = styled.li`
     height: auto;
     overflow: hidden;
     user-select: none;
-
-    &.subItem {
-        padding: 0 0 0 25px;
-        height: 0px;
-    }
 
     span {
         letter-spacing: 0px;
@@ -35,6 +28,10 @@ const Container = styled.li`
     &.active {
         color: black;
         background-color: #f5f5f5;
+
+        &.sub {
+            background-color: var(--white);
+        }
 
         span {
             font-weight: 600;
@@ -76,18 +73,13 @@ export default function NavItem ({
     text,
     active,
     mult,
-    setPage
+    setPage,
+    sub
 }) {
-
-    const [isActive, setIsActive] = useState(active)
-
-    const handleClick = () => {
-        setPage()
-    }
 
     return (
         <>
-        <Container className={active ? "active" : ""} onClick={handleClick} >
+        <Container className={`${active ? 'active' : ''} ${sub ? 'sub' : ''}`} onClick={() => setPage()} >
 
             {icon}
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IoHomeOutline } from "react-icons/io5";    // home
 import NavItem from './NavItem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Container = styled.div`
 
@@ -9,44 +9,53 @@ const Container = styled.div`
 
 const SubContainer = styled.div`
     margin-left: 25px;
-    height: ${props => props.height ? 'auto' : '0'};
+    max-height: ${props => props.height ? '120px' : '0'};
     overflow: hidden;
+    border-left: 2px solid #e9e9e9;
 `
 
-export default function NavItemSub ({ clickHandler, currPage }) {
+export default function NavItemSub ({ clickHandler, currPage, icon, text, subText}) {
 
     const [open, setOpen] = useState(false)
 
-    const handleClick = () => {
+    console.log(currPage)
+
+    const handleClick = (text) => {
         setOpen(!open)
-        clickHandler("Central aluno")
+        clickHandler(text)
     }
+
+    useEffect(() => {
+        if (!["Central Aluno", "Faltas", "Notas"].includes(currPage)) {
+            setOpen(false)
+        }
+    }, [currPage])
 
     return (
         <Container>
 
             <NavItem
-                icon={<IoHomeOutline />}
-                text="Requerimentos"
-                setPage={() => handleClick()}
-                active={currPage === "Central aluno"}
+                mult
+                icon={icon}
+                text={text}
+                setPage={() => handleClick(text)}
+                active={["Central Aluno", "Faltas", "Notas"].includes(currPage)}
             />
 
             <SubContainer height={open}>
 
-                <NavItem
-                    icon={<IoHomeOutline />}
-                    text="Requerimentos"
-                    setPage={() => clickHandler("Outra coisa")}
-                    active={currPage === "Outra coisa"}
-                />
-
-                <NavItem
-                    icon={<IoHomeOutline />}
-                    text="Requerimentos"
-                    setPage={() => clickHandler("Aquela otra")}
-                    active={currPage === "Aquela otra"}
-                />
+                {(subText || []).map((item, i) => {
+                    return (
+                        <NavItem
+                            key={i}
+                            icon={null}
+                            text={item}
+                            setPage={() => clickHandler(item)}
+                            active={currPage === item}
+                            sub
+                        />
+                    )
+                })}
 
             </SubContainer>
 
