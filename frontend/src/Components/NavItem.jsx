@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
 import useNavStore from '../Service/useNavStore';
+import { useState } from 'react';
 
 const Container = styled.li`
     position: relative;
@@ -74,36 +75,31 @@ export default function NavItem ({
     icon,
     text,
     active,
-    mult
+    mult,
+    setPage
 }) {
 
-    const { subNavActive, openSubNav } = useNavStore()
+    const [isActive, setIsActive] = useState(active)
 
-    const renderArrow = () => {
-        
-        if (mult) {
-            if (subNavActive) {
-                return (
-                    <IoIosArrowDown className='arrow' />
-                )
-            } else {
-                return (
-                    <IoIosArrowDown className='arrow' style={{transform: 'rotate(-90deg)'}} />
-                )
-            } 
-        }
-        
+    const handleClick = () => {
+        setPage()
     }
 
     return (
         <>
-        <Container className={active ? "active" : ""} onClick={() => mult ? openSubNav() : null}>
+        <Container className={active ? "active" : ""} onClick={handleClick} >
 
             {icon}
 
             <span>{text}</span>
 
-            {renderArrow()}
+            {mult && active ? (
+                <IoIosArrowDown className='arrow' />
+            ) : null }
+
+            {mult && !active ? (
+                <IoIosArrowDown className='arrow' style={{transform: 'rotate(-90deg)'}} />
+            ) : null}
             
         </Container>
         </>
