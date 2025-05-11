@@ -1,6 +1,7 @@
 import styled from 'styled-components'
-import { IoIosArrowUp } from "react-icons/io";      // ARROW UP
-import { IoIosArrowDown } from "react-icons/io";    // ARROW DOWN
+import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
+import useNavStore from '../Service/useNavStore';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.li`
     position: relative;
@@ -8,24 +9,34 @@ const Container = styled.li`
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 13px;
-    padding: 18px 0 18px 25px;
     color: var(--gray);
+    padding: 18px 0 18px 25px;
+    height: auto;
+    overflow: hidden;
+    user-select: none;
+    white-space: nowrap;
 
     span {
         letter-spacing: 0px;
         font-size: 15px;
         font-weight: 500;
+        margin-left: 45px;
+        position: relative;
     }
 
     svg {
         font-size: 20px;
         font-weight: 200;
+        position: absolute;
     }
 
     &.active {
         color: black;
         background-color: #f5f5f5;
+
+        &.sub {
+            background-color: var(--white);
+        }
 
         span {
             font-weight: 600;
@@ -41,17 +52,47 @@ const Container = styled.li`
 
     .arrow {
         position: absolute;
-        right: 30px;
+        right: 20px;
+        transition: all 0.1s linear;
+    }
+
+    &.sub:after {
+        position: absolute;
+        left: 33px;
+        content: '';
+        width: 3px;
+        height: 100%;
+        background-color: #cfcfcf;
     }
 `
 
-export default function NavItem ({ icon, text, active, mult }) {
+export default function NavItem ({
+    path,
+    icon,
+    text,
+    active,
+    mult,
+    setPage,
+    sub,
+    open
+}) {
+
+    const { navOpened } = useNavStore()
+
+    const navigate = useNavigate()
+
     return (
         <>
-        <Container className={active ? "active" : ""}>
+        <Container className={`${active ? 'active' : ''} ${sub ? 'sub' : ''}`} onClick={() => {setPage(); navigate(path)}} >
+
             {icon}
+
             <span>{text}</span>
-            <IoIosArrowUp className='arrow' />
+
+            {mult && navOpened ? (
+                <IoIosArrowDown className='arrow' style={open ? {transform: 'rotate(0deg)'} : {transform: 'rotate(-90deg)'}} />
+            ) : null }
+            
         </Container>
         </>
     )

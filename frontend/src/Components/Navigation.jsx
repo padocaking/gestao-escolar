@@ -1,62 +1,55 @@
 import styled from 'styled-components';
-import { IoHomeOutline } from "react-icons/io5";    // home
-import { IoDocumentTextOutline } from "react-icons/io5";   // req
-import { WiTime4 } from "react-icons/wi";           // time
-import { HiOutlineDocumentCurrencyDollar } from "react-icons/hi2";  // financeiro
-import { RiGraduationCapLine } from "react-icons/ri";   // central
-import { FaRegUser } from "react-icons/fa6";        // user
 import NavItem from './NavItem';
+import NavItemSub from './NavItemSub';
+import { useState } from 'react';
+import MenuItems from '../Naoseidarnome/MenuItems';
+import useNavStore from '../Service/useNavStore';
 
 const Container = styled.nav`
     position: fixed;
-    width: var(--nav-width-opened);
+    width: ${props => props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)'};
     background-color: var(--white);
     height: var(--main-height);
-    margin-top: var(--header-height);
-`
-
-const NavList = styled.ul`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 20px 0;
-`
-
-const SubNavList = styled.ul`
-    position: relative;
-    margin-left: 35px;
-
-    &:after {
-        position: absolute;
-        content: '';
-        width: 2px;
-        height: 75%;
-        background-color: lightgray;
-        top: 10%;
-    }
+    padding-top: calc(var(--header-height) + 15px);
+    overflow-x: hidden;
 `
 
 export default function Nagivation () {
+
+    const [currPage, setCurrPage] = useState("")
+
+    const { navOpened } = useNavStore()
+
     return (
-        <Container>
-            <NavList>
-                <NavItem icon={<IoHomeOutline />} text="Início" />
+        <Container navOpened={navOpened}>
 
-                <NavItem icon={<IoDocumentTextOutline />} text="Requerimento" />
+            {MenuItems.aluno.map((item, i) => {
+                if (item.subItem.length === 0) {
+                    return (
+                        <NavItem
+                            key={i}
+                            path={item.path}
+                            icon={item.icon}
+                            text={item.text}
+                            setPage={() => setCurrPage(item.text)}
+                            active={currPage === item.text}
+                        />
+                    )
+                } else {
+                    return (
+                        <NavItemSub
+                            key={i}
+                            path={item.path}
+                            clickHandler={setCurrPage}
+                            currPage={currPage}
+                            icon={item.icon}
+                            text={item.text}
+                            subItem={item.subItem}
+                        />
+                    )
+                }
+            })}
 
-                <NavItem icon={<WiTime4 />} text="Horários" />
-
-                <NavItem icon={<HiOutlineDocumentCurrencyDollar />} text="Financeiro" />
-
-                <NavItem icon={<RiGraduationCapLine />} text="Central Aluno" active />
-
-                <SubNavList>
-                    <NavItem text="Faltas" />
-                    <NavItem text="Notas" />
-                </SubNavList>
-
-                <NavItem icon={<FaRegUser />} text="Aluno" />
-            </NavList>
         </Container>
     )
 }
