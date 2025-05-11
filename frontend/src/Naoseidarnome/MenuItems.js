@@ -9,25 +9,25 @@ const MenuItems = {
 
     aluno: [
         {
-            path: "/",
+            path: '/',
             text: "Início",
             icon: <IoHomeOutline />,
             subItem: []
         },
         {
-            path: "/requerimento",
+            path: '/requerimento',
             text: "Requerimento",
             icon: <IoDocumentTextOutline />,
             subItem: []
         },
         {
-            path: "/horarios",
+            path: '/horarios',
             text: "Horários",
             icon: <WiTime4 />,
             subItem: []
         },
         {
-            path: "/financeiro",
+            path: '/financeiro',
             text: "Financeiro",
             icon: <HiOutlineDocumentCurrencyDollar />,
             subItem: []
@@ -37,17 +37,17 @@ const MenuItems = {
             icon: <RiGraduationCapLine />,
             subItem: [
                 {
-                    path: "/faltas",
+                    path: '/faltas',
                     text: "Faltas"
                 },
                 {
-                    path: "/notas",
+                    path: '/boletim',
                     text: "Notas"
                 }
             ]
         },
         { 
-            path: "/",
+            path: '/aluno',
             text: "Aluno",
             icon: <FaRegUser />,
             subItem: []

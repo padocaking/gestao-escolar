@@ -8,6 +8,7 @@ const Container = styled.div`
 
 const SubContainer = styled.div`
     margin-left: 0;
+    margin-bottom: 10px;
     max-height: ${props => props.height ? '120px' : '0'};
     overflow: hidden;
 `
@@ -46,6 +47,7 @@ export default function NavItemSub ({
                     return (
                         <NavItem
                             key={i}
+                            path={item.path}
                             icon={null}
                             text={item.text}
                             setPage={() => clickHandler(item.text)}

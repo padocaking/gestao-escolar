@@ -28,6 +28,7 @@ export default function Nagivation () {
                     return (
                         <NavItem
                             key={i}
+                            path={item.path}
                             icon={item.icon}
                             text={item.text}
                             setPage={() => setCurrPage(item.text)}
@@ -38,6 +39,7 @@ export default function Nagivation () {
                     return (
                         <NavItemSub
                             key={i}
+                            path={item.path}
                             clickHandler={setCurrPage}
                             currPage={currPage}
                             icon={item.icon}

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
 import useNavStore from '../Service/useNavStore';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.li`
     position: relative;
@@ -66,6 +67,7 @@ const Container = styled.li`
 `
 
 export default function NavItem ({
+    path,
     icon,
     text,
     active,
@@ -77,9 +79,11 @@ export default function NavItem ({
 
     const { navOpened } = useNavStore()
 
+    const navigate = useNavigate()
+
     return (
         <>
-        <Container className={`${active ? 'active' : ''} ${sub ? 'sub' : ''}`} onClick={() => setPage()} >
+        <Container className={`${active ? 'active' : ''} ${sub ? 'sub' : ''}`} onClick={() => {setPage(); navigate(path)}} >
 
             {icon}
 
