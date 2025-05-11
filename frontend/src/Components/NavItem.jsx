@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
+import useNavStore from '../Service/useNavStore';
 
 const Container = styled.li`
     position: relative;
@@ -7,22 +8,25 @@ const Container = styled.li`
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 13px;
     color: var(--gray);
     padding: 18px 0 18px 25px;
     height: auto;
     overflow: hidden;
     user-select: none;
+    white-space: nowrap;
 
     span {
         letter-spacing: 0px;
         font-size: 15px;
         font-weight: 500;
+        margin-left: 45px;
+        position: relative;
     }
 
     svg {
         font-size: 20px;
         font-weight: 200;
+        position: absolute;
     }
 
     &.active {
@@ -47,24 +51,17 @@ const Container = styled.li`
 
     .arrow {
         position: absolute;
-        right: 30px;
+        right: 20px;
         transition: all 0.1s linear;
     }
-`
 
-const SubNavList = styled.ul`
-    position: relative;
-    margin-left: 35px;
-    overflow: hidden;
-    height: ${props => props.height};
-
-    &:after {
+    &.sub:after {
         position: absolute;
+        left: 33px;
         content: '';
-        width: 2px;
-        height: 75%;
-        background-color: lightgray;
-        top: 10%;
+        width: 3px;
+        height: 100%;
+        background-color: #cfcfcf;
     }
 `
 
@@ -74,8 +71,11 @@ export default function NavItem ({
     active,
     mult,
     setPage,
-    sub
+    sub,
+    open
 }) {
+
+    const { navOpened } = useNavStore()
 
     return (
         <>
@@ -85,13 +85,9 @@ export default function NavItem ({
 
             <span>{text}</span>
 
-            {mult && active ? (
-                <IoIosArrowDown className='arrow' />
+            {mult && navOpened ? (
+                <IoIosArrowDown className='arrow' style={open ? {transform: 'rotate(0deg)'} : {transform: 'rotate(-90deg)'}} />
             ) : null }
-
-            {mult && !active ? (
-                <IoIosArrowDown className='arrow' style={{transform: 'rotate(-90deg)'}} />
-            ) : null}
             
         </Container>
         </>

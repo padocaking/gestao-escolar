@@ -4,6 +4,7 @@ import Login from '../Pages/Login';
 import Dashboard from '../Pages/Dashboard';
 import Header from '../Components/Header';
 import Nagivation from '../Components/Navigation';
+import useNavStore from '../Service/useNavStore';
 
 const Container = styled.div`
 
@@ -11,18 +12,19 @@ const Container = styled.div`
 
 const Page = styled.div`
     padding-top: ${props => props.showHeader ? 'var(--header-height)' : '0'};
-    margin-left: ${props => props.showHeader ? 'var(--nav-width-opened)' : '0'};
+    margin-left: ${props => props.showHeader ? (props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)') : '0'};
 `
 
 function AppRoutes () {
     const location = useLocation()
     const showHeader = location.pathname != '/login'
+    const { navOpened } = useNavStore()
 
     return (
         <Container>
             {showHeader && <Header />}
-            {showHeader && <Nagivation texto="teste" />}
-            <Page showHeader={showHeader}>
+            {showHeader && <Nagivation />}
+            <Page showHeader={showHeader} navOpened={navOpened} >
                 <Routes>
                     <Route path='/login' element={<Login />} />
                     <Route path='/' element={<Dashboard />} />

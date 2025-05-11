@@ -10,8 +10,8 @@ const GlobalStyle = createGlobalStyle`
         --main-two: #170F49;
         --main-three: #6F6C90;
         --second: #D9DBE9;
-        --nav-width-opened: 250px;
-        --nav-width-closed: 80px;
+        --nav-width-opened: 270px;
+        --nav-width-closed: 70px;
         --header-height: 60px;
         --main-height: calc(100vh - var(--header-height));
     }

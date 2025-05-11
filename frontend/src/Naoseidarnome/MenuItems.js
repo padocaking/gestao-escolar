@@ -8,37 +8,48 @@ import { FaRegUser } from "react-icons/fa6";        // user
 const MenuItems = {
 
     aluno: [
-        { 
-            icon: <IoHomeOutline />,
+        {
+            path: "/",
             text: "Início",
+            icon: <IoHomeOutline />,
             subItem: []
         },
-        { 
-            icon: <IoDocumentTextOutline />,
+        {
+            path: "/requerimento",
             text: "Requerimento",
+            icon: <IoDocumentTextOutline />,
             subItem: []
         },
-        { 
-            icon: <WiTime4 />,
+        {
+            path: "/horarios",
             text: "Horários",
+            icon: <WiTime4 />,
             subItem: []
         },
-        { 
-            icon: <HiOutlineDocumentCurrencyDollar />,
+        {
+            path: "/financeiro",
             text: "Financeiro",
+            icon: <HiOutlineDocumentCurrencyDollar />,
             subItem: []
         },
-        { 
-            icon: <RiGraduationCapLine />,
+        {
             text: "Central Aluno",
+            icon: <RiGraduationCapLine />,
             subItem: [
-                "Faltas",
-                "Notas"
+                {
+                    path: "/faltas",
+                    text: "Faltas"
+                },
+                {
+                    path: "/notas",
+                    text: "Notas"
+                }
             ]
         },
         { 
-            icon: <FaRegUser />,
+            path: "/",
             text: "Aluno",
+            icon: <FaRegUser />,
             subItem: []
         },
     ]

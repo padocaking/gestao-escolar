@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 const useNavStore = create((set) => ({
-  subNavActive: false,
-  openSubNav: () => set((state) => ({ subNavActive: !state.subNavActive })),
+  navOpened: true,
+  openNav: () => set((state) => ({ navOpened: !state.navOpened })),
 }));
 
 

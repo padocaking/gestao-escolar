@@ -1,28 +1,27 @@
 import styled from 'styled-components';
-import { IoHomeOutline } from "react-icons/io5";    // home
 import NavItem from './NavItem';
 import NavItemSub from './NavItemSub';
 import { useState } from 'react';
 import MenuItems from '../Naoseidarnome/MenuItems';
+import useNavStore from '../Service/useNavStore';
 
 const Container = styled.nav`
     position: fixed;
-    width: var(--nav-width-opened);
+    width: ${props => props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)'};
     background-color: var(--white);
     height: var(--main-height);
-    margin-top: var(--header-height);
+    padding-top: calc(var(--header-height) + 15px);
+    overflow-x: hidden;
 `
 
 export default function Nagivation () {
 
     const [currPage, setCurrPage] = useState("")
 
-    const clickHandler = (page) => {
-        setCurrPage(page)
-    }
+    const { navOpened } = useNavStore()
 
     return (
-        <Container>
+        <Container navOpened={navOpened}>
 
             {MenuItems.aluno.map((item, i) => {
                 if (item.subItem.length === 0) {
@@ -43,7 +42,7 @@ export default function Nagivation () {
                             currPage={currPage}
                             icon={item.icon}
                             text={item.text}
-                            subText={item.subItem}
+                            subItem={item.subItem}
                         />
                     )
                 }
