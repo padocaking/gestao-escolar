@@ -2,7 +2,7 @@ CREATE DATABASE projeto;
 USE projeto;
 
 CREATE TABLE `usuarios` (
-  `matricula` int UNIQUE PRIMARY KEY CHECK (matricula BETWEEN 0 AND 99999999),
+  `matricula` int UNIQUE PRIMARY KEY,
   `email` varchar(50) UNIQUE,
   `senha` varchar(50),
   `tipo` enum('aluno','professor','coordenador'),
@@ -11,7 +11,19 @@ CREATE TABLE `usuarios` (
   `data_nascimento` date,
   `cpf` varchar(11),
   `telefone` varchar(50),
+  `endereco` varchar(100)
+);
+
+CREATE TABLE `responsavel` (
+  'matricula_filho' int PRIMARY KEY,
+  `nome` varchar(50),
+  `data_nascimento` date,
+  `cpf` varchar(11),
+  `telefone` varchar(50),
   `endereco` varchar(100),
+  `email` varchar(50) UNIQUE,
+  `data_criacao` timestamp,
+  FOREIGN KEY (`matricula`) REFERENCES `usuarios` (`matricula`)
 );
 
 CREATE TABLE `turmas` (
