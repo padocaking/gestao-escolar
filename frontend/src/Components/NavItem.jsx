@@ -1,7 +1,16 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { IoIosArrowDown } from "react-icons/io";    // ARROW ICON
 import useNavStore from '../Service/useNavStore';
 import { useNavigate } from 'react-router-dom';
+
+const arrowFade = keyframes`
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+`
 
 const Container = styled.li`
     position: relative;
@@ -54,6 +63,7 @@ const Container = styled.li`
         position: absolute;
         right: 20px;
         transition: all 0.1s linear;
+        animation: ${arrowFade} 0.2s ease-in-out;
     }
 
     &.sub:after {
