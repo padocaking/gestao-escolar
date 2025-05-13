@@ -28,6 +28,10 @@ func SetupRoutes(app *fiber.App) {
 		return c.SendString("Batata!")
 	})
 
-	usuario.Post("/", controllers.CriarUsuarioHandler)
-	usuario.Get("/", controllers.BuscarTodosUsuariosHandler)
+	usuario.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("usuario")
+	})
+
+	usuario.Post("/", controllers.CriarUsuario)
+
 }

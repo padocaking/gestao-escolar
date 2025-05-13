@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+
 const Container = styled.div`
     height: 100vh;
     background: var(--background);
@@ -77,9 +78,29 @@ export default function Login () {
         resolver: yupResolver(loginSchema)
     })
 
-    const onSubmit = (data) => {
-        console.log(data)
-    }
+    const onSubmit = async (data) => {
+        try {
+          const response = await fetch("http://localhost:3000/api/usuarios/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+      
+          // Converte a resposta para JSON
+          const result = await response.json();
+      
+          if (!response.ok) {
+            throw new Error(result.erro || "Erro desconhecido");
+          }
+      
+          console.log("Resposta do servidor:", result);
+        } catch (error) {
+          console.error("Erro ao fazer login:", error.message);
+        }
+      };
+      
 
     return (
         <Container className='center'>
