@@ -2,11 +2,16 @@ CREATE DATABASE projeto;
 USE projeto;
 
 CREATE TABLE `usuarios` (
-  `matricula` int PRIMARY KEY CHECK (matricula BETWEEN 0 AND 99999999),
+  `matricula` int UNIQUE PRIMARY KEY CHECK (matricula BETWEEN 0 AND 99999999),
   `email` varchar(50) UNIQUE,
   `senha` varchar(50),
   `tipo` enum('aluno','professor','coordenador'),
-  `data_criacao` timestamp
+  `data_criacao` timestamp,
+  `nome` varchar(50),
+  `data_nascimento` date,
+  `cpf` varchar(11),
+  `telefone` varchar(50),
+  `endereco` varchar(100),
 );
 
 CREATE TABLE `turmas` (
@@ -69,14 +74,4 @@ CREATE TABLE `frequencias` (
   `presente` boolean,
   FOREIGN KEY (`aluno_matricula`) REFERENCES `alunos` (`matricula`),
   FOREIGN KEY (`professor_turma_disciplina_id`) REFERENCES `professor_turma_disciplina` (`id`)
-);
-
-CREATE TABLE `informacao_usuario` (
-  `matricula` int PRIMARY KEY,
-  `nome` varchar(50),
-  `data_nascimento` date,
-  `cpf` varchar(11),
-  `telefone` varchar(50),
-  `endereco` varchar(100),
-  FOREIGN KEY (`matricula`) REFERENCES `usuarios` (`matricula`)
 );
