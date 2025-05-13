@@ -29,6 +29,10 @@ const Background = styled.img`
     &.left {
         left: 0;
     }
+
+    @media (max-width: 700px) {
+        display: none;
+    }
 `
 
 const LoginContainer = styled.main`
@@ -42,6 +46,15 @@ const LoginContainer = styled.main`
     gap: 2rem;
     width: 700px;
     z-index: 1;
+
+    @media (max-width: 700px) {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        margin: 0px;
+        padding: 1.65rem;
+        gap: 3.5rem;
+    }
 `
 
 const Logo = styled.picture`
