@@ -5,6 +5,9 @@ import Dashboard from '../Pages/Dashboard';
 import Header from '../Components/Header';
 import Nagivation from '../Components/Navigation';
 import useNavStore from '../Service/useNavStore';
+import Turmas from '../Pages/Diretor/Turmas';
+import Professores from '../Pages/Diretor/Professores';
+import Alunos from '../Pages/Diretor/Alunos';
 
 const Container = styled.div`
 
@@ -28,6 +31,10 @@ function AppRoutes () {
                 <Routes>
                     <Route path='/login' element={<Login />} />
                     <Route path='/' element={<Dashboard />} />
+                    {/* ROTAS DIRETOR */}
+                    <Route path='/turmas' element={<Turmas />} />
+                    <Route path='/professores' element={<Professores />} />
+                    <Route path='/alunos' element={<Alunos />} />
                 </Routes>
             </Page>
         </Container>
