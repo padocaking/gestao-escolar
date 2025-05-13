@@ -18,10 +18,12 @@ export default function Nagivation () {
 
     const [currPage, setCurrPage] = useState("")
 
-    const { navOpened } = useNavStore()
+    const { navOpened, openNav, closeNav } = useNavStore()
+
+    
 
     return (
-        <Container navOpened={navOpened}>
+        <Container navOpened={navOpened} onMouseEnter={openNav} onMouseLeave={closeNav}>
 
             {MenuItems.aluno.map((item, i) => {
                 if (item.subItem.length === 0) {
