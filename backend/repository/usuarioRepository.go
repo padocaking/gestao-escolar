@@ -14,3 +14,9 @@ func RetornaUsuarios() ([]models.Usuarios, error) {
 	err := database.DB.Find(&usuarios).Error
 	return usuarios, err
 }
+
+func RetornaUsuarioPorID(matricula uint) (*models.Usuarios, error) {
+	var usuario models.Usuarios
+	err := database.DB.First(&usuario, matricula).Error
+	return &usuario, err
+}

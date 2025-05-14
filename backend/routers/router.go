@@ -34,5 +34,6 @@ func SetupRoutes(app *fiber.App) {
 
 	usuario.Post("/", controllers.CriarUsuario)
 	usuario.Get("/", controllers.ListarUsuarios)
+	usuario.Get("/:matricula", controllers.ObterUsuarioPorMatricula)
 
 }

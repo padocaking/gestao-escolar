@@ -4,6 +4,7 @@ import (
 	"backend/models"
 	"backend/services"
 	"log"
+	"strconv"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -46,4 +47,23 @@ func ListarUsuarios(c *fiber.Ctx) error {
 		})
 	}
 	return c.JSON(usuarios)
+}
+
+func ObterUsuarioPorMatricula(c *fiber.Ctx) error {
+	matriculaParam := c.Params("matricula")
+	matricula, err := strconv.Atoi(matriculaParam)
+	if err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
+			"erro": "Matricula inválido",
+		})
+	}
+
+	usuario, err := services.BuscarUsuarioPorMatricula(uint(matricula))
+	if err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"erro": err.Error(),
+		})
+	}
+
+	return c.JSON(usuario)
 }

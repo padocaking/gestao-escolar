@@ -55,3 +55,13 @@ func BuscarUsuarios() ([]models.Usuarios, error) {
 	log.Println("[INFO] Buscando todos os usuários")
 	return repository.RetornaUsuarios()
 }
+
+func BuscarUsuarioPorMatricula(matricula uint) (*models.Usuarios, error) {
+	log.Printf("[INFO] Buscando usuário por Matricula: %d\n", matricula)
+	usuario, err := repository.RetornaUsuarioPorID(matricula)
+	if err != nil {
+		log.Println("[ERROR] Erro ao buscar usuário:", err)
+		return nil, errors.New("usuário não encontrado")
+	}
+	return usuario, nil
+}
