@@ -37,3 +37,13 @@ func CriarUsuario(c *fiber.Ctx) error {
 	// Sucesso
 	return c.Status(fiber.StatusCreated).JSON(novoUsuario)
 }
+
+func ListarUsuarios(c *fiber.Ctx) error {
+	usuarios, err := services.BuscarUsuarios()
+	if err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"erro": "erro ao buscar usuários",
+		})
+	}
+	return c.JSON(usuarios)
+}

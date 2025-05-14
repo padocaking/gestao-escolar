@@ -50,3 +50,8 @@ func CriarUsuario(usuario *models.Usuarios) (*models.Usuarios, error) {
 	log.Println("[INFO] Usuário criado com sucesso no banco de dados")
 	return usuario, nil
 }
+
+func BuscarUsuarios() ([]models.Usuarios, error) {
+	log.Println("[INFO] Buscando todos os usuários")
+	return repository.RetornaUsuarios()
+}
