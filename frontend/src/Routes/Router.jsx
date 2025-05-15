@@ -16,6 +16,12 @@ const Container = styled.div`
 const Page = styled.div`
     padding-top: ${props => props.showHeader ? 'var(--header-height)' : '0'};
     margin-left: ${props => props.showHeader ? (props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)') : '0'};
+    background: var(--background);
+    min-height: 100vh;
+`
+
+const Content = styled.div`
+    padding: 3% 5%;
 `
 
 function AppRoutes () {
@@ -28,14 +34,16 @@ function AppRoutes () {
             {showHeader && <Header />}
             {showHeader && <Nagivation />}
             <Page showHeader={showHeader} navOpened={navOpened} >
-                <Routes>
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/' element={<Dashboard />} />
-                    {/* ROTAS DIRETOR */}
-                    <Route path='/turmas' element={<Turmas />} />
-                    <Route path='/professores' element={<Professores />} />
-                    <Route path='/alunos' element={<Alunos />} />
-                </Routes>
+                <Content>
+                    <Routes>
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/' element={<Dashboard />} />
+                        {/* ROTAS DIRETOR */}
+                        <Route path='/turmas' element={<Turmas />} />
+                        <Route path='/professores' element={<Professores />} />
+                        <Route path='/alunos' element={<Alunos />} />
+                    </Routes>
+                </Content>
             </Page>
         </Container>
     )
