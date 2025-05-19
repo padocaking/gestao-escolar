@@ -5,9 +5,10 @@ const GlobalStyle = createGlobalStyle`
         --background: linear-gradient(45deg, #D7DBE8, #EBEFF0);
         --white: #FFFFFF;
         --light-gray: #FAFAFA;
-        --gray: #5C5E64;
+        --gray:rgb(76, 78, 83);
         --black: #333333;
         --main: #4A3AFF;
+        --main-one:rgb(66, 54, 204);
         --main-two: #170F49;
         --main-three: #6F6C90;
         --second: #D9DBE9;
@@ -23,6 +24,11 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         font-family: 'Quicksand', sans-serif;
         transition: all 0.2s ease-in-out;
+    }
+
+    button {
+        border: none;
+        cursor: pointer;
     }
 
     body {

@@ -23,7 +23,7 @@ export default function Nagivation () {
     
 
     return (
-        <Container navOpened={navOpened}>
+        <Container navOpened={navOpened} onMouseEnter={openNav} onMouseLeave={closeNav}>
 
             {MenuItems['diretor'].map((item, i) => {
                 if (item.subItem.length === 0) {

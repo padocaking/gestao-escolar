@@ -5,9 +5,10 @@ import Dashboard from '../Pages/Dashboard';
 import Header from '../Components/Header';
 import Nagivation from '../Components/Navigation';
 import useNavStore from '../Service/useNavStore';
-import Turmas from '../Pages/Diretor/Turmas';
-import Professores from '../Pages/Diretor/Professores';
-import Alunos from '../Pages/Diretor/Alunos';
+import TurmasList from '../Pages/Diretor/Turmas/TurmasList';
+import TurmaAdd from '../Pages/Diretor/Turmas/TurmaAdd';
+import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
+import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 
 const Container = styled.div`
 
@@ -18,15 +19,18 @@ const Page = styled.div`
     margin-left: ${props => props.showHeader ? (props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)') : '0'};
     background: var(--background);
     min-height: 100vh;
+
+    .notLogin {
+        padding: 3% 5%;
+    }
 `
 
 const Content = styled.div`
-    padding: 3% 5%;
 `
 
 function AppRoutes () {
     const location = useLocation()
-    const showHeader = location.pathname != '/login'
+    const showHeader = location.pathname !== '/login'
     const { navOpened } = useNavStore()
 
     return (
@@ -34,14 +38,15 @@ function AppRoutes () {
             {showHeader && <Header />}
             {showHeader && <Nagivation />}
             <Page showHeader={showHeader} navOpened={navOpened} >
-                <Content>
+                <Content className={showHeader ? 'notLogin' : ''}>
                     <Routes>
                         <Route path='/login' element={<Login />} />
                         <Route path='/' element={<Dashboard />} />
                         {/* ROTAS DIRETOR */}
-                        <Route path='/turmas' element={<Turmas />} />
-                        <Route path='/professores' element={<Professores />} />
-                        <Route path='/alunos' element={<Alunos />} />
+                        <Route path='/turmas' element={<TurmasList />} />
+                        <Route path='/turmas/nova-turma' element={<TurmaAdd />} />
+                        <Route path='/turmas/vincular-estudante' element={<TurmaEstudante />} />
+                        <Route path='/turmas/vincular-professor' element={<TurmaProfessor />} />
                     </Routes>
                 </Content>
             </Page>
