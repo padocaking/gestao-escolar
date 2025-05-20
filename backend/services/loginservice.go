@@ -6,8 +6,8 @@ import (
 	"errors"
 )
 
-func LoginService(usuario *models.Usuarios) (*models.Usuarios, error) {
-	err := repository.Login(usuario)
+func LoginService(req *models.RequisicaoLogin) (*models.Usuarios, error) {
+	usuario, err := repository.Login(req)
 	if err != nil {
 		return nil, errors.New("usuário ou senha inválidos")
 	}
