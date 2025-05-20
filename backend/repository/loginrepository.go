@@ -7,7 +7,7 @@ import (
 
 func Login(req *models.RequisicaoLogin) (*models.Usuarios, error) {
 	var usuario models.Usuarios
-	err := database.DB.Where("matricula = ? AND senha = ?", req.Matricula, req.Senha).First(&usuario).Error
+	err := database.DB.Where("matricula = ?", req.Matricula).First(&usuario).Error
 	if err != nil {
 		return nil, err
 	}
