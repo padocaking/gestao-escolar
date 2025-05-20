@@ -52,6 +52,57 @@ const MenuItems = {
             icon: <FaRegUser />,
             subItem: []
         },
+    ],
+
+    diretor: [
+        {
+            path: '/',
+            text: "Início",
+            icon: <IoHomeOutline />,
+            subItem: []
+        },
+        {
+            path: '/requerimento',
+            text: "Requerimento",
+            icon: <IoDocumentTextOutline />,
+            subItem: []
+        },
+        {
+            path: '/horarios',
+            text: "Horários",
+            icon: <WiTime4 />,
+            subItem: []
+        },
+        {
+            path: '/financeiro',
+            text: "Financeiro",
+            icon: <HiOutlineDocumentCurrencyDollar />,
+            subItem: []
+        },
+        {
+            text: "Central Diretor",
+            icon: <RiGraduationCapLine />,
+            subItem: [
+                {
+                    path: '/turmas',
+                    text: "Turmas"
+                },
+                {
+                    path: '/professores',
+                    text: "Professores"
+                },
+                {
+                    path: '/alunos',
+                    text: "Alunos"
+                }
+            ]
+        },
+        { 
+            path: '/aluno',
+            text: "Aluno",
+            icon: <FaRegUser />,
+            subItem: []
+        },
     ]
 
 }
