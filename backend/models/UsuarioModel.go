@@ -26,8 +26,14 @@ type Professores struct {
 	Matricula   uint   `json:"matricula" gorm:"primaryKey;unique"`
 	Formacao    string `json:"formacao" gorm:"type:varchar(50)"`
 	AreaAtuacao string `json:"area_atuacao" gorm:"type:varchar(50)"`
+	Salario     int    `json:"salario" gorm:"type:decimal(15,2)"`
 }
 
 type Coordenadores struct {
 	Matricula uint `json:"matricula" gorm:"primaryKey;unique"`
+}
+
+type RequisicaoLogin struct {
+	Matricula uint   `json:"matricula"`
+	Senha     string `json:"senha"`
 }
