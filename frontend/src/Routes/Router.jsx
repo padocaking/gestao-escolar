@@ -5,6 +5,7 @@ import Dashboard from '../Pages/Dashboard';
 import Header from '../Components/Header';
 import Nagivation from '../Components/Navigation';
 import useNavStore from '../Service/useNavStore';
+import Footer from '../Components/Footer';
 
 const Container = styled.div`
 
@@ -24,6 +25,7 @@ function AppRoutes () {
         <Container>
             {showHeader && <Header />}
             {showHeader && <Nagivation />}
+            {showHeader && <Footer/>}
             <Page showHeader={showHeader} navOpened={navOpened} >
                 <Routes>
                     <Route path='/login' element={<Login />} />
