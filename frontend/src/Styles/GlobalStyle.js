@@ -13,6 +13,7 @@ const GlobalStyle = createGlobalStyle`
         --nav-width-opened: 270px;
         --nav-width-closed: 70px;
         --header-height: 60px;
+        --footer-height: 60px;
         --main-height: calc(100vh - var(--header-height));
     }
 
