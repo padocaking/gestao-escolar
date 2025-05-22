@@ -5,6 +5,7 @@ const GlobalStyle = createGlobalStyle`
         --background: linear-gradient(45deg, #D7DBE8, #EBEFF0);
         --white: #FFFFFF;
         --light-gray: #FAFAFA;
+        --bluish-gray: #EFF0F6;
         --gray:rgb(76, 78, 83);
         --black: #333333;
         --main: #4A3AFF;

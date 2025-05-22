@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import { RiGraduationCapLine } from "react-icons/ri";   // central
 import TableRowItem from '../../../Components/TableRowItem'
 import { useNavigate } from 'react-router-dom';
-import { Container, BtnContainer, ButtonTwo, Table, Headers } from './Turmas.style';
+import { BtnContainer, ButtonTwo, Table, Headers, Title } from './Turmas.style';
 
 export default function TurmasList () {
 
     const navigate = useNavigate()
 
     return (
-        <Container>
+        <>
 
-            <h1>Turmas</h1>
+            <Title>Turmas</Title>
 
             <BtnContainer>
 
@@ -57,6 +57,6 @@ export default function TurmasList () {
                 </tbody>
             </Table>
 
-        </Container>
+        </>
     )
 }
