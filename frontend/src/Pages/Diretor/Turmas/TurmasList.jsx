@@ -36,10 +36,11 @@ export default function TurmasList () {
                 <thead>
                     <tr>
                         <Headers>Ano</Headers>
+                        <Headers>Classe</Headers>
                         <Headers>Turma</Headers>
                         <Headers>Período</Headers>
-                        <Headers>Professores/Disciplinas</Headers>
-                        <Headers>Total alunos</Headers>
+                        <Headers>Prof/Disciplina</Headers>
+                        <Headers>Alunos</Headers>
                         <Headers>Status Matrícula</Headers>
                         <Headers>...</Headers>
                     </tr>

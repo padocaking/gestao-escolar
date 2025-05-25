@@ -6,7 +6,7 @@ import Header from '../Components/Header';
 import Nagivation from '../Components/Navigation';
 import useNavStore from '../Service/useNavStore';
 import TurmasList from '../Pages/Diretor/Turmas/TurmasList';
-import TurmaAdd from '../Pages/Diretor/Turmas/TurmaAdd';
+import TurmaAdd from '../Pages/Diretor/Turmas/TurmasAdd/TurmaAdd';
 import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
 import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 

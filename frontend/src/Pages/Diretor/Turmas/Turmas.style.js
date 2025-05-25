@@ -95,6 +95,7 @@ export const ContentTitle = styled.h2`
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     &:after {
         position: absolute;

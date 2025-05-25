@@ -40,17 +40,14 @@ const SelectContainer = styled.div`
     }
 `
 
-export default function Select ({ name }) {
+export default function Select ({ name, register, error, children }) {
     return (
         <SelectContainer>
             <label>{name}</label>
-            <select name={name} id={name}>
-                <option value="" disabled selected>Selecione uma classe</option>
-                <option value="Teste1">Teste 1</option>
-                <option value="Teste2">Teste 2</option>
-                <option value="Teste3">Teste 3</option>
+            <select name={name} id={name} {...register}>
+                {children}
             </select>
-            <span></span>
+            <span>{error}</span>
         </SelectContainer>
     )
 }

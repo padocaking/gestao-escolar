@@ -61,6 +61,7 @@ export default function TableRowItem () {
 
     return (
         <Container>
+            <td>2025</td>
             <td>5º</td>
             <td>A</td>
             <td>Manhã</td>

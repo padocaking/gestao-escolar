@@ -4,6 +4,10 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     gap: 25px;
+
+    @media (max-width: 670px) {
+        gap: 15px;
+    }
 `
 
 const Number = styled.span`
@@ -26,6 +30,14 @@ const Bar = styled.div`
     height: 7px;
     width: 100px;
     border-radius: 10px;
+
+    @media (max-width: 670px) {
+        width: 50px;
+    }
+
+    @media (max-width: 400px) {
+        width: 0;
+    }
 
     &:after {
         position: absolute;
