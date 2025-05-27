@@ -45,7 +45,7 @@ export default function TurmaAdd () {
                 {currStep === 1.5 ? (
                     <Step1 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
                 ) : currStep === 2.5 ? (
-                    <Step2 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
+                    <Step2 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} turmaValues={turmaValues} />
                 ) : currStep === 3.5 ? (
                     <Step3 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
                 ) : null}

@@ -3,10 +3,10 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { ContentTitle } from '../Turmas.style'
-import Select from '../../../../Components/Select'
-import Input from '../../../../Components/Input'
 import Button from '../../../../Components/Button'
 import ButtonAlt from '../../../../Components/ButtonAlt';
+import SelectTwo from '../../../../Components/SelectTwo';
+import { useState } from 'react';
 
 const Form = styled.form`
     width: 100%;
@@ -19,58 +19,108 @@ const Form = styled.form`
     }
 `
 
-const Grid = styled.div`
+const Grid = styled.section`
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px 20px;
-    width: 75%;
+    grid-template-columns: repeat(6, minmax(75px, 1fr));
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bluish-gray);
 
-    & > *:nth-child(3),
-    & > *:nth-child(4) {
-        grid-column: span 2;
+    span {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+
+        &.head {
+            padding: 10px;
+            background-color: var(--main-one);
+            color: var(--bluish-gray);
+        }
+
+        &.row {
+            font-size: 14px;
+            color: var(--black);
+        }
     }
 `
 
-
+function SelectDisc ({ em }) {
+    return (
+        <SelectTwo>
+            <option value="" disabled selected></option>
+            <option value="portugues">Língua Portuguesa</option>
+            <option value="matematica">Matemática</option>
+            {em ? (
+                <>
+                <option value="fisica">Física</option>
+                <option value="quimica">Química</option>
+                <option value="Biologia">Biologia</option>
+                </>
+            ) : (
+                <option value="ciencia">Ciências</option>
+            )}
+            <option value="historia">História</option>
+            <option value="geografia">Geografia</option>
+            <option value="artes">Artes</option>
+            <option value="edfisica">Educação Física</option>
+            <option value="ingles">Inglês</option>
+        </SelectTwo>
+    )
+}
 
 export default function Step2 ({ setCurrStep }) {
 
-    const schema = yup.object().shape({
-        classe: yup.string().required('Classe é obrigatória'),
-        turma: yup.string().required('Turma é obrigatória'),
-        periodo: yup.string().required('Período é obrigatório'),
-        ano: yup
-            .number()
-            .typeError('Ano deve ser um número')
-            .required('Ano é obrigatório')
-            .min(2000, 'Ano mínimo é 2000')
-            .max(2100, 'Ano máximo é 2100'),
-    });
-
-    
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-        } = useForm({
-        resolver: yupResolver(schema),
-        defaultValues: {
-            ano: 2025
-        }
-    });
-
-    const onSubmit = (data) => {
-        return data
-    }
+    const [em, setEm] = useState(true)
 
     const clickHandler = () => {
         setCurrStep(1.5)
     }
 
     return (
-        <Form className='center' onSubmit={handleSubmit(onSubmit)}>
+        <Form className='center'>
 
             <ContentTitle>GRADE DE HORÁRIOS</ContentTitle>
+
+            <Grid>
+                <span className='head'></span>
+                <span className='head'>SEG</span>
+                <span className='head'>TER</span>
+                <span className='head'>QUA</span>
+                <span className='head'>QUI</span>
+                <span className='head'>SEX</span>
+                <span className='row'>1º AULA</span>
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <span className='row'>2º AULA</span>
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <span className='row'>3º AULA</span>
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <span className='row'>4º AULA</span>
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <span className='row'>5º AULA</span>
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+                <SelectDisc em={em} />
+            </Grid>
             
             <div className='btnContainer'>
                 <ButtonAlt onClick={clickHandler}>Voltar</ButtonAlt>
