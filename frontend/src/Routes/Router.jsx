@@ -10,6 +10,7 @@ import TurmaAdd from '../Pages/Diretor/Turmas/TurmasAdd/TurmaAdd';
 import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
 import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 import Footer from '../Components/Footer';
+import Boletim from '../Pages/Aluno/Boletim';
 
 
 const Container = styled.div`
@@ -45,10 +46,12 @@ function AppRoutes () {
                         <Route path='/login' element={<Login />} />
                         <Route path='/' element={<Dashboard />} />
                         {/* ROTAS DIRETOR */}
-                        <Route path='/turmas' element={<TurmasList />} />
-                        <Route path='/turmas/nova-turma' element={<TurmaAdd />} />
-                        <Route path='/turmas/vincular-estudante' element={<TurmaEstudante />} />
-                        <Route path='/turmas/vincular-professor' element={<TurmaProfessor />} />
+                        <Route path='diretor/turmas' element={<TurmasList />} />
+                        <Route path='diretor/turmas/nova-turma' element={<TurmaAdd />} />
+                        <Route path='diretor/turmas/vincular-estudante' element={<TurmaEstudante />} />
+                        <Route path='diretor/turmas/vincular-professor' element={<TurmaProfessor />} />
+                        {/* ROTAS ALUNO */}
+                        <Route path='/boletim' element={<Boletim />} />
                     </Routes>
                 </Content>
             </Page>
