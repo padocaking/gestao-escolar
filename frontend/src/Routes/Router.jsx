@@ -39,7 +39,6 @@ function AppRoutes () {
         <Container>
             {showHeader && <Header />}
             {showHeader && <Nagivation />}
-            {showHeader && <Footer/>}
             <Page showHeader={showHeader} navOpened={navOpened} >
                 <Content className={showHeader ? 'notLogin' : ''}>
                     <Routes>
@@ -53,6 +52,7 @@ function AppRoutes () {
                     </Routes>
                 </Content>
             </Page>
+            {showHeader && <Footer/>}
         </Container>
     )
 }
