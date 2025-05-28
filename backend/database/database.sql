@@ -6,7 +6,7 @@ CREATE TABLE `usuarios` (
   `email` varchar(50) UNIQUE,
   `senha` varchar(50),
   `tipo` enum('aluno','professor','coordenador'),
-  `data_criacao` timestamp,
+  `data_criacao` timestamp DEFAULT CURRENT_TIMESTAMP,
   `nome` varchar(50),
   `data_nascimento` date,
   `cpf` varchar(11),
@@ -15,15 +15,15 @@ CREATE TABLE `usuarios` (
 );
 
 CREATE TABLE `responsavel` (
-  'matricula_filho' int PRIMARY KEY,
+  `matricula_filho` int PRIMARY KEY,
   `nome` varchar(50),
   `data_nascimento` date,
   `cpf` varchar(11),
   `telefone` varchar(50),
   `endereco` varchar(100),
   `email` varchar(50) UNIQUE,
-  `data_criacao` timestamp,
-  FOREIGN KEY (`matricula`) REFERENCES `usuarios` (`matricula`)
+  `data_criacao` timestamp DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (`matricula_filho`) REFERENCES `usuarios` (`matricula`)
 );
 
 CREATE TABLE `turmas` (
@@ -44,6 +44,7 @@ CREATE TABLE `professores` (
   `matricula` int PRIMARY KEY,
   `formacao` varchar(50),
   `area_atuacao` varchar(50),
+  `salario` decimal(15,2),
   FOREIGN KEY (`matricula`) REFERENCES `usuarios` (`matricula`)
 );
 

@@ -9,6 +9,8 @@ import TurmasList from '../Pages/Diretor/Turmas/TurmasList';
 import TurmaAdd from '../Pages/Diretor/Turmas/TurmasAdd/TurmaAdd';
 import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
 import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
+import Footer from '../Components/Footer';
+
 
 const Container = styled.div`
 
@@ -37,6 +39,7 @@ function AppRoutes () {
         <Container>
             {showHeader && <Header />}
             {showHeader && <Nagivation />}
+            {showHeader && <Footer/>}
             <Page showHeader={showHeader} navOpened={navOpened} >
                 <Content className={showHeader ? 'notLogin' : ''}>
                     <Routes>

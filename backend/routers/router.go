@@ -1,6 +1,7 @@
 package routers
 
 import (
+	"backend/auth"
 	"backend/controllers"
 
 	"github.com/gofiber/fiber/v2"
@@ -24,7 +25,7 @@ func SetupRoutes(app *fiber.App) {
 
 	usuario := api.Group("/usuarios")
 
-	api.Get("/batata", func(c *fiber.Ctx) error {
+	api.Get("/batata", auth.Autenticar, func(c *fiber.Ctx) error {
 		return c.SendString("Batata!")
 	})
 
@@ -33,5 +34,8 @@ func SetupRoutes(app *fiber.App) {
 	})
 
 	usuario.Post("/", controllers.CriarUsuario)
+	usuario.Get("/", controllers.ListarUsuarios)
+	usuario.Get("/:matricula", controllers.ObterUsuarioPorMatricula)
+	usuario.Post("/login", controllers.LoginHandler)
 
 }
