@@ -6,6 +6,8 @@ import (
 )
 
 func CriarUsuario(usuario *models.Usuarios) error {
+	senha := usuario.DataNascimento.String()
+	usuario.Senha = &senha //ajustar conforme Lucas mandar
 	return database.DB.Create(usuario).Error
 }
 

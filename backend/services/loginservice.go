@@ -11,11 +11,11 @@ import (
 func LoginService(req *models.RequisicaoLogin) (string, error) {
 	usuario, err := repository.Login(req)
 	if err != nil {
-		return "", errors.New("usuário ou senha inválidos 1")
+		return "", errors.New("usuário ou senha inválidos")
 	}
 
 	// compara a senha diretamente (sem hash)
-	if usuario.Senha != req.Senha {
+	if *usuario.Senha != req.Senha {
 		return "", errors.New("usuário ou senha inválidos")
 	}
 
