@@ -1,16 +1,14 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.footer`
     background-color: var(--main-two);
-    position: fixed;
     width: 100%;
-    height: var(--footer-height);
+    min-height: 300px;
     border-top: 1px solid var(--second);
     padding: 5px;
-    margin-top: calc(var(--main-height));
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;    
 `
 
 const FooterText = styled.a`

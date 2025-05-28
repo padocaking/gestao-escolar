@@ -9,7 +9,7 @@ const Container = styled.nav`
     position: fixed;
     width: ${props => props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)'};
     background-color: var(--white);
-    height: var(--main-height);
+    height: 100vh;
     padding-top: calc(var(--header-height) + 15px);
     overflow-x: hidden;
 `
