@@ -7,7 +7,7 @@ import (
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var jwtSecret = []byte("GrupinhoDoGoolang")
+var jwtSecret = []byte("GrupinhoDoGoolang35e1try1s6er4gs3e64tg3s6e55gs4e365t41es34654t41e35s4ts")
 
 func GerarToken(usuario *models.Usuarios) (string, error) {
 	claims := jwt.MapClaims{
