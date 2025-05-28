@@ -8,7 +8,7 @@ const hover = keyframes`
 const Container = styled.button`
     width: 260px;
     position: relative;
-    background-color: var(--main);
+    background-color: var(--light-gray);
     padding: 1.33rem;
     border-radius: 2rem;
     border: none;

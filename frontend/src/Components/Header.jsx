@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.header`
@@ -57,36 +58,36 @@ const User = styled.picture`
 
 export default function Header () {
 
+    const navigate = useNavigate()
+
     const [hide, setHide] = useState(false)
     const [lastScroll, setLastScroll] = useState(0)
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScroll = window.scrollY
-
-            console.log(currentScroll)
-
-            if (currentScroll > lastScroll && currentScroll > 40) {
-                setHide(true)
-            } else {
-                setHide(false)
-            }
-
-            setLastScroll(currentScroll)
-        }
-
-        window.addEventListener('scroll', handleScroll)
-
-        return () => window.removeEventListener('scroll', handleScroll)
-
-    }, [lastScroll])
+    //useEffect(() => {
+    //    const handleScroll = () => {
+    //        const currentScroll = window.scrollY
+    //
+    //        if (currentScroll > lastScroll && currentScroll > 40) {
+    //            setHide(true)
+    //        } else {
+    //            setHide(false)
+    //        }
+    //
+    //        setLastScroll(currentScroll)
+    //    }
+    //
+    //    window.addEventListener('scroll', handleScroll)
+    //
+    //    return () => window.removeEventListener('scroll', handleScroll)
+    //
+    //}, [lastScroll])
 
     return (
         <Container>
-            <Logo>
+            <Logo onClick={() => navigate('/')}>
                 <img src="" alt="Logo" />
             </Logo>
-            <User className='center'>
+            <User className='center' onClick={() => navigate('/usuario')}>
                 <img src="" alt="User" />
             </User>
         </Container>
