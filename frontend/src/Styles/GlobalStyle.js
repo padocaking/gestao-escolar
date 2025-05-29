@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, keyframes } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -55,6 +55,24 @@ export const Content = styled.div`
     justify-content: center;
     gap: 40px;
     padding: 50px;
+`
+
+const titleAnim = keyframes`
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+`
+
+export const Title = styled.h1`
+    color: var(--black);
+    font-size: 48px;
+    padding-bottom: 2rem;
+    animation: ${titleAnim} 0.4s ease-out;
 `
 
 export default GlobalStyle
