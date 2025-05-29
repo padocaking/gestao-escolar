@@ -28,16 +28,30 @@ CREATE TABLE `responsavel` (
 
 CREATE TABLE `turmas` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
-  `nome` varchar(50),
-  `ano_letivo` int,
-  `turno` varchar(20)
+  `turma` varchar(50),
+  `ano` int,
+  `periodo` varchar(20),
+  `grade` varchar(120),
+  `classe` varchar(30)
 );
 
 CREATE TABLE `alunos` (
-  `matricula` int UNIQUE PRIMARY KEY,
+  `matricula` int PRIMARY KEY,
   `turma` int,
   FOREIGN KEY (`matricula`) REFERENCES `usuarios` (`matricula`),
   FOREIGN KEY (`turma`) REFERENCES `turmas` (`id`)
+);
+
+CREATE TABLE `turma_aluno` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `id_turma` int,
+  `id_aluno` int,
+  `prova1` decimal(5,2),
+  `prova2` decimal(5,2),
+  `atividade` decimal(5,2),
+  `trabalhoBim` decimal(5,2),
+  FOREIGN KEY (`id_turma`) REFERENCES `turmas` (`id`),
+  FOREIGN KEY (`id_aluno`) REFERENCES `alunos` (`matricula`)
 );
 
 CREATE TABLE `professores` (
@@ -69,18 +83,7 @@ CREATE TABLE `professor_turma_disciplina` (
   FOREIGN KEY (`disciplina_id`) REFERENCES `disciplinas` (`id`)
 );
 
-CREATE TABLE `notas` (
-  `aluno_matricula` int PRIMARY KEY,
-  `professor_turma_disciplina_id` int,
-  `nota` decimal(5 ,2),
-  `data_avaliacao` date,
-  `tipo_avaliacao` varchar(50),
-  FOREIGN KEY (`aluno_matricula`) REFERENCES `alunos` (`matricula`),
-  FOREIGN KEY (`professor_turma_disciplina_id`) REFERENCES `professor_turma_disciplina` (`id`)
-);
-
 CREATE TABLE `frequencias` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
   `aluno_matricula` int,
   `professor_turma_disciplina_id` int,
   `data_aula` date,
