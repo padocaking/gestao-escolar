@@ -62,7 +62,7 @@ const MenuItems = {
             subItem: []
         },
         {
-            path: '/requerimento',
+            path: 'diretor/requerimento',
             text: "Requerimento",
             icon: <IoDocumentTextOutline />,
             subItem: []
