@@ -11,6 +11,7 @@ import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
 import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 import Footer from '../Components/Footer';
 import Boletim from '../Pages/Aluno/Boletim';
+import Turmas from '../Pages/Professor/Turmas/Turmas';
 
 
 const Container = styled.div`
@@ -52,6 +53,9 @@ function AppRoutes () {
                         <Route path='diretor/turmas/vincular-professor' element={<TurmaProfessor />} />
                         {/* ROTAS ALUNO */}
                         <Route path='/boletim' element={<Boletim />} />
+                        {/* ROTAS PROFESSOR */}
+                        <Route path='/turmas' element={<Turmas />} />
+
                     </Routes>
                 </Content>
             </Page>
