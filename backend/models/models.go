@@ -5,55 +5,68 @@ import (
 )
 
 type Usuarios struct {
-	Matricula   uint      `json:"matricula" gorm:"primaryKey;autoIncrement;unique"`
-	Email       string    `json:"email" gorm:"type:varchar(50);unique"`
-	Senha       string    `json:"senha" gorm:"type:varchar(50)"`
-	Tipo        string    `json:"tipo" gorm:"type:varchar(20)"`
-	DataCriacao time.Time `json:"data_criacao" gorm:"autoCreateTime"`
-}
-
-type InformacoesUsuario struct {
-	Matricula      uint      `json:"matricula" gorm:"primaryKey"`
+	Matricula      uint      `json:"matricula" gorm:"primaryKey;autoIncrement;unique"`
+	Email          string    `json:"email" gorm:"type:varchar(50);unique"`
+	Senha          string    `json:"senha" gorm:"type:varchar(50)"`
+	Tipo           string    `json:"tipo" gorm:"type:enum('aluno','professor','coordenador')"`
+	DataCriacao    time.Time `json:"data_criacao" gorm:"autoCreateTime"`
 	Nome           string    `json:"nome" gorm:"type:varchar(50)"`
 	DataNascimento time.Time `json:"data_nascimento"`
 	Cpf            string    `json:"cpf" gorm:"type:varchar(11);unique"`
-	Telefone       int       `json:"telefone"`
+	Telefone       string    `json:"telefone" gorm:"type:varchar(50)"`
 	Endereco       string    `json:"endereco" gorm:"type:varchar(100)"`
 }
 
-type UsuarioRequest struct {
-	Usuario            Usuarios           `json:"usuario"`
-	InformacoesUsuario InformacoesUsuario `json:"informacoes_usuario"`
+type Responsavel struct {
+	MatriculaFilho uint      `json:"matricula_filho" gorm:"primaryKey"`
+	Nome           string    `json:"nome" gorm:"type:varchar(50)"`
+	DataNascimento time.Time `json:"data_nascimento"`
+	Cpf            string    `json:"cpf" gorm:"type:varchar(11)"`
+	Telefone       string    `json:"telefone" gorm:"type:varchar(50)"`
+	Endereco       string    `json:"endereco" gorm:"type:varchar(100)"`
+	Email          string    `json:"email" gorm:"type:varchar(50);unique"`
+	DataCriacao    time.Time `json:"data_criacao" gorm:"autoCreateTime"`
 }
 
 type Professores struct {
-	Matricula   uint   `json:"matricula" gorm:"primaryKey;unique"`
-	Formacao    string `json:"formacao" gorm:"type:varchar(50)"`
-	AreaAtuacao string `json:"area_atuacao" gorm:"type:varchar(50)"`
-}
-
-type Alunos struct {
-	Matricula uint `json:"matricula" gorm:"primaryKey;unique"`
-	Turma     int  `json:"turma"`
+	Matricula   uint    `json:"matricula" gorm:"primaryKey"`
+	Formacao    string  `json:"formacao" gorm:"type:varchar(50)"`
+	AreaAtuacao string  `json:"area_atuacao" gorm:"type:varchar(50)"`
+	Salario     float64 `json:"salario" gorm:"type:decimal(15,2)"`
 }
 
 type Coordenadores struct {
-	Matricula uint `json:"matricula" gorm:"primaryKey;unique"`
+	Matricula uint `json:"matricula" gorm:"primaryKey"`
 }
 
 type Turmas struct {
-	Id        uint   `json:"id" gorm:"primaryKey;autoIncrement"`
-	Nome      string `json:"nome" gorm:"type:varchar(50)"`
-	AnoLetivo int    `json:"ano_letivo"`
-	Turno     string `json:"turno" gorm:"type:varchar(20)"`
+	Id     uint   `json:"id" gorm:"primaryKey;autoIncrement"`
+	Turma  string `json:"turma" gorm:"type:varchar(50)"`
+	Ano    int    `json:"ano"`
+	Periodo string `json:"periodo" gorm:"type:varchar(20)"`
+	Grade  string `json:"grade" gorm:"type:varchar(120)"`
+	Classe string `json:"classe" gorm:"type:varchar(30)"`
 }
 
-type Frequencias struct {
-	Id                         uint      `json:"id" gorm:"primaryKey;autoIncrement"`
-	AlunoMatricula             uint      `json:"aluno_matricula"`
-	ProfessorTurmaDisciplinaId uint      `json:"professor_turma_disciplina_id"`
-	DataAula                   time.Time `json:"data_aula"`
-	Presente                   bool      `json:"presente"`
+type Alunos struct {
+	Matricula uint `json:"matricula" gorm:"primaryKey"`
+	Turma     uint `json:"turma"`
+}
+
+type TurmaAluno struct {
+	ID          uint    `json:"id" gorm:"primaryKey;autoIncrement"`
+	IdTurma     uint    `json:"id_turma"`
+	IdAluno     uint    `json:"id_aluno"`
+	Prova1      float32 `json:"prova1"`
+	Prova2      float32 `json:"prova2"`
+	Atividade   float32 `json:"atividade"`
+	TrabalhoBim float32 `json:"trabalhoBim"`
+}
+
+type Disciplinas struct {
+	Id           uint   `json:"id" gorm:"primaryKey;autoIncrement"`
+	Nome         string `json:"nome" gorm:"type:varchar(50)"`
+	CargaHoraria int    `json:"carga_horaria"`
 }
 
 type ProfessorTurmaDisciplina struct {
@@ -63,16 +76,9 @@ type ProfessorTurmaDisciplina struct {
 	DisciplinaId       uint `json:"disciplina_id"`
 }
 
-type Disciplinas struct {
-	Id           uint   `json:"id" gorm:"primaryKey;autoIncrement"`
-	Nome         string `json:"nome" gorm:"type:varchar(50)"`
-	CargaHoraria int    `json:"carga_horaria"`
-}
-
-type Notas struct {
+type Frequencias struct {
 	AlunoMatricula             uint      `json:"aluno_matricula"`
 	ProfessorTurmaDisciplinaId uint      `json:"professor_turma_disciplina_id"`
-	Nota                       float32   `json:"nota"`
-	DataAvalaiacao             time.Time `json:"data_avaliacao"`
-	TipoAvaliacacao            string    `json:"tipo_avaliacao" gorm:"type:varchar(50)"`
+	DataAula                   time.Time `json:"data_aula"`
+	Presente                   bool      `json:"presente"`
 }
