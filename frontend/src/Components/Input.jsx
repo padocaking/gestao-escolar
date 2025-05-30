@@ -24,11 +24,11 @@ const InputContainer = styled.div`
     }
 `
 
-export default function Input ({ name, type, register, error }) {
+export default function Input ({ name, type, value, register, error }) {
     return (
         <InputContainer>
             <label>{name}</label>
-            <input {...register} type={type} placeholder={name} />
+            <input {...register} type={type} placeholder={name} value={value}/>
             <span>{error}</span>
         </InputContainer>
     )

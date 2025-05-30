@@ -7,8 +7,10 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
+
 const Container = styled.div`
     height: 100vh;
+    width: 100%;
     background: var(--background);
     position: relative;
     overflow: hidden;
@@ -27,6 +29,10 @@ const Background = styled.img`
     &.left {
         left: 0;
     }
+
+    @media (max-width: 700px) {
+        display: none;
+    }
 `
 
 const LoginContainer = styled.main`
@@ -40,9 +46,19 @@ const LoginContainer = styled.main`
     gap: 2rem;
     width: 700px;
     z-index: 1;
+
+    @media (max-width: 700px) {
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        margin: 0px;
+        padding: 1.65rem;
+        gap: 3.5rem;
+    }
 `
 
 const Logo = styled.picture`
+    letter-spacing: -3px;
     font-size: 72px;
     font-weight: 800;
     padding-bottom: 1rem;
@@ -77,9 +93,29 @@ export default function Login () {
         resolver: yupResolver(loginSchema)
     })
 
-    const onSubmit = (data) => {
-        console.log(data)
-    }
+    const onSubmit = async (data) => {
+        try {
+          const response = await fetch("http://localhost:3000/api/usuarios/login", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+      
+          // Converte a resposta para JSON
+          const result = await response.json();
+      
+          if (!response.ok) {
+            throw new Error(result.erro || "Erro desconhecido");
+          }
+      
+          console.log("Resposta do servidor:", result);
+        } catch (error) {
+          console.error("Erro ao fazer login:", error.message);
+        }
+      };
+      
 
     return (
         <Container className='center'>
@@ -118,5 +154,19 @@ export default function Login () {
             </LoginContainer>
 
         </Container>
+    )
+}
+
+function app () {
+    return (
+        <div>
+            <form>
+                <h1>LOGO</h1>
+                <div>
+                    <label>MATRÍCULA</label>
+                    <input placeholder='matricula' />
+                </div>
+            </form>
+        </div>
     )
 }
