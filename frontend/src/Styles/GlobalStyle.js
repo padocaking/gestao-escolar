@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -42,6 +42,19 @@ const GlobalStyle = createGlobalStyle`
         align-items: center;
         justify-content: center;
     }
+`
+
+export const Content = styled.div`
+    background-color: var(--white);
+    margin: 35px 0;
+    padding: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
 `
 
 export default GlobalStyle

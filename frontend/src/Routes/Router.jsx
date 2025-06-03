@@ -10,6 +10,8 @@ import TurmaAdd from '../Pages/Diretor/Turmas/TurmasAdd/TurmaAdd';
 import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
 import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 import Footer from '../Components/Footer';
+import Requerimento from '../Pages/Requerimento/Requerimento';
+import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
 
 
 const Container = styled.div`
@@ -49,6 +51,9 @@ function AppRoutes () {
                         <Route path='/turmas/nova-turma' element={<TurmaAdd />} />
                         <Route path='/turmas/vincular-estudante' element={<TurmaEstudante />} />
                         <Route path='/turmas/vincular-professor' element={<TurmaProfessor />} />
+                        {/* ROTAS REQUERIMENTO */}
+                        <Route path='/requerimento' element={<Requerimento />} />
+                        <Route path='diretor/requerimento' element={<RequerimentoDiretor />} />
                     </Routes>
                 </Content>
             </Page>
