@@ -29,6 +29,8 @@ export default function TurmaAdd () {
 
     const nagivate = useNavigate()
 
+    console.log(turmaValues)
+
     return (
         <>
 

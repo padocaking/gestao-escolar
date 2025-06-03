@@ -56,18 +56,18 @@ const BtnsContainer = styled.div`
     }
 `
 
-export default function TableRowItem () {
+export default function TableRowItem ({ ano, classe, turma, periodo, prof, aluno, status }) {
     
 
     return (
         <Container>
-            <td>2025</td>
-            <td>5º</td>
-            <td>A</td>
-            <td>Manhã</td>
-            <td>6/6</td>
-            <td>22</td>
-            <td>Aberto</td>
+            <td>{ano}</td>
+            <td>{classe}</td>
+            <td style={{textTransform: "uppercase"}}>{turma}</td>
+            <td>{periodo}</td>
+            <td>{prof} / {classe.includes('EM') ? '6' : '5'}</td>
+            <td>{aluno}</td>
+            <td>{status}</td>
             <td>
                 <BtnsContainer>
                     <button className='center'>

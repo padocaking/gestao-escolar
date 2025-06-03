@@ -3,10 +3,19 @@ import { RiGraduationCapLine } from "react-icons/ri";   // central
 import TableRowItem from '../../../Components/TableRowItem'
 import { useNavigate } from 'react-router-dom';
 import { BtnContainer, ButtonTwo, Table, Headers, Title } from './Turmas.style';
+import { useEffect, useState } from 'react';
 
 export default function TurmasList () {
 
     const navigate = useNavigate()
+
+    const [turmas, setTurmas] = useState([])
+
+    useEffect(() => {
+        fetch('/data/turmas.json')
+            .then(res => res.json())
+            .then(data => setTurmas(data))
+    }, [])
 
     return (
         <>
@@ -46,15 +55,17 @@ export default function TurmasList () {
                     </tr>
                 </thead>
                 <tbody>
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
-                    <TableRowItem />
+                    {turmas.map(turma => (
+                        <TableRowItem
+                            ano={turma.ano}
+                            classe={turma.classe}
+                            turma={turma.turma}
+                            periodo={turma.periodo}
+                            prof={turma.professores_id.length}
+                            aluno={turma.alunos_id.length}
+                            status='Aberto'
+                        />
+                    ))}
                 </tbody>
             </Table>
 

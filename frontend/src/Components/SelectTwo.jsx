@@ -37,10 +37,10 @@ const SelectContainer = styled.div`
     }
 `
 
-export default function SelectTwo ({ name, register, error, children }) {
+export default function SelectTwo ({ name, error, children, handleChange, value }) {
     return (
         <SelectContainer>
-            <select name={name} id={name} {...register}>
+            <select value={value} name={name} id={name} onChange={handleChange} required>
                 {children}
             </select>
             <span>{error}</span>
