@@ -8,6 +8,7 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
 
+    /* DISPONÍVEIS */
     select {
         width: 300px;
         font-size: 16px;
@@ -101,9 +102,9 @@ export default function Requerimento () {
 
         <div className='btnContainer'>
             <Button type="submit">Enviar</Button>
-        </div>    
+        </div>
 
-        </Container>
+         </Container>
         </Content>
         </>
     )
