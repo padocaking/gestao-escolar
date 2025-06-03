@@ -23,7 +23,7 @@ export default function Nagivation () {
     
 
     return (
-        <Container navOpened={navOpened} onMouseEnter={openNav} onMouseLeave={closeNav}>
+        <Container navOpened={navOpened}>
 
             {MenuItems['aluno'].map((item, i) => {
                 if (item.subItem.length === 0) {
