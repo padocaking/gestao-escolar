@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "nome": "Miguel Ortenio",
+        "disciplinas": ["Ciências", "Biologia"],
+        "salario": 2980
+    },
+    {
+        "id": 2,
+        "nome": "Amarildo Fonseca",
+        "disciplinas": ["Matemática"],
+        "salario": 3140
+    },
+    {
+        "id": 3,
+        "nome": "Flávia de Lima",
+        "disciplinas": ["História", "Filosofia", "Sociologia"],
+        "salario": 2490
+    },
+    {
+        "id": 4,
+        "nome": "Valdilaine Silva",
+        "disciplinas": ["Português", "Redação", "Literatura"],
+        "salario": 3140
+    },
+    {
+        "id": 5,
+        "nome": "David Junior",
+        "disciplinas": ["Geografia"],
+        "salario": 3140
+    }
+]

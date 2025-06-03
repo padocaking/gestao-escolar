@@ -20,6 +20,7 @@ const Form = styled.form`
 `
 
 const Grid = styled.section`
+    width: 85%;
     display: grid;
     grid-template-columns: repeat(6, minmax(75px, 1fr));
     justify-content: center;
@@ -46,40 +47,232 @@ const Grid = styled.section`
     }
 `
 
-function SelectDisc ({ em }) {
+const AutoFill = styled.span`
+    margin-top: -40px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-weight: 500;
+    padding: 15px;
+    color: var(--main-two);
+
+    &:hover {
+        background-color: var(--bluish-gray);
+    }
+`
+
+const Requirements = styled.section`
+    width: 85%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(75px, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 1px;
+    background-color: var(--light-gray);
+    border: 1px solid var(--light-gray);
+    font-size: 15px;
+
+    span {
+
+        padding: 12px;
+
+        &.head {
+            background-color: var(--main-one);
+            color: var(--bluish-gray);
+            text-align: center;
+        }
+
+        &.row {
+            background-color: var(--bluish-gray);
+            letter-spacing: 2px;
+            padding-left: 20px;
+        }
+
+        &.body {
+            text-align: center;
+            background-color: #f2d4d4;
+            letter-spacing: 5px;
+
+            &.correct {
+                background-color: #d7ead2;
+            }
+        }
+
+    }
+`
+
+function SelectDisc ({ em, handleChange, value }) {
     return (
-        <SelectTwo>
-            <option value="" disabled selected></option>
-            <option value="portugues">Língua Portuguesa</option>
-            <option value="matematica">Matemática</option>
+        <SelectTwo handleChange={handleChange} value={value}>
+            <option value="" disabled selected>Selecione</option>
+            <option value="Português">Português</option>
+            <option value="Matemática">Matemática</option>
             {em ? (
                 <>
-                <option value="fisica">Física</option>
-                <option value="quimica">Química</option>
+                <option value="Física">Física</option>
+                <option value="Química">Química</option>
                 <option value="Biologia">Biologia</option>
                 </>
             ) : (
-                <option value="ciencia">Ciências</option>
+                <option value="Ciências">Ciências</option>
             )}
-            <option value="historia">História</option>
-            <option value="geografia">Geografia</option>
-            <option value="artes">Artes</option>
-            <option value="edfisica">Educação Física</option>
-            <option value="ingles">Inglês</option>
+            <option value="História">História</option>
+            <option value="Geografia">Geografia</option>
+            <option value="Artes">Artes</option>
+            <option value="Ed. Física">Ed. Física</option>
+            <option value="Inglês">Inglês</option>
+            <option value="Redação">Redação</option>
         </SelectTwo>
     )
 }
 
-export default function Step2 ({ setCurrStep }) {
+function DiscTable ({ disc, curr, min, setFilled }) {
+    if (curr < min) {
+        setFilled(false)
+    }
 
-    const [em, setEm] = useState(true)
+    return (
+        <>
+        <span className='row'>{disc}</span>
+        <span className={`body ${curr >= min ? 'correct' : null}`}>{curr} / {min}</span>
+        </>
+    )
+}
+
+const MinDisc = {
+    fun: [
+        {
+            disc: 'Português',
+            min: 4
+        },
+        {
+            disc: 'Matemática',
+            min: 4
+        },
+        {
+            disc: 'Ciências',
+            min: 3
+        },
+        {
+            disc: 'História',
+            min: 3
+        },
+        {
+            disc: 'Geografia',
+            min: 3
+        },
+        {
+            disc: 'Artes',
+            min: 1
+        },
+        {
+            disc: 'Ed. Física',
+            min: 2
+        },
+        {
+            disc: 'Inglês',
+            min: 2
+        },
+        {
+            disc: 'Redação',
+            min: 1
+        }
+    ],
+    em: [
+        {
+            disc: 'Português',
+            min: 4
+        },
+        {
+            disc: 'Literatura',
+            min: 2
+        },
+        {
+            disc: 'Matemática',
+            min: 4
+        },
+        {
+            disc: 'Física',
+            min: 3
+        },
+        {
+            disc: 'Química',
+            min: 3
+        },
+        {
+            disc: 'Biologia',
+            min: 3
+        },
+        {
+            disc: 'História',
+            min: 2
+        },
+        {
+            disc: 'Geografia',
+            min: 2
+        },
+        {
+            disc: 'Ed. Física',
+            min: 2
+        },
+        {
+            disc: 'Inglês',
+            min: 2
+        },
+        {
+            disc: 'Filosofia',
+            min: 1
+        },
+        {
+            disc: 'Sociologia',
+            min: 1
+        },
+        {
+            disc: 'Redação',
+            min: 1
+        }
+    ]
+}
+
+export default function Step2 ({ setCurrStep, setTurmaValues, turmaValues }) {
+
+    const [classes, setClasses] = useState({})
+
+    const [filled, setFilled] = useState(true)
+
+    const em = turmaValues.data.classe.includes('em')
+
+    const handleChange = (event, i) => {
+        setClasses((prev) => ({
+            ...prev,
+            [i]: event.target.value
+        }))
+        setFilled(true)
+    }
 
     const clickHandler = () => {
         setCurrStep(1.5)
     }
 
+    const handleSubmit = (event, data) => {
+        event.preventDefault()
+        if (filled) {
+            setCurrStep(3)
+            setTurmaValues(prev => ({
+                ...prev,
+                horario: data
+            }))
+        } else {
+            alert('Mínimo de aulas necessário não antigidas')
+        }
+    }
+
+    const autoFill = () => {
+    }
+
+    console.log(filled)
+
     return (
-        <Form className='center'>
+        <Form className='center' onSubmit={(e) => handleSubmit(e, classes)}>
 
             <ContentTitle>GRADE DE HORÁRIOS</ContentTitle>
 
@@ -90,37 +283,39 @@ export default function Step2 ({ setCurrStep }) {
                 <span className='head'>QUA</span>
                 <span className='head'>QUI</span>
                 <span className='head'>SEX</span>
-                <span className='row'>1º AULA</span>
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <span className='row'>2º AULA</span>
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <span className='row'>3º AULA</span>
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <span className='row'>4º AULA</span>
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <span className='row'>5º AULA</span>
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
-                <SelectDisc em={em} />
+
+                {Array.from({ length: em ? 6 : 5}).map((_, i) => (
+                    <>
+                    <span className='row'>{i+1}º AULA</span>
+                    {Array.from({ length: 5 }).map((_, j) => {
+                        return (
+                            <SelectDisc
+                                em={turmaValues.data.classe.includes("em")}
+                                handleChange={(e) => handleChange(e, 6 * j + i)}
+                                value={classes[6 * j + i]}
+                            />
+                        )
+                    })}
+                    </>
+                ))}
             </Grid>
+
+            <AutoFill  onClick={autoFill}>Preencher automático</AutoFill>
+
+            <Requirements>
+                <span className='head'>DISCIPLINAS</span>
+                <span className='head'>MINÍMO DE AULAS</span>
+                
+                {MinDisc[em ? 'em' : 'fun'].map(item => (
+                    <DiscTable
+                        disc={item.disc}
+                        min={item.min}
+                        curr={Object.values(classes).filter(aula => aula === item.disc).length}
+                        setFilled={setFilled}
+                    />
+                ))}
+
+            </Requirements>
             
             <div className='btnContainer'>
                 <ButtonAlt onClick={clickHandler}>Voltar</ButtonAlt>
