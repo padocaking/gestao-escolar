@@ -33,6 +33,7 @@ export const ButtonTwo = styled.button`
     width: 250px;
     border: none;
     cursor: pointer;
+    border-radius: 6.52349px;
 
     svg {
         font-size: 20px;

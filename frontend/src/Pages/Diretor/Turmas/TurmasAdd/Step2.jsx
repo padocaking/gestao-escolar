@@ -20,12 +20,16 @@ const Form = styled.form`
 `
 
 const Grid = styled.section`
-    width: 85%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(6, minmax(75px, 1fr));
     justify-content: center;
     align-items: center;
     background-color: var(--bluish-gray);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 3px 0px var(--second),
+                0 0 3px 0px var(--second);
 
     span {
         height: 100%;
@@ -54,22 +58,38 @@ const AutoFill = styled.span`
     font-weight: 500;
     padding: 15px;
     color: var(--main-two);
+    width: 200px;
 
     &:hover {
         background-color: var(--bluish-gray);
     }
+
+    &.second {
+        background-color: var(--main-one);
+        color: var(--white);
+        padding: 10px;
+
+
+        &.hover {
+            background: white;
+            color: var(--main-two);
+        }
+    }
 `
 
 const Requirements = styled.section`
-    width: 85%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(2, minmax(75px, 1fr));
     justify-content: center;
     align-items: center;
     gap: 1px;
-    background-color: var(--light-gray);
-    border: 1px solid var(--light-gray);
+    background-color: var(--white);
     font-size: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 3px 0px var(--second),
+                0 0 3px 0px var(--second);
 
     span {
 
@@ -79,6 +99,7 @@ const Requirements = styled.section`
             background-color: var(--main-one);
             color: var(--bluish-gray);
             text-align: center;
+            margin: -1px;
         }
 
         &.row {
@@ -89,11 +110,13 @@ const Requirements = styled.section`
 
         &.body {
             text-align: center;
-            background-color: #f2d4d4;
+            background-color: var(--white);
             letter-spacing: 5px;
+            color: #b10a0a;
 
             &.correct {
-                background-color: #d7ead2;
+                background-color: var(--white);
+                color: #043304
             }
         }
 
@@ -142,11 +165,11 @@ const MinDisc = {
     fun: [
         {
             disc: 'Português',
-            min: 4
+            min: 5
         },
         {
             disc: 'Matemática',
-            min: 4
+            min: 5
         },
         {
             disc: 'Ciências',
@@ -259,17 +282,56 @@ export default function Step2 ({ setCurrStep, setTurmaValues, turmaValues }) {
             setCurrStep(3)
             setTurmaValues(prev => ({
                 ...prev,
-                horario: data
+                grade: data
             }))
+
+            // POST GOES HERE AND MUST RETURN CLASS ID
+
         } else {
             alert('Mínimo de aulas necessário não antigidas')
         }
     }
 
     const autoFill = () => {
-    }
 
-    console.log(filled)
+        const indexes = []
+
+        for (let i = 0; i < 30; i++) {
+            if (!em && (i + 1) % 6 !== 0) {
+                indexes.push(i)
+            } else if (em) {
+                indexes.push(i)
+            }
+        }
+
+        const disc = []
+
+        for (let i = 0; i < MinDisc[em ? 'em' : 'fun'].length; i++) {
+            for (let j = 0; j < MinDisc[em ? 'em' : 'fun'][i].min; j++) {
+                disc.push(MinDisc[em ? 'em' : 'fun'][i].disc)
+            }
+        }
+
+        const output = []
+
+        for (let i = 0; i < disc.length; i++) {
+
+            const rngIndex = Math.floor(Math.random() * indexes.length)
+
+            output.push({
+                [indexes[rngIndex]]: disc[i]
+            })
+
+            let indexOfIndex = indexes.indexOf(indexes[rngIndex])
+            indexes.splice(indexOfIndex, 1)
+
+        }
+
+        setClasses(Object.assign({}, ...output))
+
+        setFilled(true)
+
+    }
 
     return (
         <Form className='center' onSubmit={(e) => handleSubmit(e, classes)}>
@@ -300,11 +362,14 @@ export default function Step2 ({ setCurrStep, setTurmaValues, turmaValues }) {
                 ))}
             </Grid>
 
-            <AutoFill  onClick={autoFill}>Preencher automático</AutoFill>
+            <AutoFill className='center' onClick={() => console.log('trolado')}>Limpar</AutoFill>
+            <AutoFill className='center second' onClick={autoFill}>Preencher automático</AutoFill>
+
+            <ContentTitle>MÍNIMO DE AULAS NECESSÁRIOS</ContentTitle>
 
             <Requirements>
                 <span className='head'>DISCIPLINAS</span>
-                <span className='head'>MINÍMO DE AULAS</span>
+                <span className='head'>AULAS</span>
                 
                 {MinDisc[em ? 'em' : 'fun'].map(item => (
                     <DiscTable

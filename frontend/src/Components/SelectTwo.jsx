@@ -23,8 +23,8 @@ const SelectContainer = styled.div`
         color: var(--main-three);
         border: none;
         padding: 15px;
-        box-shadow: 0 1px 2px 0px var(--second),
-                    0 0 2px 0px var(--second);
+        box-shadow: 0 0 1px 0px var(--second),
+                    0 0 1px 0px var(--second);
     }
 
     &:after {
@@ -37,10 +37,10 @@ const SelectContainer = styled.div`
     }
 `
 
-export default function SelectTwo ({ name, error, children, handleChange, value }) {
+export default function SelectTwo ({ name, error, children, handleChange, value, notReq }) {
     return (
         <SelectContainer>
-            <select value={value} name={name} id={name} onChange={handleChange} required>
+            <select value={value} name={name} id={name} onChange={handleChange} required={!notReq}>
                 {children}
             </select>
             <span>{error}</span>

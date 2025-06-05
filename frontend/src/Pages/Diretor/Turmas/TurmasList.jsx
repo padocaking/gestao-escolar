@@ -24,17 +24,17 @@ export default function TurmasList () {
 
             <BtnContainer>
 
-                <ButtonTwo onClick={() => navigate('/turmas/nova-turma')}>
+                <ButtonTwo onClick={() => navigate('/diretor/turmas/nova-turma')}>
                     <RiGraduationCapLine />
                     <span>Adicionar Turma</span>
                 </ButtonTwo>
 
-                <ButtonTwo onClick={() => navigate('/turmas/vincular-estudante')}>
+                <ButtonTwo onClick={() => navigate('/diretor/turmas/vincular-estudante')}>
                     <RiGraduationCapLine />
                     <span>Vincular professores</span>
                 </ButtonTwo>
 
-                <ButtonTwo onClick={() => navigate('/turmas/vincular-professor')}>
+                <ButtonTwo onClick={() => navigate('/diretor/turmas/vincular-professor')}>
                     <RiGraduationCapLine />
                     <span>Vincular alunos</span>
                 </ButtonTwo>
