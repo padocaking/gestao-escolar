@@ -4,6 +4,7 @@ import NavItemSub from './NavItemSub';
 import { useState } from 'react';
 import MenuItems from '../Naoseidarnome/MenuItems';
 import useNavStore from '../Service/useNavStore';
+import useOpenNav from '../Service/useOpenNav';
 
 const Container = styled.nav`
     position: fixed;
@@ -12,6 +13,7 @@ const Container = styled.nav`
     height: 100vh;
     padding-top: calc(var(--header-height) + 15px);
     overflow-x: hidden;
+    z-index: 100;
 `
 
 export default function Nagivation () {
@@ -19,13 +21,14 @@ export default function Nagivation () {
     const [currPage, setCurrPage] = useState("")
 
     const { navOpened, openNav, closeNav } = useNavStore()
+    const { navState } = useOpenNav()
 
     
 
     return (
         <Container navOpened={navOpened}>
 
-            {MenuItems['aluno'].map((item, i) => {
+            {MenuItems['diretor'].map((item, i) => {
                 if (item.subItem.length === 0) {
                     return (
                         <NavItem

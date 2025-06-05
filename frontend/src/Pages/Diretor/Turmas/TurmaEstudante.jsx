@@ -10,7 +10,7 @@ export default function TurmaEstudante () {
 
             <Title>Vincular Estudante</Title>
 
-            <ButtonTwo onClick={() => nagivate('/turmas')}>
+            <ButtonTwo onClick={() => nagivate('/diretor/turmas')}>
                 <span>Voltar</span>
             </ButtonTwo>
         </>        

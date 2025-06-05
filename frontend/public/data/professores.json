@@ -28,5 +28,11 @@
         "nome": "David Junior",
         "disciplinas": ["Geografia"],
         "salario": 3140
+    },
+    {
+        "id": 6,
+        "nome": "Ketlyn Medeiros",
+        "disciplinas": ["Português", "Literatura", "Redação"],
+        "salario": 1250.50
     }
 ]

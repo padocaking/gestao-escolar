@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import useOpenNav from '../Service/useOpenNav';
 
 const Container = styled.header`
     position: fixed;
@@ -15,7 +16,7 @@ const Container = styled.header`
     transform: ${props => props.hide ? 'translateY(-100%)' : 'translateY(0)'};
     transition: transform 0.2s linear;
     overflow: hidden;
-    z-index: 100;
+    z-index: 999;
 `
 
 const Logo = styled.picture`
@@ -23,6 +24,10 @@ const Logo = styled.picture`
     font-size: 26px;
     text-transform: capitalize;
     cursor: pointer;
+
+    @media (max-width: 900px) {
+        display: none;
+    }
 `
 
 const User = styled.picture`
@@ -56,37 +61,41 @@ const User = styled.picture`
     }
 `
 
+const MenuBar = styled.div`
+    display: none;
+    width: 20px;
+    cursor: pointer;
+
+    div {
+        height: 3px;
+        width: 100%;
+        background-color: var(--black);
+        border-radius: 15px;
+    }
+
+    @media (max-width: 900px) {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+`
+
 export default function Header () {
 
     const navigate = useNavigate()
-
-    const [hide, setHide] = useState(false)
-    const [lastScroll, setLastScroll] = useState(0)
-
-    //useEffect(() => {
-    //    const handleScroll = () => {
-    //        const currentScroll = window.scrollY
-    //
-    //        if (currentScroll > lastScroll && currentScroll > 40) {
-    //            setHide(true)
-    //        } else {
-    //            setHide(false)
-    //        }
-    //
-    //        setLastScroll(currentScroll)
-    //    }
-    //
-    //    window.addEventListener('scroll', handleScroll)
-    //
-    //    return () => window.removeEventListener('scroll', handleScroll)
-    //
-    //}, [lastScroll])
+    
+    const { handleNav } = useOpenNav()
 
     return (
         <Container>
-            <Logo onClick={() => navigate('/')}>
+            <Logo className='logo' onClick={() => navigate('/')}>
                 <img src="" alt="Logo" />
             </Logo>
+            <MenuBar onClick={handleNav}>
+                <div></div>
+                <div></div>
+                <div></div>
+            </MenuBar>
             <User className='center' onClick={() => navigate('/usuario')}>
                 <img src="" alt="User" />
             </User>

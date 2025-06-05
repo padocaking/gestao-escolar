@@ -36,7 +36,7 @@ export default function TurmaAdd () {
 
             <Title>Adicionar Turma</Title>
 
-            <ButtonTwo onClick={() => nagivate('/turmas')}>
+            <ButtonTwo onClick={() => nagivate('/diretor/turmas')}>
                 <span>Voltar</span>
             </ButtonTwo>
 
@@ -48,8 +48,8 @@ export default function TurmaAdd () {
                     <Step1 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
                 ) : currStep === 2.5 ? (
                     <Step2 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} turmaValues={turmaValues} />
-                ) : currStep === 3.5 ? (
-                    <Step3 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
+                ) : currStep === 3 ? (
+                    <Step3 setCurrStep={setCurrStep} turmaValues={turmaValues} setTurmaValues={setTurmaValues} />
                 ) : null}
 
             </Content>

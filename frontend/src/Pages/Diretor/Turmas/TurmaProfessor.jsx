@@ -10,7 +10,7 @@ export default function TurmaProfessor () {
 
             <Title>Vincular Professor</Title>
 
-            <ButtonTwo onClick={() => nagivate('/turmas')}>
+            <ButtonTwo onClick={() => nagivate('/diretor/turmas')}>
                 <span>Voltar</span>
             </ButtonTwo>
         </>        
