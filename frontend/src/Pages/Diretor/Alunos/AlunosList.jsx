@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import TableRowItem from '../../../Components/TableRowItem'
 import { useNavigate } from 'react-router-dom';
-import { Table, Headers, Title } from './Turmas.style';
+import { Table, Headers, Title } from '../Diretor.style';
 import { useEffect, useState } from 'react';
 import { FaFilter } from "react-icons/fa";
 import CheckboxFilter from '../../../Components/CheckboxFilter';
+import TableItemAluno from '../../../Components/TableItemAluno';
 
 const FilterContainer = styled.div`
     position: relative;
@@ -59,30 +60,29 @@ const Filter = styled.div`
     overflow: hidden;
     box-shadow: 0 0 10px 0px #00000026;
     border-bottom: 2px solid var(--main-one);
-    z-index: 999;
+    z-index: 9999;
 `
 
-export default function TurmasList () {
+export default function AlunosList () {
 
     const navigate = useNavigate()
 
-    const [turmas, setTurmas] = useState([])
+    const [alunos, setAlunos] = useState([])
     const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
     const [filters, setFilters] = useState({
-        ano: [],
-        classe: [],
-        escolaridade: [],
+        nome: [],
+        turma: [],
         status: []
     });
     const [openFilter, setOpenFilter] = useState(false)
 
     useEffect(() => {
-        fetch('/data/turmas.json')
+        fetch('/data/alunos.json')
             .then(res => res.json())
-            .then(data => setTurmas(data))
+            .then(data => setAlunos(data))
     }, [])
 
-    console.log(turmas)
+    console.log(alunos)
 
     const sortBy = (key) => {
         let direction = 'asc';
@@ -90,7 +90,7 @@ export default function TurmasList () {
             direction = 'desc';
         }
 
-        const sorted = [...turmas].sort((a, b) => {
+        const sorted = [...alunos].sort((a, b) => {
             const aVal = a[key]?.toString().toLowerCase();
             const bVal = b[key]?.toString().toLowerCase();
 
@@ -100,7 +100,7 @@ export default function TurmasList () {
         });
 
         setSortConfig({ key, direction });
-        setTurmas(sorted);
+        setAlunos(sorted);
     }
 
     const handleCheckboxChange = (category, value) => {
@@ -115,11 +115,11 @@ export default function TurmasList () {
         })
     }
 
-    const turmasFiltradas = turmas.filter(turma => {
-        const matchAno = filters.ano.length === 0 || filters.ano.includes(String(turma.ano));
-        const matchClasse = filters.classe.length === 0 || filters.classe.includes(String(turma.classe));
-        const matchStatus = filters.status.length === 0 || filters.status.includes(String(turma.status));
-        return matchAno && matchClasse && matchStatus;
+    const alunosFiltrados = alunos.filter(aluno => {
+        const matchNome = filters.nome.length === 0 || filters.nome.includes(String(aluno.nome));
+        const matchTurma = filters.turma.length === 0 || filters.turma.includes(String(aluno.turma));
+        const matchStatus = filters.status.length === 0 || filters.status.includes(String(aluno.status));
+        return matchNome && matchTurma && matchStatus;
     })
 
     const renderHeader = (label, key) => (
@@ -132,37 +132,29 @@ export default function TurmasList () {
     return (
         <>
 
-            <Title>Controle de turmas</Title>
+            <Title>Controle de alunos</Title>
 
             <FilterContainer>
                 <div className='filterItem' onClick={() => setOpenFilter(!openFilter)} >
                     <FaFilter/>
                 </div>
-                <h3>TURMAS</h3>
-                <div className="filterItem" onClick={() => navigate('/diretor/turmas/nova-turma')}>
-                    <span className='add'>+ NOVA TURMA</span>
+                <h3>ALUNOS</h3>
+                <div className="filterItem" onClick={() => navigate('/diretor/turmas/novo-aluno')}>
+                    <span className='add'>+ NOVO ALUNO</span>
                 </div>
                 <Filter opened={openFilter}>
-                    <div>
-                        <CheckboxFilter
-                            label="Ano"
-                            options={["2024", "2025"]}
-                            selected={filters.ano}
-                            onChange={(value) => handleCheckboxChange("ano", value)}
-                        />
-                    </div>
                     <div className=''>
                         <CheckboxFilter
-                            label="Classe"
-                            options={['1º', '2º', '3º', '4º', '5º', '6º', '7º', '8º', '9º', '1º EM', '2º EM', '3º EM']}
-                            selected={filters.classe}
-                            onChange={(value) => handleCheckboxChange("classe", value)}
+                            label="Turma"
+                            options={['Nenhum', '1º', '2º', '3º', '4º', '5º', '6º', '7º', '8º', '9º', '1º EM', '2º EM', '3º EM']}
+                            selected={filters.turma}
+                            onChange={(value) => handleCheckboxChange("turma", value)}
                         />
                     </div>
                     <div className=''>
                         <CheckboxFilter
                             label="Status"
-                            options={['aberto', 'fechado']}
+                            options={['matriculado', 'pendente']}
                             selected={filters.status}
                             onChange={(value) => handleCheckboxChange("status", value)}
                         />
@@ -176,26 +168,20 @@ export default function TurmasList () {
             <Table>
                 <thead>
                     <tr>
-                        {renderHeader("Ano", "ano")}
-                        {renderHeader("Classe", "classe")}
+                        {renderHeader("Matrícula", "matricula")}
+                        {renderHeader("Nome", "nome")}
                         {renderHeader("Turma", "turma")}
-                        {renderHeader("Período", "periodo")}
-                        {renderHeader("Prof/Disciplina", "professores_id.length")}
-                        {renderHeader("Alunos", "alunos_id.length")}
-                        {renderHeader("Status Matrícula", "status")}
+                        {renderHeader("Status", "status")}
                         <Headers>...</Headers>
                     </tr>
                 </thead>
                 <tbody>
-                    {turmasFiltradas.map(turma => (
-                        <TableRowItem
-                            ano={turma.ano}
-                            classe={turma.classe}
-                            turma={turma.turma}
-                            periodo={turma.periodo}
-                            prof={turma.professores_id.length}
-                            aluno={turma.alunos_id.length}
-                            status={turma.status}
+                    {alunosFiltrados.map(alunuo => (
+                        <TableItemAluno
+                            matricula={alunuo.matricula}
+                            nome={alunuo.nome}
+                            turma={alunuo.turma}
+                            status={alunuo.status}
                         />
                     ))}
                 </tbody>

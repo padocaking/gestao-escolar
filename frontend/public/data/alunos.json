@@ -1,22 +1,32 @@
 [
     {
-        "id": 1,
-        "nome": "Miguel Ortenio"
+        "matricula": 2025050000,
+        "nome": "Miguel Ortenio",
+        "turma": null,
+        "status": "Pendente"
     },
     {
-        "id": 2,
-        "nome": "Amarildo Fonseca"
+        "matricula": 2025050001,
+        "nome": "Amarildo Fonseca",
+        "turma": "9º Ano B",
+        "status": "Matriculado"
     },
     {
-        "id": 3,
-        "nome": "Flávia de Lima"
+        "matricula": 2025050002,
+        "nome": "Flávia de Lima",
+        "turma": "9º Ano B",
+        "status": "Matriculado"
     },
     {
-        "id": 4,
-        "nome": "Valdilaine Silva"
+        "matricula": 2025050003,
+        "nome": "Valdilaine Silva",
+        "turma": "8º Ano B",
+        "status": "Matriculado"
     },
     {
-        "id": 5,
-        "nome": "David Junior"
+        "matricula": 20250500014,
+        "nome": "David Junior",
+        "turma": "6º Ano A",
+        "status": "Matriculado"
     }
 ]

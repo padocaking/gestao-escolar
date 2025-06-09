@@ -79,6 +79,8 @@ export default function Step3 ({ turmaValues, setCurrStep }) {
         console.log(defProfessores)
 
         navigate('/diretor/turmas')
+
+        alert("Turma criado com sucesso!")
     }
 
     useEffect(() => {

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import useOpenNav from '../Service/useOpenNav';
+import useNavStore from '../Service/useNavStore';
 
 const Container = styled.header`
     position: fixed;
@@ -83,8 +83,8 @@ const MenuBar = styled.div`
 export default function Header () {
 
     const navigate = useNavigate()
-    
-    const { handleNav } = useOpenNav()
+
+    const { handleNav } = useNavStore()
 
     return (
         <Container>

@@ -383,7 +383,7 @@ export default function Step2 ({ setCurrStep, setTurmaValues, turmaValues }) {
             </Requirements>
             
             <div className='btnContainer'>
-                <ButtonAlt onClick={clickHandler}>Voltar</ButtonAlt>
+                <ButtonAlt onClick={() => setCurrStep(1.5)}>Voltar</ButtonAlt>
                 <Button type="submit">Próximo</Button>
             </div>
 
