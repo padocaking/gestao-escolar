@@ -11,7 +11,7 @@ import Footer from '../Components/Footer';
 import Requerimento from '../Pages/Requerimento/Requerimento';
 import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
 import AlunosList from '../Pages/Diretor/Alunos/AlunosList';
-import Boletim from '../Pages/Aluno/Boletim';
+import Boletim from '../Pages/Aluno/Boletim'
 
 
 const Container = styled.div`
@@ -52,13 +52,13 @@ function AppRoutes () {
                         <Route path='/login' element={<Login />} />
                         <Route path='/' element={<Dashboard />} />
                         {/* ROTAS DIRETOR */}
-                        <Route path='diretor/diretor/turmas' element={<TurmasList />} />
-                        <Route path='diretor/diretor/turmas/nova-turma' element={<TurmaAdd />} />
-                        <Route path='diretor/diretor/alunos' element={<AlunosList />} />
+                        <Route path='/diretor/turmas' element={<TurmasList />} />
+                        <Route path='/diretor/turmas/nova-turma' element={<TurmaAdd />} />
+                        <Route path='/diretor/alunos' element={<AlunosList />} />
                         {/* ROTAS REQUERIMENTO */}
                         <Route path='/requerimento' element={<Requerimento />} />
-                        <Route path='diretor/diretor/requerimento' element={<RequerimentoDiretor />} />
-                        {/* ROTAS ALUNO */}
+                        <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />
+                        {/* ROTAS ALUNO*/}
                         <Route path='/boletim' element={<Boletim />} />
                     </Routes>
                 </Content>
