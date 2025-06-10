@@ -74,7 +74,6 @@ export const Headers = styled.th`
     cursor: pointer;
     user-select: none;
     position: relative;
-    z-index: 0;
 `
 
 export const Content = styled.div`

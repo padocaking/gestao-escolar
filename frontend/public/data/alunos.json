@@ -1,0 +1,32 @@
+[
+    {
+        "matricula": 2025050000,
+        "nome": "Miguel Ortenio",
+        "turma": null,
+        "status": "Pendente"
+    },
+    {
+        "matricula": 2025050001,
+        "nome": "Amarildo Fonseca",
+        "turma": "9º Ano B",
+        "status": "Matriculado"
+    },
+    {
+        "matricula": 2025050002,
+        "nome": "Flávia de Lima",
+        "turma": "9º Ano B",
+        "status": "Matriculado"
+    },
+    {
+        "matricula": 2025050003,
+        "nome": "Valdilaine Silva",
+        "turma": "8º Ano B",
+        "status": "Matriculado"
+    },
+    {
+        "matricula": 20250500014,
+        "nome": "David Junior",
+        "turma": "6º Ano A",
+        "status": "Matriculado"
+    }
+]

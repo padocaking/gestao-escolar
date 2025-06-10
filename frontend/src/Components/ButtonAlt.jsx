@@ -8,7 +8,7 @@ const hover = keyframes`
 const Container = styled.button`
     width: 260px;
     position: relative;
-    background-color: var(--bluish-gray);
+    background-color: white;
     padding: 1.33rem;
     border-radius: 2rem;
     border: none;
@@ -24,9 +24,9 @@ const Container = styled.button`
     }
 `
 
-export default function ButtonAlt ({ children, onClick }) {
+export default function ButtonAlt ({ children, onClick, type }) {
     return (
-        <Container onClick={onClick}>
+        <Container onClick={onClick} type={type}>
             {children}
         </Container>
     )
