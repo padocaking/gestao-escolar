@@ -21,12 +21,12 @@ const SelectContainer = styled.div`
         -moz-appearance: none;
         font-size: 15px;
         background-color: var(--white);
-        color: var(--main-three);
+        color: #000000b0;
         border: none;
         border-radius: 3px;
         padding: 15px;
-        box-shadow: 0 1px 2px 0px var(--second),
-                    0 0 2px 0px var(--second);
+        box-shadow: 0 1px 2px 0px #818181af,
+                    0 0 2px 0px #000000b0;
         min-width: 200px;
     }
 

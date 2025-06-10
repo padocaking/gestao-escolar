@@ -18,12 +18,13 @@ const Container = styled.li`
     width: 100%;
     display: flex;
     align-items: center;
-    color: var(--gray);
+    color: var(--white);
     padding: 18px 0 18px 25px;
     height: auto;
     overflow: hidden;
     user-select: none;
     white-space: nowrap;
+    border-bottom: ${props => props.sub ? '' : '1px solid rgba(255, 255, 255, 0.062)'};
 
     span {
         letter-spacing: 0px;
@@ -40,11 +41,11 @@ const Container = styled.li`
     }
 
     &.active {
-        color: black;
-        background-color: #f5f5f5;
+        color: var(--white);
+        background-color: #1d144eb0;
 
         &.sub {
-            background-color: var(--white);
+            background-color:#2b1e74;
         }
 
         span {
@@ -86,20 +87,18 @@ export default function NavItem ({
     sub,
     open
 }) {
-
-    const { navOpened } = useNavStore()
-
+    
     const navigate = useNavigate()
 
     return (
         <>
-        <Container className={`${active ? 'active' : ''} ${sub ? 'sub' : ''}`} onClick={() => {setPage(); navigate(path)}} >
+        <Container className={`${active ? 'active' : ''} ${sub ? 'sub' : ''}`} onClick={() => {setPage(); navigate(path)}} sub={sub}>
 
             {icon}
 
             <span>{text}</span>
 
-            {mult && navOpened ? (
+            {mult ? (
                 <IoIosArrowDown className='arrow' style={open ? {transform: 'rotate(0deg)'} : {transform: 'rotate(-90deg)'}} />
             ) : null }
             

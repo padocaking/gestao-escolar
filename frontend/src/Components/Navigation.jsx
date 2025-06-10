@@ -4,29 +4,37 @@ import NavItemSub from './NavItemSub';
 import { useState } from 'react';
 import MenuItems from '../Naoseidarnome/MenuItems';
 import useNavStore from '../Service/useNavStore';
-import useOpenNav from '../Service/useOpenNav';
 
 const Container = styled.nav`
     position: fixed;
-    width: ${props => props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)'};
-    background-color: var(--white);
+    width: var(--nav-width-opened);
+    background-color: rgb(31, 25, 100);
     height: 100vh;
-    padding-top: calc(var(--header-height) + 15px);
+    padding-top: calc(var(--header-height));
     overflow-x: hidden;
     z-index: 100;
+
+    @media (max-width: 900px) {
+        &.opened {
+            transform: translateX(0%);
+        }
+
+        &.closed {
+            transform: translateX(-100%);
+        }
+    }
 `
 
 export default function Nagivation () {
 
     const [currPage, setCurrPage] = useState("")
 
-    const { navOpened, openNav, closeNav } = useNavStore()
-    const { navState } = useOpenNav()
+    const { navOpened } = useNavStore()
 
-    
+    console.log(navOpened)
 
     return (
-        <Container navOpened={navOpened}>
+        <Container className={navOpened ? 'opened' : 'closed'}>
 
             {MenuItems['diretor'].map((item, i) => {
                 if (item.subItem.length === 0) {
