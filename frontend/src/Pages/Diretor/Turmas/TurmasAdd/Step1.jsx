@@ -90,9 +90,9 @@ export default function Step1 ({ setCurrStep, setTurmaValues }) {
                     <option value="7fun">7º Fundamental</option>
                     <option value="8fun">8º Fundamental</option>
                     <option value="9fun">9º Fundamental</option>
-                    <option value="1em">1º Enisno médio</option>
-                    <option value="2em">2º Enisno médio</option>
-                    <option value="3em">3º Enisno médio</option>
+                    <option value="1em">1º Ensino Médio</option>
+                    <option value="2em">2º Ensino Médio</option>
+                    <option value="3em">3º Ensino Médio</option>
                 </Select>
 
                 <Select

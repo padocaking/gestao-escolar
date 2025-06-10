@@ -10,6 +10,7 @@ import TurmaAdd from '../Pages/Diretor/Turmas/TurmasAdd/TurmaAdd';
 import Footer from '../Components/Footer';
 import Requerimento from '../Pages/Requerimento/Requerimento';
 import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
+import Financeiro from '../Pages/Financeiro/Financeiro';
 import AlunosList from '../Pages/Diretor/Alunos/AlunosList';
 
 
@@ -57,6 +58,8 @@ function AppRoutes () {
                         {/* ROTAS REQUERIMENTO */}
                         <Route path='/requerimento' element={<Requerimento />} />
                         <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />
+                        {/* ROTAS Financeiro */}
+                        <Route path='/financeiro' element={<Financeiro />} />
                     </Routes>
                 </Content>
                 {showHeader && <Footer/>}
