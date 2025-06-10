@@ -12,6 +12,7 @@ import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 import Footer from '../Components/Footer';
 import Requerimento from '../Pages/Requerimento/Requerimento';
 import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
+import Financeiro from '../Pages/Financeiro/Financeiro';
 
 
 const Container = styled.div`
@@ -54,6 +55,8 @@ function AppRoutes () {
                         {/* ROTAS REQUERIMENTO */}
                         <Route path='/requerimento' element={<Requerimento />} />
                         <Route path='diretor/requerimento' element={<RequerimentoDiretor />} />
+                        {/* ROTAS Financeiro */}
+                        <Route path='/financeiro' element={<Financeiro />} />
                     </Routes>
                 </Content>
             </Page>
