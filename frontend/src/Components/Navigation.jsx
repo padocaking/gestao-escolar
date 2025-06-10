@@ -37,7 +37,7 @@ export default function Nagivation () {
     return (
         <Container className={navOpened ? 'opened' : 'closed'}>
 
-            {MenuItems['diretor'].map((item, i) => {
+            {MenuItems['aluno'].map((item, i) => {
                 if (item.subItem.length === 0) {
                     return (
                         <NavItem

@@ -12,6 +12,7 @@ import Requerimento from '../Pages/Requerimento/Requerimento';
 import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
 import Financeiro from '../Pages/Financeiro/Financeiro';
 import AlunosList from '../Pages/Diretor/Alunos/AlunosList';
+import Boletim from '../Pages/Aluno/Boletim'
 
 
 const Container = styled.div`
@@ -58,7 +59,9 @@ function AppRoutes () {
                         {/* ROTAS REQUERIMENTO */}
                         <Route path='/requerimento' element={<Requerimento />} />
                         <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />
-                        {/* ROTAS Financeiro */}
+                        {/* ROTAS ALUNO*/}
+                        <Route path='/boletim' element={<Boletim />} />
+                        {/* ROTAS FINANCEIRO */}
                         <Route path='/financeiro' element={<Financeiro />} />
                     </Routes>
                 </Content>
