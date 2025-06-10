@@ -6,13 +6,14 @@ import MenuItems from '../Naoseidarnome/MenuItems';
 import useNavStore from '../Service/useNavStore';
 
 const Container = styled.nav`
-    position: fixed;
+    position: absolute;
     width: var(--nav-width-opened);
-    background-color: rgb(31, 25, 100);
+    background-color: var(--bluish-gray);
     height: 100vh;
     padding-top: calc(var(--header-height));
     overflow-x: hidden;
     z-index: 100;
+    box-shadow: 0 0 10px 0 rgb(0, 0, 0, 0.38);
 
     @media (max-width: 900px) {
         &.opened {
