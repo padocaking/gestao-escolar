@@ -7,9 +7,10 @@ import Nagivation from '../Components/Navigation';
 import useNavStore from '../Service/useNavStore';
 import TurmasList from '../Pages/Diretor/Turmas/TurmasList';
 import TurmaAdd from '../Pages/Diretor/Turmas/TurmasAdd/TurmaAdd';
-import TurmaEstudante from '../Pages/Diretor/Turmas/TurmaEstudante';
-import TurmaProfessor from '../Pages/Diretor/Turmas/TurmaProfessor';
 import Footer from '../Components/Footer';
+import Requerimento from '../Pages/Requerimento/Requerimento';
+import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
+import AlunosList from '../Pages/Diretor/Alunos/AlunosList';
 import Boletim from '../Pages/Aluno/Boletim';
 
 
@@ -19,16 +20,21 @@ const Container = styled.div`
 
 const Page = styled.div`
     padding-top: ${props => props.showHeader ? 'var(--header-height)' : '0'};
-    margin-left: ${props => props.showHeader ? (props.navOpened ? 'var(--nav-width-opened)' : 'var(--nav-width-closed)') : '0'};
-    background: var(--background);
+    margin-left: var(--nav-width-opened);
+    background: #ffffff;
     min-height: 100vh;
 
     .notLogin {
         padding: 3% 5%;
     }
+
+    @media (max-width: 900px) {
+        margin-left: 0;
+    }
 `
 
 const Content = styled.div`
+    min-height: calc(100vh - 2 * var(--footer-height));
 `
 
 function AppRoutes () {
@@ -46,16 +52,18 @@ function AppRoutes () {
                         <Route path='/login' element={<Login />} />
                         <Route path='/' element={<Dashboard />} />
                         {/* ROTAS DIRETOR */}
-                        <Route path='diretor/turmas' element={<TurmasList />} />
-                        <Route path='diretor/turmas/nova-turma' element={<TurmaAdd />} />
-                        <Route path='diretor/turmas/vincular-estudante' element={<TurmaEstudante />} />
-                        <Route path='diretor/turmas/vincular-professor' element={<TurmaProfessor />} />
+                        <Route path='diretor/diretor/turmas' element={<TurmasList />} />
+                        <Route path='diretor/diretor/turmas/nova-turma' element={<TurmaAdd />} />
+                        <Route path='diretor/diretor/alunos' element={<AlunosList />} />
+                        {/* ROTAS REQUERIMENTO */}
+                        <Route path='/requerimento' element={<Requerimento />} />
+                        <Route path='diretor/diretor/requerimento' element={<RequerimentoDiretor />} />
                         {/* ROTAS ALUNO */}
                         <Route path='/boletim' element={<Boletim />} />
                     </Routes>
                 </Content>
+                {showHeader && <Footer/>}
             </Page>
-            {showHeader && <Footer/>}
         </Container>
     )
 }

@@ -7,6 +7,9 @@ import Select from '../../../../Components/Select'
 import Input from '../../../../Components/Input'
 import Button from '../../../../Components/Button'
 import ButtonAlt from '../../../../Components/ButtonAlt';
+import SelectTwo from '../../../../Components/SelectTwo';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Form = styled.form`
     width: 100%;
@@ -19,58 +22,97 @@ const Form = styled.form`
     }
 `
 
-const Grid = styled.div`
+const Grid = styled.section`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px 20px;
-    width: 75%;
+    gap: 1px;
+    width: 85%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 3px 0px var(--second),
+                0 0 3px 0px var(--second);
 
-    & > *:nth-child(3),
-    & > *:nth-child(4) {
-        grid-column: span 2;
+    span {
+        background-color: var(--bluish-gray);
+        display: flex;
+        align-items: center;
+        padding: 0 15px;
+
+        &.head {
+            background-color: var(--main-one);
+            color: var(--white);
+            padding: 20px;
+            margin: -1px;
+        }
     }
 `
 
+const disc = {
+    fun: ['Português', 'Matemática', 'Ciências', 'História', 'Geografia', 'Artes', 'Ed. Física', 'Inglês', 'Redação'],
+    em: ['Português', 'Literatura', 'Matemática', 'Física', 'Química', 'Biologia', 'História', 'Geografia', 'Ed. Física', 'Inglês', 'Redação']
+}
 
-
-export default function Step3 ({ setCurrStep }) {
-
-    const schema = yup.object().shape({
-        classe: yup.string().required('Classe é obrigatória'),
-        turma: yup.string().required('Turma é obrigatória'),
-        periodo: yup.string().required('Período é obrigatório'),
-        ano: yup
-            .number()
-            .typeError('Ano deve ser um número')
-            .required('Ano é obrigatório')
-            .min(2000, 'Ano mínimo é 2000')
-            .max(2100, 'Ano máximo é 2100'),
-    });
-
+export default function Step3 ({ turmaValues, setCurrStep }) {
     
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-        } = useForm({
-        resolver: yupResolver(schema),
-        defaultValues: {
-            ano: 2025
-        }
-    });
+    const navigate = useNavigate()
+    
+    const [professores, setProfessores] = useState([])
+    const [defProfessores, setDefProfessores] = useState({})
 
-    const onSubmit = (data) => {
-        return data
+    const handleChange = (event, disc) => {
+        setDefProfessores(prev => ({
+            ...prev,
+            id_turma: 0,
+            id_professor: Number(event.target.value),
+            disciplina: disc
+        }))
     }
 
     const clickHandler = () => {
         setCurrStep(2.5)
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        // POST GOES HERE
+        console.log(defProfessores)
+
+        navigate('/diretor/turmas')
+
+        alert("Turma criado com sucesso!")
+    }
+
+    useEffect(() => {
+        fetch('/data/professores.json')
+            .then(res => res.json())
+            .then(data => setProfessores(data))
+    }, [])
+
     return (
-        <Form className='center' onSubmit={handleSubmit(onSubmit)}>
+        <Form className='center' onSubmit={(e) => handleSubmit(e)}>
 
             <ContentTitle>VINCULAR PROFESSORES (opcional)</ContentTitle>
+
+            <Grid>
+                <span className='head center'>DISCIPLINAS</span>
+                <span className='head center'>PROFESSORES</span>
+                {disc[turmaValues.data.classe.includes('em') ? 'em' : 'fun'].map(item => (
+                    <>
+                    <span>{item}</span>
+                    <SelectTwo notReq handleChange={(e) => handleChange(e, item)} >
+                        <option value="" disabled selected>Selecione o professor</option>
+                        {professores.map(prof => {
+                            if (prof.disciplinas.includes(item)) {
+                                return (
+                                    <option value={prof.id}>{prof.nome}</option>
+                                )
+                            }
+                        })}
+                    </SelectTwo>
+                    </>
+                ))}
+            </Grid>
                         
             <div className='btnContainer'>
                 <ButtonAlt onClick={clickHandler}>Voltar</ButtonAlt>

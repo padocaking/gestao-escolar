@@ -6,6 +6,8 @@ import { ContentTitle } from '../Turmas.style'
 import Select from '../../../../Components/Select'
 import Input from '../../../../Components/Input'
 import Button from '../../../../Components/Button'
+import ButtonAlt from '../../../../Components/ButtonAlt';
+import { useNavigate } from 'react-router-dom';
 
 const Form = styled.form`
     width: 100%;
@@ -33,6 +35,8 @@ const Grid = styled.div`
 
 
 export default function Step1 ({ setCurrStep, setTurmaValues }) {
+
+    const navigate = useNavigate()
 
     const schema = yup.object().shape({
         classe: yup.string().required('Classe é obrigatória'),
@@ -66,7 +70,7 @@ export default function Step1 ({ setCurrStep, setTurmaValues }) {
     return (
         <Form className='center' onSubmit={handleSubmit(onSubmit)}>
 
-            <ContentTitle>Criar Turma</ContentTitle>
+            <ContentTitle>Dados da turma</ContentTitle>
             
             <Grid>
 
@@ -123,8 +127,9 @@ export default function Step1 ({ setCurrStep, setTurmaValues }) {
                 />
 
             </Grid>
-
+                        
             <div className='btnContainer'>
+                <ButtonAlt type="button" onClick={() => navigate('/diretor/turmas')}>Voltar</ButtonAlt>
                 <Button type="submit">Próximo</Button>
             </div>
 

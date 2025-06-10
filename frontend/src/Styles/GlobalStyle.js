@@ -13,10 +13,10 @@ const GlobalStyle = createGlobalStyle`
         --main-two: #170F49;
         --main-three: #6F6C90;
         --second: #D9DBE9;
-        --nav-width-opened: 270px;
+        --nav-width-opened: 300px;
         --nav-width-closed: 70px;
         --header-height: 60px;
-        --footer-height: 60px;
+        --footer-height: 125px;
         --main-height: calc(100vh - var(--header-height));
     }
 
@@ -45,16 +45,15 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const Content = styled.div`
-    background-color: var(--white);
-    margin: 35px 0;
-    padding: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.15);
+    //box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 40px;
-    padding: 50px;
+    border-radius: 5px;
+    overflow: hidden;
 `
 
 const titleAnim = keyframes`

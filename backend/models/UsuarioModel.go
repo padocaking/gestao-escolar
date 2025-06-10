@@ -5,7 +5,7 @@ import (
 )
 
 type Usuarios struct {
-	Matricula      uint       `json:"matricula" gorm:"primaryKey;unique"`
+	Matricula      string     `json:"matricula" gorm:"primaryKey;unique"`
 	Email          string     `json:"email" gorm:"type:varchar(50);unique"`
 	Senha          *string    `json:"senha" gorm:"type:varchar(50)"`
 	Tipo           string     `json:"tipo" gorm:"type:varchar(20)"`
@@ -34,6 +34,6 @@ type Coordenadores struct {
 }
 
 type RequisicaoLogin struct {
-	Matricula uint   `json:"matricula"`
+	Matricula string `json:"matricula"`
 	Senha     string `json:"senha"`
 }

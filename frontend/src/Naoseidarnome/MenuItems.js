@@ -62,7 +62,7 @@ const MenuItems = {
             subItem: []
         },
         {
-            path: '/requerimento',
+            path: 'diretor/requerimento',
             text: "Requerimento",
             icon: <IoDocumentTextOutline />,
             subItem: []
@@ -84,15 +84,15 @@ const MenuItems = {
             icon: <RiGraduationCapLine />,
             subItem: [
                 {
-                    path: '/turmas',
+                    path: '/diretor/turmas',
                     text: "Turmas"
                 },
                 {
-                    path: '/professores',
+                    path: '/diretor/professores',
                     text: "Professores"
                 },
                 {
-                    path: '/alunos',
+                    path: '/diretor/alunos',
                     text: "Alunos"
                 }
             ]

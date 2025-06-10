@@ -1,4 +1,4 @@
-package auth
+package middleware
 
 import (
 	"backend/models"
@@ -14,7 +14,7 @@ func GerarToken(usuario *models.Usuarios) (string, error) {
 		"matricula": usuario.Matricula,
 		"nome":      usuario.Nome,
 		"tipo":      usuario.Tipo,
-		"exp":       time.Now().Add(1 * time.Hour).Unix(),
+		"exp":       time.Now().Add(24 * time.Hour).Unix(),
 	}
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)

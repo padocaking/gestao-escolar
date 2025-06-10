@@ -6,7 +6,7 @@ import LeftBG from '../Images/left-bg.png'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     height: 100vh;
@@ -79,7 +79,7 @@ const Form = styled.form`
 `
 
 export default function Login () {
-
+    const navigate = useNavigate()
     const loginSchema = yup.object().shape({
         matricula: yup.string().required("Matrícula é obrigatório"),
         senha: yup.string().required("Senha é obrigatório")
@@ -111,6 +111,13 @@ export default function Login () {
           }
       
           console.log("Resposta do servidor:", result);
+          if (result.token != null) {
+            localStorage.setItem("token", result.token);
+            localStorage.setItem("nome", result.nome);
+            localStorage.setItem("tipo", result.tipo);
+
+            navigate("/");
+          }
         } catch (error) {
           console.error("Erro ao fazer login:", error.message);
         }

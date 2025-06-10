@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { Content, ButtonTwo, Title, ContentTitle } from '../Turmas.style';
+import { Title } from '../Turmas.style';
+import { Content } from '../../../../Styles/GlobalStyle';
 import Steps from '../../../../Components/Steps';
 import Select from '../../../../Components/Select';
 import Button from '../../../../Components/Button';
@@ -22,6 +23,16 @@ const Grid = styled.div`
     }
 `
 
+const Return = styled.span`
+    cursor: pointer;
+    position: absolute;
+    left: 3.25%;
+    top: 2.75rem;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 25px;
+`
+
 export default function TurmaAdd () {
 
     const [currStep, setCurrStep] = useState(1.5)
@@ -29,16 +40,14 @@ export default function TurmaAdd () {
 
     const nagivate = useNavigate()
 
+    console.log(turmaValues)
+
     return (
         <>
 
-            <Title>Adicionar Turma</Title>
-
-            <ButtonTwo onClick={() => nagivate('/turmas')}>
-                <span>Voltar</span>
-            </ButtonTwo>
-
             <Content>
+
+                <Return onClick={() => nagivate('/diretor/turmas')}>&#11164; Voltar</Return>
 
                 <Steps total={3} curr={currStep} />
 
@@ -46,8 +55,8 @@ export default function TurmaAdd () {
                     <Step1 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
                 ) : currStep === 2.5 ? (
                     <Step2 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} turmaValues={turmaValues} />
-                ) : currStep === 3.5 ? (
-                    <Step3 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
+                ) : currStep === 3 ? (
+                    <Step3 setCurrStep={setCurrStep} turmaValues={turmaValues} setTurmaValues={setTurmaValues} />
                 ) : null}
 
             </Content>
