@@ -39,12 +39,26 @@ func NewRouter(cfg *config.Config) *chi.Mux {
 
 	// Subrouter protegido por JWT
 	r.Group(func(r chi.Router) {
-		r.Use(middleware.Autenticar) // aqui seu middleware JWT que valida o token
+		r.Use(middleware.Autenticar)
 
 		r.Get("/users/{id}", userHandler.GetUser)
 		r.Post("/users", userHandler.CriarUsuario)
 		r.Get("/users", userHandler.ListarUsuarios)
 		r.Get("/users/matricula/{matricula}", userHandler.ObterUsuarioPorMatricula)
+		r.Get(";users/tipo/{tipo}", userHandler.ObterUsuariosPorTipo)
+
+		r.Get("/users/aluno/matricula/{matricula}", userHandler.ObterUsuarioPorMatriculaAluno)
+		r.Get("/users/aluno/updt/matricula/{matricula}", userHandler.AtualizarAluno)
+		r.Get("/users/aluno/del/matricula/{matricula}", userHandler.DeletarAluno)
+
+		r.Get("/users/professor/matricula/{matricula}", userHandler.ObterUsuarioPorMatriculaProfessor)
+		r.Get("/users/professor/updt/matricula/{matricula}", userHandler.AtualizarProfessor)
+		r.Get("/users/professor/del/matricula/{matricula}", userHandler.DeletarProfessor)
+
+		r.Get("/users/coordenador/matricula/{matricula}", userHandler.ObterUsuarioPorMatriculaCoordenador)
+		r.Get("/users/professor/updt/matricula/{matricula}", userHandler.AtualizarCoordenador)
+		r.Get("/users/professor/del/matricula/{matricula}", userHandler.DeletarCoordenador)
+
 	})
 
 	return r
