@@ -3,9 +3,9 @@ import { Content, Title } from "../Diretor/Turmas/Turmas.style";
 import Select from "../../Components/Select";
 import Button from "../../Components/Button";
 import { useState } from "react";
-import { FcCancel } from "react-icons/fc";
-import { FcProcess } from "react-icons/fc";
 import { FcCheckmark } from "react-icons/fc";
+import { FcCancel } from "react-icons/fc";
+import { MdAttachMoney } from "react-icons/md";
 
 const Container = styled.div`
     display: flex;
@@ -137,9 +137,9 @@ const Container = styled.div`
     }
 `
 
-export default function RequerimentoDiretor () {
+export default function Financeiro () {
 
-    const [currReq, setCurrReq] = useState('concluido')
+    const [currReq, setCurrReq] = useState('disponivel')
 
     return (
         <>
@@ -148,21 +148,21 @@ export default function RequerimentoDiretor () {
         <Container>
 
         <div className="reqHeader"> 
-            <span onClick={() => setCurrReq('concluido')} className={`navlink ${currReq === 'concluido' ? 'navlinkcurrent' : null}`}>Concluidos</span>
-            <span onClick={() => setCurrReq('solicitado')} className={`navlink ${currReq === 'solicitado' ? 'navlinkcurrent' : null}`}>Em Aberto</span>
+            <span onClick={() => setCurrReq('disponivel')} className={`navlink ${currReq === 'disponivel' ? 'navlinkcurrent' : null}`}>Em Aberto</span>
+            <span onClick={() => setCurrReq('concluido')} className={`navlink ${currReq === 'concluido' ? 'navlinkcurrent' : null}`}>Concluido</span>
             <hr />
         </div>
         <div className="reqLegenda">
-            <FcProcess className="status-icon"/> <span>Em Andamento</span>
-            <FcCheckmark className="status-icon"/> <span>Concluído</span>
-            <FcCancel className="status-icon"/> <span>Cancelado</span>
+            <MdAttachMoney className="status-icon"/> <span>Em Aberto</span>
+            <FcCheckmark className="status-icon"/> <span>Pagos</span>
+            <FcCancel className="status-icon"/> <span>Vencidos</span>
         </div>
 
-        {currReq === 'concluido' ? (
+        {currReq === 'disponivel' ? (
 
             <>
             <div className="reqCard">
-                <FcCheckmark className="reqIcon"/> <span className="reqCard-Title">Requisição de Segunda Via</span>
+                <MdAttachMoney className="reqIcon"/> <span className="reqCard-Title">Requisição de Segunda Via</span>
                 <div className="reqCard-Content">
                     <h4>Tipo:</h4> <h4 className="reqCard-Tipo">Financeiro</h4>
                     <br />
@@ -178,33 +178,35 @@ export default function RequerimentoDiretor () {
                     </div>
                     <p>Solicito a emissão da segunda via do meu documento acadêmico, considerando a necessidade de substituição por motivo de extravio ou deterioração, ciente dos prazos e eventuais taxas previstas pela instituição.</p>
                 </div>
-                <hr />
-            </div>
-            <div className="reqCard">
-                <FcCancel className="reqIcon"/> <span className="reqCard-Title">Troca de Turma</span>
-                <div className="reqCard-Content">
-                    <h4>Tipo:</h4> <h4 className="reqCard-Tipo">Matrícula</h4>
-                    <br />
-                    <h4>Protocolo:</h4> <h4 className="reqCard-Protocolo">00001</h4>
-                    <br />
-                    <h4>Data de Requisição:</h4> <h4 className="reqCard-Data">01/06/2025 20:08</h4>
-                    <div className="reqCard-Aluno">
-                        <h4>Aluno:</h4> <h4 className="reqCard-AlunoNome">Lucas Henrique Cardoso</h4>
-                        <br />
-                        <h4>Turma:</h4> <h4 className="reqCard-Turma">2º Fundamental B</h4>
-                        <br />
-                        <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">00002</h4>
-                    </div>
-                    <p>Venho solicitar a troca de turma no curso em que estou matriculado, em razão de incompatibilidade de horários, dificuldades pessoais ou acadêmicas, estando ciente da necessidade de disponibilidade de vagas e do processo interno de análise da solicitação.</p>
+                <div className='btnContainer'>
+                    <Button type="boleto">Gerar Boleto</Button>
                 </div>
-                <hr />
+                <hr />  
             </div>
-            <h3>FIM</h3>
             </>  
         ) : (
-            <div className="solicitado">
+            <div className="concluido">
                 <div className="reqCard-Ongoing">
-                    <FcProcess className="reqIcon"/> <span className="reqCard-Title">Requisição de Histórico</span>
+                    <FcCheckmark className="reqIcon"/> <span className="reqCard-Title">Requisição de Histórico</span>
+                    <div className="reqCard-Content">
+                        <h4>Tipo:</h4> <h4 className="reqCard-Tipo">Documentação</h4>
+                        <br />
+                        <h4>Protocolo:</h4> <h4 className="reqCard-Protocolo">00003</h4>
+                        <br />
+                        <h4>Data de Requisição:</h4> <h4 className="reqCard-Data">03/06/2025 10:29</h4>
+                        <div className="reqCard-Aluno">
+                            <h4>Aluno:</h4> <h4 className="reqCard-AlunoNome">Logan Gonçalves de Ramos</h4>
+                            <br />
+                            <h4>Turma:</h4> <h4 className="reqCard-Turma">8º Fundamental C</h4>
+                            <br />
+                            <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">00003</h4>
+                        </div>
+                        <p>Venho, por meio desta, solicitar a emissão do meu histórico escolar referente ao curso realizado nesta instituição, entre os anos de 2018 e 2022, com o objetivo de comprovar minha formação acadêmica junto a outra instituição de ensino, estando ciente de eventuais prazos ou procedimentos necessários para a emissão do documento.</p>
+                    </div>
+                    <hr />
+                </div>
+                <div className="reqCard-Ongoing">
+                    <FcCancel className="reqIcon"/> <span className="reqCard-Title">Requisição de Histórico</span>
                     <div className="reqCard-Content">
                         <h4>Tipo:</h4> <h4 className="reqCard-Tipo">Documentação</h4>
                         <br />
