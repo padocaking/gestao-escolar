@@ -1,8 +1,14 @@
 import styled from "styled-components"
 import { Content, Title } from "../../Styles/GlobalStyle"
+import Select from "../../Components/Select"
 
 const Container = styled.div`
     width: 100%;
+
+    Select,label{
+        max-width: 100px;
+        margin-left: 10px;
+    }
 
     p{
         font-size: xx-large;
@@ -74,7 +80,15 @@ export default function Boletim () {
         <Title>Boletim</Title>
         <Content>
             <Container>
-                <p>2025</p>
+                <Select
+                    name='Ano'
+                    type='text'
+                >
+                    <option value="" disabled selected>Selecione o ano</option>
+                    <option value="2025">2025</option>
+                    <option value="2024">2024</option>
+
+                </Select>
                 <div className="grid">
                     
                     <GridItem className="header second" span={4}>&nbsp;</GridItem>
