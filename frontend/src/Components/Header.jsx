@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavStore from '../Service/useNavStore';
+import UserDefaultIcon from '../Images/iconmini.png'
 
 const Container = styled.header`
     position: fixed;
@@ -31,34 +32,13 @@ const Logo = styled.picture`
 `
 
 const User = styled.picture`
-    background-color: #EEEEEE;
-    color: #EEEEEE;
+    background-color: #dddddd;
     height: 40px;
     width: 40px;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-
-    &:after {
-        position: absolute;
-        content: '';
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        background-color: #BABABA;
-        top: 8px;
-    }
-
-    &:before {
-        position: absolute;
-        content: '';
-        width: 30px;
-        height: 20px;
-        border-radius: 50%;
-        background-color: #BABABA;
-        bottom: -8px;
-    }
 `
 
 const MenuBar = styled.div`
@@ -97,7 +77,7 @@ export default function Header () {
                 <div></div>
             </MenuBar>
             <User className='center' onClick={() => navigate('/usuario')}>
-                <img src="" alt="User" />
+                <img src={UserDefaultIcon} alt="User" />
             </User>
         </Container>
     )
