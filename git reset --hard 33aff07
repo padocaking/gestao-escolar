@@ -1,0 +1,29 @@
+[33m85bd714[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnavigation[m[33m)[m HEAD@{0}: checkout: moving from navigation to navigation
+[33m85bd714[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnavigation[m[33m)[m HEAD@{1}: checkout: moving from navigation to navigation
+[33m85bd714[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnavigation[m[33m)[m HEAD@{2}: commit: Ajustes no financeiro e requerimentos + Gopher icon
+[33m33aff07[m HEAD@{3}: checkout: moving from b79bd600e98772bbe28810ab682b6ac37394877e to navigation
+[33mb79bd60[m HEAD@{4}: commit: Ajustes no financeiro e requerimentos + Gopher icon
+[33meebd18c[m[33m ([m[1;31morigin/navigation[m[33m)[m HEAD@{5}: pull --rebase (start): checkout eebd18c3d34b617a60b8c9b1b74ccb4caae68114
+[33m33aff07[m HEAD@{6}: commit (merge): Ajustes nos Requerimentos e Financeiro
+[33m320b444[m HEAD@{7}: checkout: moving from navigation to navigation
+[33m320b444[m HEAD@{8}: commit: Ajustes nos Requerimentos e Financeiro
+[33m0ccae23[m HEAD@{9}: checkout: moving from requerimento to navigation
+[33mf422e97[m[33m ([m[1;32mrequerimento[m[33m)[m HEAD@{10}: commit: Adições ao Financeiro
+[33m9d15884[m[33m ([m[1;31morigin/requerimento[m[33m)[m HEAD@{11}: checkout: moving from main to requerimento
+[33m30337bb[m[33m ([m[1;32mmain[m[33m)[m HEAD@{12}: reset: moving to HEAD
+[33m30337bb[m[33m ([m[1;32mmain[m[33m)[m HEAD@{13}: pull: Fast-forward
+[33m7f36ed9[m HEAD@{14}: checkout: moving from navigation to main
+[33m0ccae23[m HEAD@{15}: commit: Adicionado Requerimento e Financeiro inicial
+[33m196885c[m HEAD@{16}: commit: Fixado navegação aberto
+[33m7f36ed9[m HEAD@{17}: checkout: moving from main to navigation
+[33m7f36ed9[m HEAD@{18}: checkout: moving from header-nav to main
+[33mb826717[m[33m ([m[1;31morigin/header-nav[m[33m, [m[1;32mheader-nav[m[33m)[m HEAD@{19}: reset: moving to HEAD
+[33mb826717[m[33m ([m[1;31morigin/header-nav[m[33m, [m[1;32mheader-nav[m[33m)[m HEAD@{20}: commit: Fixado navegação aberto
+[33m98949eb[m HEAD@{21}: checkout: moving from main to header-nav
+[33m7f36ed9[m HEAD@{22}: pull: Fast-forward
+[33m2f531fa[m HEAD@{23}: checkout: moving from requerimento to main
+[33m9d15884[m[33m ([m[1;31morigin/requerimento[m[33m)[m HEAD@{24}: commit: Adicionado página inicial do requerimento
+[33m7f36ed9[m HEAD@{25}: pull origin main: Fast-forward
+[33m19009a9[m HEAD@{26}: commit: Requerimento aluno base
+[33m2f531fa[m HEAD@{27}: checkout: moving from main to requerimento
+[33m2f531fa[m HEAD@{28}: clone: from https://github.com/padocaking/gestao-escolar.git

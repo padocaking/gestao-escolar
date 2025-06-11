@@ -122,9 +122,15 @@ const Container = styled.div`
         margin-right: 20px;
     }
 
+    .btnContainerSub {
+        display: flex;
+        gap: 20px;
+        justify-content: flex-end;
+    }
+
     h3 {
         text-align: center;
-        margin-top: 40px;
+        margin-top: 35px;
     }
 
     h4 {
@@ -194,6 +200,9 @@ export default function Requerimento () {
                         <h4>Data de Requisição:</h4> <h4 className="reqCard-Data">03/06/2025 10:29</h4>
                         <p>Venho, por meio desta, solicitar a emissão do meu histórico escolar referente ao curso realizado nesta instituição, entre os anos de 2018 e 2022, com o objetivo de comprovar minha formação acadêmica junto a outra instituição de ensino, estando ciente de eventuais prazos ou procedimentos necessários para a emissão do documento.</p>
                     </div>
+                    <div className='btnContainerSub'>
+                        <Button type="cancel">Cancelar</Button>
+                    </div> 
                     <hr />
                 </div>
                 <div className="reqCard">

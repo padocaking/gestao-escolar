@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom';
+import Logofull from '../Images/logofull.png';
 
 const Container = styled.div`
     height: 100vh;
@@ -133,7 +134,7 @@ export default function Login () {
             <LoginContainer>
 
                 <Logo className='center'>
-                    <img src='' alt='LOGO' />
+                    <img src={Logofull} alt='LOGO' />
                 </Logo>
 
                 <Form onSubmit={handleSubmit(onSubmit)}>
