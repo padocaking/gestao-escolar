@@ -162,7 +162,7 @@ export default function TurmasList () {
                     <div className=''>
                         <CheckboxFilter
                             label="Status"
-                            options={['aberto', 'fechado']}
+                            options={['Aberto', 'Fechado']}
                             selected={filters.status}
                             onChange={(value) => handleCheckboxChange("status", value)}
                         />
@@ -200,7 +200,6 @@ export default function TurmasList () {
                     ))}
                 </tbody>
             </Table>
-
         </>
     )
 }

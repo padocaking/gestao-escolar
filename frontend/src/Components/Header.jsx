@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import useNavStore from '../Service/useNavStore';
-import UserDefaultIcon from '../Images/iconmini.png'
+import UserDefaultIcon from '../Images/iconmini.png';
+import Logomini from '../Images/logomini.png';
 
 const Container = styled.header`
     position: fixed;
@@ -21,9 +22,6 @@ const Container = styled.header`
 `
 
 const Logo = styled.picture`
-    font-weight: 800;
-    font-size: 26px;
-    text-transform: capitalize;
     cursor: pointer;
 
     @media (max-width: 900px) {
@@ -69,7 +67,7 @@ export default function Header () {
     return (
         <Container>
             <Logo className='logo' onClick={() => navigate('/')}>
-                <img src="" alt="Logo" />
+                <img src={Logomini} alt="Logo" />
             </Logo>
             <MenuBar onClick={handleNav}>
                 <div></div>
