@@ -4,9 +4,11 @@ import Button from '../../../../Components/Button'
 import ButtonAlt from '../../../../Components/ButtonAlt';
 import SelectTwo from '../../../../Components/SelectTwo';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Container } from './TurmaDetail.style';
 
 const Form = styled.form`
+    position: relative;
     width: 100%;
     flex-direction: column;
     gap: 50px;
@@ -47,9 +49,10 @@ const disc = {
     em: ['Português', 'Literatura', 'Matemática', 'Física', 'Química', 'Biologia', 'História', 'Geografia', 'Ed. Física', 'Filosofia', 'Sociologia', 'Inglês', 'Redação']
 }
 
-export default function Step3 ({ turmaValues, setCurrStep }) {
+export default function TurmaAddProfessor () {
     
     const navigate = useNavigate()
+    const { id } = useParams()
     
     const [professores, setProfessores] = useState([])
     const [defProfessores, setDefProfessores] = useState({})
@@ -63,17 +66,6 @@ export default function Step3 ({ turmaValues, setCurrStep }) {
         }))
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-        // POST GOES HERE
-        console.log(defProfessores)
-
-        navigate('/diretor/turmas')
-
-        alert("Turma criado com sucesso!")
-    }
-
     useEffect(() => {
         fetch('/data/professores.json')
             .then(res => res.json())
@@ -81,14 +73,20 @@ export default function Step3 ({ turmaValues, setCurrStep }) {
     }, [])
 
     return (
-        <Form className='center' onSubmit={(e) => handleSubmit(e)}>
+        <Form className='center'>
 
-            <ContentTitle>VINCULAR PROFESSORES (opcional)</ContentTitle>
+            <Container>
+                <div className="back" onClick={() => navigate(`/diretor/turmas/${id}`)}>&#11164; Voltar</div>
+                <div className='head-container'>
+                    <h1>1º Ano B</h1> 
+                    <span>2025 - <span className='periodo'>Manhã</span></span>
+                </div>
+            </Container>
 
             <Grid>
                 <span className='head center'>DISCIPLINAS</span>
                 <span className='head center'>PROFESSORES</span>
-                {disc[turmaValues.data.classe.includes('em') ? 'em' : 'fun'].map(item => (
+                {disc['em'].map(item => (
                     <>
                     <span>{item}</span>
                     <SelectTwo notReq handleChange={(e) => handleChange(e, item)} >
@@ -106,7 +104,6 @@ export default function Step3 ({ turmaValues, setCurrStep }) {
             </Grid>
                         
             <div className='btnContainer'>
-                <ButtonAlt onClick={() => setCurrStep(2.5)}>Voltar</ButtonAlt>
                 <Button type="submit">Próximo</Button>
             </div>
 

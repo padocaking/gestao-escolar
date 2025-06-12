@@ -139,6 +139,8 @@ function SelectDisc ({ em, handleChange, value }) {
             <option value="Geografia">Geografia</option>
             <option value="Artes">Artes</option>
             <option value="Ed. Física">Ed. Física</option>
+            <option value="Filosofia">Filosofia</option>
+            <option value="Sociologia">Sociologia</option>
             <option value="Inglês">Inglês</option>
             <option value="Redação">Redação</option>
         </SelectTwo>

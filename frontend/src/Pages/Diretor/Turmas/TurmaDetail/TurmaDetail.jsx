@@ -53,7 +53,7 @@ export default function TurmaDetail () {
                         <img src={student} alt="Aluno" />
                         <span>Adicionar aluno</span>
                     </Card>
-                    <Card>
+                    <Card onClick={() => navigate(`/diretor/turmas/${id}/vincular-professor`)}>
                         <img src={teacher} alt="Professor" />
                         <span>Adicionar professor</span>
                     </Card>
