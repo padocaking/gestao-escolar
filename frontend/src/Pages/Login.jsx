@@ -7,6 +7,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../Service/AuthContext'
 
 const Container = styled.div`
     height: 100vh;
@@ -93,33 +94,23 @@ export default function Login () {
         resolver: yupResolver(loginSchema)
     })
 
-    const onSubmit = async (data) => {
-        try {
-          const response = await fetch("http://localhost:3000/api/usuarios/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-      
-          // Converte a resposta para JSON
-          const result = await response.json();
-      
-          if (!response.ok) {
-            throw new Error(result.erro || "Erro desconhecido");
-          }
-      
-          console.log("Resposta do servidor:", result);
-          if (result.token != null) {
-            localStorage.setItem("token", result.token);
-            localStorage.setItem("nome", result.nome);
-            localStorage.setItem("tipo", result.tipo);
+    const { login, setNavUser } = useAuth()
 
-            navigate("/");
-          }
-        } catch (error) {
-          console.error("Erro ao fazer login:", error.message);
+    const onSubmit = async (data) => {
+        if (data.matricula === '2025051234' && data.senha === '08032003') {
+            login('aluno')
+            setNavUser('aluno')
+            navigate('/')
+        } else if ((data.matricula === '2025071234' && data.senha === '08032003')) {
+            login('professor')
+            setNavUser('professor')
+            navigate('/')
+        }  else if ((data.matricula === '2025091234' && data.senha === '08032003')) {
+            login('diretor')
+            setNavUser('diretor')
+            navigate('/')
+        } else {
+            alert("Matrícula ou senha inválidos")
         }
       };
       

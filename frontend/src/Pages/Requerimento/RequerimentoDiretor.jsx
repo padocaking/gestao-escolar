@@ -12,6 +12,14 @@ const Container = styled.div`
     flex-direction: column;
     width: 100%;
 
+    .reqCard {
+        cursor: pointer;
+    }
+
+    .solicitado {
+        cursor: pointer;
+    }
+
     select {
         width: 300px;
         font-size: 16px;
@@ -174,7 +182,7 @@ export default function RequerimentoDiretor () {
                         <br />
                         <h4>Turma:</h4> <h4 className="reqCard-Turma">3º Ensino Médio A</h4>
                         <br />
-                        <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">00001</h4>
+                        <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">2025050008</h4>
                     </div>
                     <p>Solicito a emissão da segunda via do meu documento acadêmico, considerando a necessidade de substituição por motivo de extravio ou deterioração, ciente dos prazos e eventuais taxas previstas pela instituição.</p>
                 </div>
@@ -193,7 +201,7 @@ export default function RequerimentoDiretor () {
                         <br />
                         <h4>Turma:</h4> <h4 className="reqCard-Turma">2º Fundamental B</h4>
                         <br />
-                        <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">00002</h4>
+                        <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">2025050005</h4>
                     </div>
                     <p>Venho solicitar a troca de turma no curso em que estou matriculado, em razão de incompatibilidade de horários, dificuldades pessoais ou acadêmicas, estando ciente da necessidade de disponibilidade de vagas e do processo interno de análise da solicitação.</p>
                 </div>
@@ -216,7 +224,7 @@ export default function RequerimentoDiretor () {
                             <br />
                             <h4>Turma:</h4> <h4 className="reqCard-Turma">8º Fundamental C</h4>
                             <br />
-                            <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">00003</h4>
+                            <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">2025050006</h4>
                         </div>
                         <p>Venho, por meio desta, solicitar a emissão do meu histórico escolar referente ao curso realizado nesta instituição, entre os anos de 2018 e 2022, com o objetivo de comprovar minha formação acadêmica junto a outra instituição de ensino, estando ciente de eventuais prazos ou procedimentos necessários para a emissão do documento.</p>
                     </div>

@@ -37,18 +37,55 @@ const MenuItems = {
             icon: <RiGraduationCapLine />,
             subItem: [
                 {
-                    path: '/faltas',
-                    text: "Faltas"
-                },
-                {
                     path: '/boletim',
-                    text: "Notas"
+                    text: "Boletim"
                 }
             ]
         },
         { 
             path: '/aluno',
             text: "Aluno",
+            icon: <FaRegUser />,
+            subItem: []
+        },
+    ],
+
+    professor: [
+        {
+            path: '/',
+            text: "Início",
+            icon: <IoHomeOutline />,
+            subItem: []
+        },
+        {
+            path: '/requerimento',
+            text: "Requerimento",
+            icon: <IoDocumentTextOutline />,
+            subItem: []
+        },
+        {
+            path: '/horarios',
+            text: "Horários",
+            icon: <WiTime4 />,
+            subItem: []
+        },
+        {
+            text: "Central Professor",
+            icon: <RiGraduationCapLine />,
+            subItem: [
+                {
+                    path: '/presenca',
+                    text: "Presença"
+                },
+                {
+                    path: '/lancamento-de-notas',
+                    text: "Lançamento de notas"
+                }
+            ]
+        },
+        { 
+            path: '/professor',
+            text: "Professor",
             icon: <FaRegUser />,
             subItem: []
         },

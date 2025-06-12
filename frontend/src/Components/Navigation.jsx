@@ -4,6 +4,7 @@ import NavItemSub from './NavItemSub';
 import { useState } from 'react';
 import MenuItems from '../Naoseidarnome/MenuItems';
 import useNavStore from '../Service/useNavStore';
+import { useAuth } from '../Service/AuthContext';
 
 const Container = styled.nav`
     position: fixed;
@@ -32,10 +33,12 @@ export default function Nagivation () {
 
     const { navOpened } = useNavStore()
 
+    const { navUser } = useAuth()
+
     return (
         <Container className={navOpened ? 'opened' : 'closed'}>
 
-            {MenuItems['diretor'].map((item, i) => {
+            {MenuItems[navUser].map((item, i) => {
                 if (item.subItem.length === 0) {
                     return (
                         <NavItem

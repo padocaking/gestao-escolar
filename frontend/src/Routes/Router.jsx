@@ -22,6 +22,7 @@ import TurmaAddProfessor from '../Pages/Diretor/Turmas/TurmaDetail/TurmaAddProfe
 import TurmaEdit from '../Pages/Diretor/Turmas/TurmaDetail/TurmaEdit';
 import AlunoDetail from '../Pages/Diretor/Alunos/AlunoDetail/AlunoDetail';
 import ProfessorDetail from '../Pages/Diretor/Professor/ProfessorDetail/ProfessorDetail';
+import ProtectedRoute from '../Components/ProtectedRoute';
 
 
 const Container = styled.div`
@@ -62,25 +63,44 @@ function AppRoutes () {
                         <Route path='/login' element={<Login />} />
                         <Route path='/' element={<Dashboard />} />
                         {/* ROTAS DIRETOR */}
-                        <Route path='/diretor/turmas' element={<TurmasList />} />
-                        <Route path='/diretor/turmas/nova-turma' element={<TurmaAdd />} />
-                        <Route path='/diretor/turmas/:id' element={<TurmaDetail />} />
-                        <Route path='/diretor/turmas/:id/vincular-aluno' element={<TurmaAddAluno />} />
-                        <Route path='/diretor/turmas/:id/vincular-professor' element={<TurmaAddProfessor />} />
-                        <Route path='/diretor/turmas/:id/editar' element={<TurmaEdit />} />
-                        <Route path='/diretor/alunos' element={<AlunosList />} />
-                        <Route path='/diretor/alunos/novo-aluno' element={<AlunoAdd />} />
-                        <Route path='/diretor/alunos/:matricula' element={<AlunoDetail />} />
-                        <Route path='/diretor/professores' element={<ProfessoresList />} />
-                        <Route path='/diretor/professores/novo-professor' element={<ProfessorAdd />} />
-                        <Route path='/diretor/professores/:id' element={<ProfessorDetail />} />
-                        {/* ROTAS REQUERIMENTO */}
+
+                        <Route
+                            element={<ProtectedRoute allowedRoles={['diretor']} />}
+                        >
+
+                            <Route path='/diretor/turmas' element={<TurmasList />} />
+                            <Route path='/diretor/turmas/nova-turma' element={<TurmaAdd />} />
+                            <Route path='/diretor/turmas/:id' element={<TurmaDetail />} />
+                            <Route path='/diretor/turmas/:id/vincular-aluno' element={<TurmaAddAluno />} />
+                            <Route path='/diretor/turmas/:id/vincular-professor' element={<TurmaAddProfessor />} />
+                            <Route path='/diretor/turmas/:id/editar' element={<TurmaEdit />} />
+                            <Route path='/diretor/alunos' element={<AlunosList />} />
+                            <Route path='/diretor/alunos/novo-aluno' element={<AlunoAdd />} />
+                            <Route path='/diretor/alunos/:matricula' element={<AlunoDetail />} />
+                            <Route path='/diretor/professores' element={<ProfessoresList />} />
+                            <Route path='/diretor/professores/novo-professor' element={<ProfessorAdd />} />
+                            <Route path='/diretor/professores/:id' element={<ProfessorDetail />} />
+                            <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />
+
+                        </Route>
+
                         <Route path='/requerimento' element={<Requerimento />} />
-                        <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />
+                        {/* ROTAS REQUERIMENTO */}
                         {/* ROTAS ALUNO*/}
-                        <Route path='/boletim' element={<Boletim />} />
-                        {/* ROTAS FINANCEIRO */}
-                        <Route path='/financeiro' element={<Financeiro />} />
+
+                        <Route
+                            element={<ProtectedRoute allowedRoles={['aluno', 'diretor']} />}
+                        >
+
+                            <Route path='/boletim' element={<Boletim />} />
+                            <Route path='/financeiro' element={<Financeiro />} />
+
+                        </Route>
+
+                        <Route
+                            element={<ProtectedRoute allowedRoles={['professor', 'diretor']} />}
+                        ></Route>
+
                     </Routes>
                 </Content>
             </Page>
