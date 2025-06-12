@@ -6,6 +6,7 @@ import { useState } from "react";
 import { FcCheckmark } from "react-icons/fc";
 import { FcCancel } from "react-icons/fc";
 import { MdAttachMoney } from "react-icons/md";
+import BoletoCard from '../../Components/BoletoCard';
 
 const Container = styled.div`
     display: flex;
@@ -143,13 +144,12 @@ export default function Financeiro () {
 
     return (
         <>
-        <Title>Requerimentos</Title>
-        <Content>
+        <Title>Financeiro</Title>
         <Container>
 
         <div className="reqHeader"> 
             <span onClick={() => setCurrReq('disponivel')} className={`navlink ${currReq === 'disponivel' ? 'navlinkcurrent' : null}`}>Em Aberto</span>
-            <span onClick={() => setCurrReq('concluido')} className={`navlink ${currReq === 'concluido' ? 'navlinkcurrent' : null}`}>Concluido</span>
+            <span onClick={() => setCurrReq('concluido')} className={`navlink ${currReq === 'concluido' ? 'navlinkcurrent' : null}`}>Pagos</span>
             <hr />
         </div>
         <div className="reqLegenda">
@@ -162,25 +162,9 @@ export default function Financeiro () {
 
             <>
             <div className="reqCard">
-                <MdAttachMoney className="reqIcon"/> <span className="reqCard-Title">Requisição de Segunda Via</span>
-                <div className="reqCard-Content">
-                    <h4>Tipo:</h4> <h4 className="reqCard-Tipo">Financeiro</h4>
-                    <br />
-                    <h4>Protocolo:</h4> <h4 className="reqCard-Protocolo">00002</h4>
-                    <br />
-                    <h4>Data de Requisição:</h4> <h4 className="reqCard-Data">02/06/2025 15:37</h4>
-                    <div className="reqCard-Aluno">
-                        <h4>Aluno:</h4> <h4 className="reqCard-AlunoNome">Guilherme Dugonski</h4>
-                        <br />
-                        <h4>Turma:</h4> <h4 className="reqCard-Turma">3º Ensino Médio A</h4>
-                        <br />
-                        <h4>Matrícula:</h4> <h4 className="reqCard-Matricula">00001</h4>
-                    </div>
-                    <p>Solicito a emissão da segunda via do meu documento acadêmico, considerando a necessidade de substituição por motivo de extravio ou deterioração, ciente dos prazos e eventuais taxas previstas pela instituição.</p>
-                </div>
-                <div className='btnContainer'>
-                    <Button type="boleto">Gerar Boleto</Button>
-                </div>
+
+                <BoletoCard />
+                
                 <hr />  
             </div>
             </>  
@@ -230,7 +214,6 @@ export default function Financeiro () {
         }
 
         </Container>
-        </Content>
         </>
     )
 }

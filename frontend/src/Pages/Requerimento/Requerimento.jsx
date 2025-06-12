@@ -140,7 +140,6 @@ export default function Requerimento () {
     return (
         <>
         <Title>Requerimentos</Title>
-        <Content>
         <Container>
 
         <div className="reqHeader"> 
@@ -227,7 +226,6 @@ export default function Requerimento () {
         }
 
         </Container>
-        </Content>
         </>
     )
 }

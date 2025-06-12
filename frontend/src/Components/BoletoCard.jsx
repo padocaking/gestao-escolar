@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const BoletoCard = styled.div`
+const Container = styled.div`
   width: 100%;
   max-width: 400px;
   padding: 20px;
@@ -53,18 +53,18 @@ const PayButton = styled.button`
   &:hover {
     background-color: #2b3d8f;
   }
-`;
+`
 
 export default function BoletoCard() {
   return (
-    <BoletoCard>
+    <Container>
       <Header>
         <span>Mensalidade</span>
         <span>R$ 900,00</span>
       </Header>
       <InfoRow>
         <span>Aluno:</span>
-        <span>João da Silva</span>
+        <span>Lucas Cardoso</span>
       </InfoRow>
       <InfoRow>
         <span>Vencimento:</span>
@@ -75,7 +75,7 @@ export default function BoletoCard() {
         <span>Em aberto</span>
       </InfoRow>
       <Barcode />
-      <PayButton>Pagar agora</PayButton>
-    </BoletoCard>
+      <PayButton>Gerar boleto</PayButton>
+    </Container>
   );
 }

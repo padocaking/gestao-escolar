@@ -23,6 +23,12 @@ import TurmaEdit from '../Pages/Diretor/Turmas/TurmaDetail/TurmaEdit';
 import AlunoDetail from '../Pages/Diretor/Alunos/AlunoDetail/AlunoDetail';
 import ProfessorDetail from '../Pages/Diretor/Professor/ProfessorDetail/ProfessorDetail';
 import ProtectedRoute from '../Components/ProtectedRoute';
+import Horarios from '../Pages/Aluno/Horarios';
+import HorariosProfessor from '../Pages/Professor/Horarios';
+import TurmasProfessorList from '../Pages/Professor/Turmas/TurmasProfessorList';
+import TurmaDetailProf from '../Pages/Professor/Turmas/TurmaDetailProf';
+import Chamada from '../Pages/Professor/Turmas/Chamada';
+import Lancamento from '../Pages/Professor/Turmas/Lancamento';
 
 
 const Container = styled.div`
@@ -93,13 +99,22 @@ function AppRoutes () {
                         >
 
                             <Route path='/boletim' element={<Boletim />} />
+                            <Route path='/horarios' element={<Horarios />} />
                             <Route path='/financeiro' element={<Financeiro />} />
 
                         </Route>
 
                         <Route
                             element={<ProtectedRoute allowedRoles={['professor', 'diretor']} />}
-                        ></Route>
+                        >
+
+                            <Route path='/professor/horarios' element={<HorariosProfessor />} />
+                            <Route path='/turmas' element={<TurmasProfessorList />} />
+                            <Route path='/turmas/:id' element={<TurmaDetailProf />} />
+                            <Route path='/turmas/:id/chamada' element={<Chamada />} />
+                            <Route path='/turmas/:id/lancamento-de-notas' element={<Lancamento />} />
+
+                        </Route>
 
                     </Routes>
                 </Content>

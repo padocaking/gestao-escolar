@@ -64,7 +64,7 @@ const MenuItems = {
             subItem: []
         },
         {
-            path: '/horarios',
+            path: '/professor/horarios',
             text: "Horários",
             icon: <WiTime4 />,
             subItem: []
@@ -74,12 +74,8 @@ const MenuItems = {
             icon: <RiGraduationCapLine />,
             subItem: [
                 {
-                    path: '/presenca',
-                    text: "Presença"
-                },
-                {
-                    path: '/lancamento-de-notas',
-                    text: "Lançamento de notas"
+                    path: '/turmas',
+                    text: "Turmas"
                 }
             ]
         },
