@@ -104,6 +104,6 @@ npm start
 | Infraestrutura - Servidor          | —      | —                | 1.500,00   |
 | Infraestrutura - Banco de Dados    | —      | —                | 600,00     |
 | Domínio e Certificado SSL          | —      | —                | 200,00     |
-| **Subtotal**                        |        |                  | **8.550,00** |
-| **Lucro (50%)**                     |        |                  | **4.275,00** |
-| **Total Estimado**                 |        |                  | **12.825,00** |
+| **Subtotal**                        |        |                 | **12.150,00** |
+| **Lucro (50%)**                     |        |                  | **6.075,00** |
+| **Total Estimado**                 |        |                  | **18.225,00** |
