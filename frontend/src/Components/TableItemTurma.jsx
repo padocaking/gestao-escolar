@@ -56,11 +56,11 @@ const BtnsContainer = styled.div`
     }
 `
 
-export default function TableItemTurma ({ ano, classe, turma, periodo, prof, aluno, status }) {
+export default function TableItemTurma ({ ano, classe, turma, periodo, prof, aluno, status, onClick }) {
     
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <td>{ano}</td>
             <td>{classe}</td>
             <td style={{textTransform: "uppercase"}}>{turma}</td>

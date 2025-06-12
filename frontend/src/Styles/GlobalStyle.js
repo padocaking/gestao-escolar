@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const Content = styled.div`
+    position: relative;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.15);
     //box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);

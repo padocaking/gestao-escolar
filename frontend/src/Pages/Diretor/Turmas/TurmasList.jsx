@@ -139,6 +139,7 @@ export default function TurmasList () {
                                 prof={turma.professores_id.length}
                                 aluno={turma.alunos_id.length}
                                 status={turma.status}
+                                onClick={() => navigate(`/diretor/turmas/${turma.id}`)}
                             />
                         ))}
                     </tbody>

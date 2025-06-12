@@ -3,6 +3,9 @@ import { MdOutlineEdit } from "react-icons/md";     // pencil outline
 import { MdEdit } from "react-icons/md";            // pencil filled
 import { MdDeleteOutline } from "react-icons/md";   // delete outline
 import { MdDeleteForever } from "react-icons/md";   // delete filled
+import ButtonAlt from './ButtonAlt';
+import Button from './Button';
+import { ButtonTwo } from '../Pages/Diretor/Diretor.style';
 
 const Container = styled.tr`
     border-bottom: 1px solid #bbbbbb;
@@ -31,9 +34,17 @@ const BtnsContainer = styled.div`
     gap: 5px;
 
     button {
-        font-size: 24px;
-        padding: 3px;
-        border-radius: 5px;
+
+        padding: 15px;
+        width: 180px;
+
+        &.icon {
+            padding: 0;
+            width: auto;
+            font-size: 24px;
+            padding: 3px;
+            border-radius: 5px;
+        }
 
         &.del {
             &:hover {
@@ -56,8 +67,11 @@ const BtnsContainer = styled.div`
     }
 `
 
-export default function TableItemAluno ({ matricula, nome, turma, status }) {
-    
+export default function TableItemAluno ({ matricula, nome, turma, status, add }) {
+
+    const addStudent = () => {
+        alert(`Aluno ${matricula} adicionado a turma ${add} com sucesso`)
+    }
 
     return (
         <Container>
@@ -67,14 +81,21 @@ export default function TableItemAluno ({ matricula, nome, turma, status }) {
             <td>{status}</td>
             <td>
                 <BtnsContainer>
-                    <button className='center'>
-                        <MdOutlineEdit className='out' />
-                        <MdEdit className='full' />
-                    </button>
-                    <button className='center del'>
-                        <MdDeleteOutline className='out' />
-                        <MdDeleteForever className='full' style={{color: 'white'}} />
-                    </button>
+                    {add ? (
+                        <ButtonAlt onClick={addStudent}>Adicionar</ButtonAlt>
+                    ) : (
+                        <>
+                        <button className='icon center'>
+                            <MdOutlineEdit className='out' />
+                            <MdEdit className='full' />
+                        </button>
+                        <button className='icon center del'>
+                            <MdDeleteOutline className='out' />
+                            <MdDeleteForever className='full' style={{color: 'white'}} />
+                        </button>
+                        </>
+                    )}
+                    
                 </BtnsContainer>
             </td>
         </Container>

@@ -16,6 +16,8 @@ import Boletim from '../Pages/Aluno/Boletim'
 import AlunoAdd from '../Pages/Diretor/Alunos/AlunoAdd/AlunoAdd';
 import ProfessoresList from '../Pages/Diretor/Professor/ProfessoresList';
 import ProfessorAdd from '../Pages/Diretor/Professor/ProfessorAdd/ProfessorAdd';
+import TurmaDetail from '../Pages/Diretor/Turmas/TurmaDetail/TurmaDetail';
+import TurmaAddAluno from '../Pages/Diretor/Turmas/TurmaDetail/TurmaAddAluno';
 
 
 const Container = styled.div`
@@ -58,6 +60,8 @@ function AppRoutes () {
                         {/* ROTAS DIRETOR */}
                         <Route path='/diretor/turmas' element={<TurmasList />} />
                         <Route path='/diretor/turmas/nova-turma' element={<TurmaAdd />} />
+                        <Route path='/diretor/turmas/:id' element={<TurmaDetail />} />
+                        <Route path='/diretor/turmas/:id/vincular-aluno' element={<TurmaAddAluno />} />
                         <Route path='/diretor/alunos' element={<AlunosList />} />
                         <Route path='/diretor/alunos/novo-aluno' element={<AlunoAdd />} />
                         <Route path='/diretor/professores' element={<ProfessoresList />} />

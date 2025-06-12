@@ -56,6 +56,7 @@ export const Table = styled.table`
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
     text-align: center;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     thead tr {
         background-color: var(--main-one);
@@ -115,6 +116,7 @@ export const FilterContainer = styled.div`
     margin-bottom: -35px;
     border-radius: 5px 5px 0 0;
     user-select: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     div {
         &.filterItem {
@@ -176,6 +178,8 @@ export const Filter = styled.div`
     border-bottom: 2px solid var(--main-one);
     z-index: 999;
     font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 
     div {
         &.filterHeader {
