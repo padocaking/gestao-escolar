@@ -95,9 +95,9 @@ npm start
 
 | Item                                | Horas | Valor Hora (R$) | Custo (R$) |
 |-------------------------------------|--------|------------------|------------|
-| Front-End (React)                   | 20     | 80,00            | 1.600,00   |
-| Back-End (Go)                       | 15     | 80,00            | 1.200,00   |
-| Banco de Dados (SQL)               | 5      | 80,00            | 400,00     |
+| Front-End (React)                   | 40     | 80,00            | 3.200,00   |
+| Back-End (Go)                       | 35     | 80,00            | 2.800,00   |
+| Banco de Dados (SQL)               | 10     | 80,00            | 800,00     |
 | Design de Interface (Figma)        | 5      | 70,00            | 350,00     |
 | Testes Funcionais e Usabilidade     | 5      | 60,00            | 300,00     |
 | Manutenção (6 meses)               | —      | —                | 2.400,00   |
