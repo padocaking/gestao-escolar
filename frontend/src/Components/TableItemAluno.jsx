@@ -67,14 +67,14 @@ const BtnsContainer = styled.div`
     }
 `
 
-export default function TableItemAluno ({ matricula, nome, turma, status, add }) {
+export default function TableItemAluno ({ matricula, nome, turma, status, add, onClick }) {
 
     const addStudent = () => {
         alert(`Aluno ${matricula} adicionado a turma ${add} com sucesso`)
     }
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <td>{matricula}</td>
             <td>{nome}</td>
             <td>{turma === null ? 'Nenhum' : turma}</td>

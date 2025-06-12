@@ -19,6 +19,9 @@ import ProfessorAdd from '../Pages/Diretor/Professor/ProfessorAdd/ProfessorAdd';
 import TurmaDetail from '../Pages/Diretor/Turmas/TurmaDetail/TurmaDetail';
 import TurmaAddAluno from '../Pages/Diretor/Turmas/TurmaDetail/TurmaAddAluno';
 import TurmaAddProfessor from '../Pages/Diretor/Turmas/TurmaDetail/TurmaAddProfessor';
+import TurmaEdit from '../Pages/Diretor/Turmas/TurmaDetail/TurmaEdit';
+import AlunoDetail from '../Pages/Diretor/Alunos/AlunoDetail/AlunoDetail';
+import ProfessorDetail from '../Pages/Diretor/Professor/ProfessorDetail/ProfessorDetail';
 
 
 const Container = styled.div`
@@ -64,10 +67,13 @@ function AppRoutes () {
                         <Route path='/diretor/turmas/:id' element={<TurmaDetail />} />
                         <Route path='/diretor/turmas/:id/vincular-aluno' element={<TurmaAddAluno />} />
                         <Route path='/diretor/turmas/:id/vincular-professor' element={<TurmaAddProfessor />} />
+                        <Route path='/diretor/turmas/:id/editar' element={<TurmaEdit />} />
                         <Route path='/diretor/alunos' element={<AlunosList />} />
                         <Route path='/diretor/alunos/novo-aluno' element={<AlunoAdd />} />
+                        <Route path='/diretor/alunos/:matricula' element={<AlunoDetail />} />
                         <Route path='/diretor/professores' element={<ProfessoresList />} />
                         <Route path='/diretor/professores/novo-professor' element={<ProfessorAdd />} />
+                        <Route path='/diretor/professores/:id' element={<ProfessorDetail />} />
                         {/* ROTAS REQUERIMENTO */}
                         <Route path='/requerimento' element={<Requerimento />} />
                         <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />

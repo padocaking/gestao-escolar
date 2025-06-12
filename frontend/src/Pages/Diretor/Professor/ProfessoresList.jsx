@@ -75,6 +75,7 @@ export default function ProfessoresList () {
                             id={professor.id}
                             nome={professor.nome}
                             salario={professor.salario}
+                            onClick={() => navigate(`/diretor/professores/${professor.id}`)}
                         />
                     ))}
                 </tbody>

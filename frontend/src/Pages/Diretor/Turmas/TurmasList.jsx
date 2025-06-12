@@ -88,7 +88,7 @@ export default function TurmasList () {
                     <div className='filterHeader'>
                         <CheckboxFilter
                             label="Ano"
-                            options={["2024", "2025"]}
+                            options={["2026", "2025"]}
                             selected={filters.ano}
                             onChange={(value) => handleCheckboxChange("ano", value)}
                         />

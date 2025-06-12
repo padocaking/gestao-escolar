@@ -103,7 +103,7 @@ export default function Step1 ({ setCurrStep, setProfessorValues }) {
     return (
         <Form className='center' onSubmit={handleSubmit(onSubmit)}>
 
-            <ContentTitle>Dados do aluno</ContentTitle>
+            <ContentTitle>Dados do professor</ContentTitle>
             
             <Grid>
 

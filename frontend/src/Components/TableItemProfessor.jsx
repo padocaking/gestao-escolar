@@ -56,11 +56,11 @@ const BtnsContainer = styled.div`
     }
 `
 
-export default function TableItemProfessor ({ id, nome, salario }) {
+export default function TableItemProfessor ({ id, nome, salario, onClick }) {
     
 
     return (
-        <Container>
+        <Container onClick={onClick}>
             <td>{id}</td>
             <td>{nome}</td>
             <td>{new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(salario)}</td>

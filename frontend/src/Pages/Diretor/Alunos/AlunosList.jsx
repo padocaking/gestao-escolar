@@ -126,12 +126,13 @@ export default function AlunosList () {
                     </tr>
                 </thead>
                 <tbody>
-                    {alunosFiltrados.map(alunuo => (
+                    {alunosFiltrados.map(aluno => (
                         <TableItemAluno
-                            matricula={alunuo.matricula}
-                            nome={alunuo.nome}
-                            turma={alunuo.turma}
-                            status={alunuo.status}
+                            matricula={aluno.matricula}
+                            nome={aluno.nome}
+                            turma={aluno.turma}
+                            status={aluno.status}
+                            onClick={() => navigate(`/diretor/alunos/${aluno.matricula}`)}
                         />
                     ))}
                 </tbody>

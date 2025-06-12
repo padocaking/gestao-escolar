@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import student from '../../../../Images/graduated.png'
 import teacher from '../../../../Images/teacher.png'
 import edit from '../../../../Images/edit.png'
-import { Container } from './TurmaDetail.style'
+import { Container } from '../../Turmas/TurmaDetail/TurmaDetail.style'
 import { useNavigate, useParams } from 'react-router-dom'
 
 const Card = styled.div`
@@ -34,7 +34,7 @@ const Card = styled.div`
     }
 `
 
-export default function TurmaDetail () {
+export default function ProfessorDetail () {
 
     const navigate = useNavigate()
     const { id } = useParams()
@@ -42,24 +42,16 @@ export default function TurmaDetail () {
     return (
         <Content>
             <Container>
-                <div className="back" onClick={() => navigate(`/diretor/turmas`)}>&#11164; Voltar</div>
+                <div className="back" onClick={() => navigate(`/diretor/professores`)}>&#11164; Voltar</div>
                 <div className='head-container'>
-                    <h1>1º Ano B</h1> 
-                    <span>2025 - <span className='periodo'>Manhã</span></span>
+                    <h1>Nome do professor</h1> 
+                    <span>{id}<span className='periodo'></span></span>
                 </div>
 
                 <div className="card-container">
-                    <Card onClick={() => navigate(`/diretor/turmas/${id}/vincular-aluno`)}>
-                        <img src={student} alt="Aluno" />
-                        <span>Adicionar aluno</span>
-                    </Card>
-                    <Card onClick={() => navigate(`/diretor/turmas/${id}/vincular-professor`)}>
-                        <img src={teacher} alt="Professor" />
-                        <span>Adicionar professor</span>
-                    </Card>
                     <Card onClick={() => navigate(`/diretor/turmas/${id}/editar`)}>
                         <img src={edit} alt="Editar" />
-                        <span>Editar turma</span>
+                        <span>Editar professor</span>
                     </Card>
                 </div>
 
