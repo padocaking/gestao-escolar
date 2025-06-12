@@ -1,67 +1,10 @@
 import styled from 'styled-components';
-import TableRowItem from '../../../Components/TableRowItem'
 import { useNavigate } from 'react-router-dom';
-import { Table, Headers, Title } from '../Diretor.style';
+import { FullContainer, Table, Headers, Title, FilterContainer, Filter } from '../Diretor.style';
 import { useEffect, useState } from 'react';
 import { FaFilter } from "react-icons/fa";
 import CheckboxFilter from '../../../Components/CheckboxFilter';
 import TableItemAluno from '../../../Components/TableItemAluno';
-
-const FilterContainer = styled.div`
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bluish-gray);
-    margin-bottom: -35px;
-    border-radius: 5px 5px 0 0;
-    user-select: none;
-
-    div {
-        &.filterItem {
-            height: 100%;
-            padding: 15px;
-            cursor: pointer;
-        }
-    }
-
-    span {
-        letter-spacing: 0px;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-
-        &.add:hover {
-            letter-spacing: 1px;
-        }
-    }
-
-    h3 {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        letter-spacing: 2px;
-        font-weight: 500;
-    }
-`
-
-const Filter = styled.div`
-    position: absolute;
-    background-color: white;
-    border-radius: 5px 5px 0 0;
-    top: 10px;
-    left: 45px;
-    display: flex;
-    gap: 20px;
-    padding: ${props => props.opened ? '15px' : '0px 15px'};
-    max-height: ${props => props.opened ? '300px' : '0px'};
-    opacity: ${props => props.opened ? '100%' : '0%'};
-    overflow: hidden;
-    box-shadow: 0 0 10px 0px #00000026;
-    border-bottom: 2px solid var(--main-one);
-    z-index: 9999;
-`
 
 export default function AlunosList () {
 
@@ -75,14 +18,13 @@ export default function AlunosList () {
         status: []
     });
     const [openFilter, setOpenFilter] = useState(false)
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         fetch('/data/alunos.json')
             .then(res => res.json())
             .then(data => setAlunos(data))
     }, [])
-
-    console.log(alunos)
 
     const sortBy = (key) => {
         let direction = 'asc';
@@ -129,21 +71,27 @@ export default function AlunosList () {
         </Headers>
     )
 
+    console.log(search)
+
     return (
-        <>
+        <FullContainer>
 
             <Title>Controle de alunos</Title>
 
             <FilterContainer>
+
                 <div className='filterItem' onClick={() => setOpenFilter(!openFilter)} >
                     <FaFilter/>
                 </div>
-                <h3>ALUNOS</h3>
-                <div className="filterItem" onClick={() => navigate('/diretor/turmas/novo-aluno')}>
+
+                <input className='search' type="text" placeholder="🔍 Procure pela matrícula ou nome" onChange={(e) => setSearch(e.target.value)} />
+
+                <div className="filterItem" onClick={() => navigate('/diretor/alunos/novo-aluno')}>
                     <span className='add'>+ NOVO ALUNO</span>
                 </div>
+
                 <Filter opened={openFilter}>
-                    <div className=''>
+                    <div className='filterHeader'>
                         <CheckboxFilter
                             label="Turma"
                             options={['Nenhum', '1º', '2º', '3º', '4º', '5º', '6º', '7º', '8º', '9º', '1º EM', '2º EM', '3º EM']}
@@ -151,20 +99,22 @@ export default function AlunosList () {
                             onChange={(value) => handleCheckboxChange("turma", value)}
                         />
                     </div>
-                    <div className=''>
+                    <div className='filterHeader'>
                         <CheckboxFilter
                             label="Status"
-                            options={['matriculado', 'pendente']}
+                            options={['Matriculado', 'Pendente']}
                             selected={filters.status}
                             onChange={(value) => handleCheckboxChange("status", value)}
                         />
                     </div>
-                    <div onClick={() => setOpenFilter(false)} style={{cursor: 'pointer'}}>
+                    <div className='filterHeader' onClick={() => setOpenFilter(false)} style={{cursor: 'pointer', paddingRight: '15px'}}>
                         X
                     </div>
                 </Filter>
+
             </FilterContainer>
 
+            <div style={{width: '100%', height: 'auto', overflow: 'auto'}}>
             <Table>
                 <thead>
                     <tr>
@@ -186,7 +136,8 @@ export default function AlunosList () {
                     ))}
                 </tbody>
             </Table>
+            </div>
 
-        </>
+        </FullContainer>
     )
 }

@@ -1,38 +1,208 @@
 [
-    {
-        "id": 1,
-        "nome": "Miguel Ortenio",
-        "disciplinas": ["Ciências", "Biologia"],
-        "salario": 2980
-    },
-    {
-        "id": 2,
-        "nome": "Amarildo Fonseca",
-        "disciplinas": ["Matemática"],
-        "salario": 3140
-    },
-    {
-        "id": 3,
-        "nome": "Flávia de Lima",
-        "disciplinas": ["História", "Filosofia", "Sociologia"],
-        "salario": 2490
-    },
-    {
-        "id": 4,
-        "nome": "Valdilaine Silva",
-        "disciplinas": ["Português", "Redação", "Literatura"],
-        "salario": 3140
-    },
-    {
-        "id": 5,
-        "nome": "David Junior",
-        "disciplinas": ["Geografia"],
-        "salario": 3140
-    },
-    {
-        "id": 6,
-        "nome": "Ketlyn Medeiros",
-        "disciplinas": ["Português", "Literatura", "Redação"],
-        "salario": 1250.50
-    }
+  {
+    "id": 2025070000,
+    "nome": "Miguel Ortenio",
+    "disciplinas": [
+      "Redação",
+      "Química",
+      "Ed. Física"
+    ],
+    "salario": 3109
+  },
+  {
+    "id": 2025070001,
+    "nome": "Laura Mendes",
+    "disciplinas": [
+      "Artes",
+      "Biologia"
+    ],
+    "salario": 3638
+  },
+  {
+    "id": 2025070002,
+    "nome": "Pedro Alencar",
+    "disciplinas": [
+      "Matemática",
+      "Inglês"
+    ],
+    "salario": 3856
+  },
+  {
+    "id": 2025070003,
+    "nome": "Ana Rocha",
+    "disciplinas": [
+      "Física",
+      "Química",
+      "História"
+    ],
+    "salario": 3876
+  },
+  {
+    "id": 2025070004,
+    "nome": "Lucas Prado",
+    "disciplinas": [
+      "Português",
+      "Geografia",
+      "Artes"
+    ],
+    "salario": 3297
+  },
+  {
+    "id": 2025070005,
+    "nome": "Julia Teixeira",
+    "disciplinas": [
+      "Inglês",
+      "Matemática",
+      "História"
+    ],
+    "salario": 3390
+  },
+  {
+    "id": 2025070006,
+    "nome": "Rafael Souza",
+    "disciplinas": [
+      "Artes",
+      "História",
+      "Inglês"
+    ],
+    "salario": 3057
+  },
+  {
+    "id": 2025070007,
+    "nome": "Isabela Martins",
+    "disciplinas": [
+      "Redação",
+      "Ed. Física",
+      "Geografia"
+    ],
+    "salario": 2889
+  },
+  {
+    "id": 2025070008,
+    "nome": "Guilherme Freitas",
+    "disciplinas": [
+      "História",
+      "Ciências"
+    ],
+    "salario": 3440
+  },
+  {
+    "id": 2025070009,
+    "nome": "Mariana Duarte",
+    "disciplinas": [
+      "Química",
+      "Português",
+      "Ed. Física"
+    ],
+    "salario": 3329
+  },
+  {
+    "id": 2025070010,
+    "nome": "Felipe Ribeiro",
+    "disciplinas": [
+      "Geografia",
+      "Português"
+    ],
+    "salario": 3061
+  },
+  {
+    "id": 2025070011,
+    "nome": "Beatriz Lima",
+    "disciplinas": [
+      "Português",
+      "Artes",
+      "Geografia"
+    ],
+    "salario": 2909
+  },
+  {
+    "id": 2025070012,
+    "nome": "Enzo Oliveira",
+    "disciplinas": [
+      "Matemática",
+      "História"
+    ],
+    "salario": 3786
+  },
+  {
+    "id": 2025070013,
+    "nome": "Clara Fernandes",
+    "disciplinas": [
+      "Português",
+      "História"
+    ],
+    "salario": 3961
+  },
+  {
+    "id": 2025070014,
+    "nome": "Leonardo Castro",
+    "disciplinas": [
+      "Artes"
+    ],
+    "salario": 3933
+  },
+  {
+    "id": 2025070015,
+    "nome": "Sophia Nogueira",
+    "disciplinas": [
+      "Geografia",
+      "Química",
+      "Física"
+    ],
+    "salario": 2814
+  },
+  {
+    "id": 2025070016,
+    "nome": "Matheus Pires",
+    "disciplinas": [
+      "Matemática"
+    ],
+    "salario": 3104
+  },
+  {
+    "id": 2025070017,
+    "nome": "Helena Costa",
+    "disciplinas": [
+      "Redação"
+    ],
+    "salario": 3439
+  },
+  {
+    "id": 2025070018,
+    "nome": "Samuel Barros",
+    "disciplinas": [
+      "Ciências"
+    ],
+    "salario": 2984
+  },
+  {
+    "id": 2025070019,
+    "nome": "Alice Moraes",
+    "disciplinas": [
+      "Artes",
+      "Física",
+      "Ciências"
+    ],
+    "salario": 3604
+  },
+  {
+    "id": 2025070020,
+    "nome": "João Rezende",
+    "disciplinas": [
+      "Português",
+      "Física",
+      "Química"
+    ],
+    "salario": 4095
+  },
+  {
+    "id": 2025070021,
+    "nome": "Lívia Silva",
+    "disciplinas": [
+      "História",
+      "Artes",
+      "Biologia"
+    ],
+    "salario": 3479
+  }
 ]

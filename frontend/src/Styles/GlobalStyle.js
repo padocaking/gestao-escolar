@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         margin: 0;
         box-sizing: border-box;
-        font-family: 'Quicksand', sans-serif;
+        font-family: 'Montserrat', sans-serif;
         transition: all 0.2s ease-in-out;
     }
 
@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export const Content = styled.div`
+    margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.15);
     //box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -54,6 +55,9 @@ export const Content = styled.div`
     gap: 40px;
     border-radius: 5px;
     overflow: hidden;
+    width: 100%;
+    max-width: 1500px;
+    min-height: 80vh;
 `
 
 const titleAnim = keyframes`

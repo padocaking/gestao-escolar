@@ -7,7 +7,7 @@ const Container = styled.header`
     position: fixed;
     height: var(--header-height);
     width: 100%;
-    background-color: var(--light-gray);
+    background-color: #334AA4;
     border-bottom: 1px solid var(--second);
     display: flex;
     justify-content: space-between;
@@ -24,6 +24,7 @@ const Logo = styled.picture`
     font-size: 26px;
     text-transform: capitalize;
     cursor: pointer;
+    color: white;
 
     @media (max-width: 900px) {
         display: none;

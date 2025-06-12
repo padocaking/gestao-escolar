@@ -1,66 +1,10 @@
 import styled from 'styled-components';
-import TableRowItem from '../../../Components/TableRowItem'
 import { useNavigate } from 'react-router-dom';
-import { Table, Headers, Title } from './Turmas.style';
+import TableItemTurma from '../../../Components/TableItemTurma';
+import { FullContainer, Table, Headers, Title, FilterContainer, Filter } from '../Diretor.style';
 import { useEffect, useState } from 'react';
 import { FaFilter } from "react-icons/fa";
 import CheckboxFilter from '../../../Components/CheckboxFilter';
-
-const FilterContainer = styled.div`
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--bluish-gray);
-    margin-bottom: -35px;
-    border-radius: 5px 5px 0 0;
-    user-select: none;
-
-    div {
-        &.filterItem {
-            height: 100%;
-            padding: 15px;
-            cursor: pointer;
-        }
-    }
-
-    span {
-        letter-spacing: 0px;
-        font-size: 15px;
-        font-weight: 500;
-        cursor: pointer;
-
-        &.add:hover {
-            letter-spacing: 1px;
-        }
-    }
-
-    h3 {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        letter-spacing: 2px;
-        font-weight: 500;
-    }
-`
-
-const Filter = styled.div`
-    position: absolute;
-    background-color: white;
-    border-radius: 5px 5px 0 0;
-    top: 10px;
-    left: 45px;
-    display: flex;
-    gap: 20px;
-    padding: ${props => props.opened ? '15px' : '0px 15px'};
-    max-height: ${props => props.opened ? '300px' : '0px'};
-    opacity: ${props => props.opened ? '100%' : '0%'};
-    overflow: hidden;
-    box-shadow: 0 0 10px 0px #00000026;
-    border-bottom: 2px solid var(--main-one);
-    z-index: 999;
-`
 
 export default function TurmasList () {
 
@@ -81,8 +25,6 @@ export default function TurmasList () {
             .then(res => res.json())
             .then(data => setTurmas(data))
     }, [])
-
-    console.log(turmas)
 
     const sortBy = (key) => {
         let direction = 'asc';
@@ -130,7 +72,7 @@ export default function TurmasList () {
     )
 
     return (
-        <>
+        <FullContainer>
 
             <Title>Controle de turmas</Title>
 
@@ -143,7 +85,7 @@ export default function TurmasList () {
                     <span className='add'>+ NOVA TURMA</span>
                 </div>
                 <Filter opened={openFilter}>
-                    <div>
+                    <div className='filterHeader'>
                         <CheckboxFilter
                             label="Ano"
                             options={["2024", "2025"]}
@@ -151,7 +93,7 @@ export default function TurmasList () {
                             onChange={(value) => handleCheckboxChange("ano", value)}
                         />
                     </div>
-                    <div className=''>
+                    <div className='filterHeader'>
                         <CheckboxFilter
                             label="Classe"
                             options={['1º', '2º', '3º', '4º', '5º', '6º', '7º', '8º', '9º', '1º EM', '2º EM', '3º EM']}
@@ -159,20 +101,21 @@ export default function TurmasList () {
                             onChange={(value) => handleCheckboxChange("classe", value)}
                         />
                     </div>
-                    <div className=''>
+                    <div className='filterHeader'>
                         <CheckboxFilter
                             label="Status"
-                            options={['aberto', 'fechado']}
+                            options={['Aberto', 'Fechado']}
                             selected={filters.status}
                             onChange={(value) => handleCheckboxChange("status", value)}
                         />
                     </div>
-                    <div onClick={() => setOpenFilter(false)} style={{cursor: 'pointer'}}>
+                    <div className='filterHeader' onClick={() => setOpenFilter(false)} style={{cursor: 'pointer', paddingRight: '15px'}}>
                         X
                     </div>
                 </Filter>
             </FilterContainer>
 
+            <div style={{width: '100%', height: 'auto', overflow: 'auto'}}>
             <Table>
                 <thead>
                     <tr>
@@ -186,21 +129,22 @@ export default function TurmasList () {
                         <Headers>...</Headers>
                     </tr>
                 </thead>
-                <tbody>
-                    {turmasFiltradas.map(turma => (
-                        <TableRowItem
-                            ano={turma.ano}
-                            classe={turma.classe}
-                            turma={turma.turma}
-                            periodo={turma.periodo}
-                            prof={turma.professores_id.length}
-                            aluno={turma.alunos_id.length}
-                            status={turma.status}
-                        />
-                    ))}
-                </tbody>
+                    <tbody>
+                        {turmasFiltradas.map(turma => (
+                            <TableItemTurma
+                                ano={turma.ano}
+                                classe={turma.classe}
+                                turma={turma.turma}
+                                periodo={turma.periodo}
+                                prof={turma.professores_id.length}
+                                aluno={turma.alunos_id.length}
+                                status={turma.status}
+                            />
+                        ))}
+                    </tbody>
             </Table>
+            </div>
 
-        </>
+        </FullContainer>
     )
 }

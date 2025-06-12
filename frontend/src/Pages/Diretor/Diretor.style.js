@@ -53,7 +53,6 @@ export const Table = styled.table`
     border-collapse: collapse;
     margin: 35px 0;
     border-radius: 5px 5px 0 0;
-    overflow: hidden;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
     text-align: center;
@@ -76,18 +75,12 @@ export const Headers = styled.th`
     position: relative;
 `
 
-export const Content = styled.div`
+export const FullContainer = styled.div`
     position: relative;
-    background-color: var(--white);
-    margin: 35px 0;
-    padding: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 50px;
+    height: calc(88vh - var(--header-height));
 `
 
 export const ContentTitle = styled.h2`
@@ -108,5 +101,85 @@ export const ContentTitle = styled.h2`
         width: 500px;
         background-color: var(--bluish-gray);
         top: 0;
+    }
+`
+
+
+export const FilterContainer = styled.div`
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bluish-gray);
+    margin-bottom: -35px;
+    border-radius: 5px 5px 0 0;
+    user-select: none;
+
+    div {
+        &.filterItem {
+            height: 100%;
+            font-size: 20px;
+            padding: 20px;
+            cursor: pointer;
+        }
+    }
+
+    span {
+        letter-spacing: 0px;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+
+        &.add:hover {
+            letter-spacing: 1px;
+        }
+    }
+
+    h3 {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        letter-spacing: 2px;
+        font-weight: 500;
+    }
+
+    input {
+        &.search {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            letter-spacing: 2px;
+            font-weight: 500;
+            border: none;
+            padding: 15px;
+            border-radius: 15px;
+            width: 300px;
+            letter-spacing: 0px;
+        }
+    }
+`
+
+export const Filter = styled.div`
+    position: absolute;
+    background-color: white;
+    border-radius: 5px 5px 0 0;
+    top: 10px;
+    left: 45px;
+    display: flex;
+    gap: 20px;
+    max-height: ${props => props.opened ? '350px' : '0px'};
+    padding-left: ${props => props.opened ? '15px' : '0px'};
+    opacity: ${props => props.opened ? '100%' : '0%'};
+    overflow: hidden;
+    box-shadow: 0 0 10px 0px #00000026;
+    border-bottom: 2px solid var(--main-one);
+    z-index: 999;
+    font-size: 18px;
+
+    div {
+        &.filterHeader {
+            padding: 15px 0;
+        }
     }
 `

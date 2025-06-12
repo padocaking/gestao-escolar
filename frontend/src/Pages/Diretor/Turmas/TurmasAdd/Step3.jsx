@@ -1,10 +1,5 @@
 import styled from 'styled-components'
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ContentTitle } from '../Turmas.style'
-import Select from '../../../../Components/Select'
-import Input from '../../../../Components/Input'
+import { ContentTitle } from '../../Diretor.style'
 import Button from '../../../../Components/Button'
 import ButtonAlt from '../../../../Components/ButtonAlt';
 import SelectTwo from '../../../../Components/SelectTwo';
@@ -68,10 +63,6 @@ export default function Step3 ({ turmaValues, setCurrStep }) {
         }))
     }
 
-    const clickHandler = () => {
-        setCurrStep(2.5)
-    }
-
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -115,7 +106,7 @@ export default function Step3 ({ turmaValues, setCurrStep }) {
             </Grid>
                         
             <div className='btnContainer'>
-                <ButtonAlt onClick={clickHandler}>Voltar</ButtonAlt>
+                <ButtonAlt onClick={() => setCurrStep(2.5)}>Voltar</ButtonAlt>
                 <Button type="submit">Próximo</Button>
             </div>
 

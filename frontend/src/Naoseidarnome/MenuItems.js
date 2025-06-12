@@ -68,18 +68,6 @@ const MenuItems = {
             subItem: []
         },
         {
-            path: '/horarios',
-            text: "Horários",
-            icon: <WiTime4 />,
-            subItem: []
-        },
-        {
-            path: '/financeiro',
-            text: "Financeiro",
-            icon: <HiOutlineDocumentCurrencyDollar />,
-            subItem: []
-        },
-        {
             text: "Central Diretor",
             icon: <RiGraduationCapLine />,
             subItem: [
@@ -96,13 +84,7 @@ const MenuItems = {
                     text: "Alunos"
                 }
             ]
-        },
-        { 
-            path: '/aluno',
-            text: "Aluno",
-            icon: <FaRegUser />,
-            subItem: []
-        },
+        }
     ]
 
 }

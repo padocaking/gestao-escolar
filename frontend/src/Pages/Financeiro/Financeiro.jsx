@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Content, Title } from "../Diretor/Turmas/Turmas.style";
+import { Content, Title } from "../../Styles/GlobalStyle";
 import Select from "../../Components/Select";
 import Button from "../../Components/Button";
 import { useState } from "react";

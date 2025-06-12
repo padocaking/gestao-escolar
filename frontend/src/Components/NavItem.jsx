@@ -19,7 +19,7 @@ const Container = styled.li`
     display: flex;
     align-items: center;
     color: var(--black);
-    padding: 18px 0 18px 25px;
+    padding: 18px 0 18px 30px;
     height: auto;
     overflow: hidden;
     user-select: none;
@@ -42,10 +42,10 @@ const Container = styled.li`
 
     &.active {
         color: var(--black);
-        background-color: lightgray;
+        background-color: #f8f8f8;
 
         &.sub {
-            background-color: #e2e2e2;
+            background-color: #ffffff;
         }
 
         span {

@@ -5,7 +5,6 @@ import Steps from '../../../../Components/Steps';
 import { useState } from 'react';
 import Step1 from './Step1';
 import Step2 from './Step2';
-import Step3 from './Step3';
 
 const Grid = styled.div`
     display: grid;
@@ -29,10 +28,10 @@ const Return = styled.span`
     font-size: 25px;
 `
 
-export default function TurmaAdd () {
+export default function ProfessorAdd () {
 
     const [currStep, setCurrStep] = useState(1.5)
-    const [turmaValues, setTurmaValues] = useState({})
+    const [professorValues, setProfessorValues] = useState({})
 
     const nagivate = useNavigate()
 
@@ -41,15 +40,15 @@ export default function TurmaAdd () {
 
             <Content>
 
-                <Steps total={3} curr={currStep} />
+                <Return onClick={() => nagivate('/diretor/professores')}>&#11164; Voltar</Return>
+
+                <Steps total={2} curr={currStep} />
 
                 {currStep === 1.5 ? (
-                    <Step1 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} />
-                ) : currStep === 2.5 ? (
-                    <Step2 setCurrStep={setCurrStep} setTurmaValues={setTurmaValues} turmaValues={turmaValues} />
-                ) : currStep === 3 ? (
-                    <Step3 setCurrStep={setCurrStep} turmaValues={turmaValues} setTurmaValues={setTurmaValues} />
-                ) : null}
+                    <Step1 setCurrStep={setCurrStep} setProfessorValues={setProfessorValues} />
+                ) : currStep === 2 ? (
+                    <Step2 setCurrStep={setCurrStep} setProfessorValues={setProfessorValues} />
+                ) :  null}
 
             </Content>
 

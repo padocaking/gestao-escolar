@@ -13,6 +13,9 @@ import RequerimentoDiretor from '../Pages/Requerimento/RequerimentoDiretor';
 import Financeiro from '../Pages/Financeiro/Financeiro';
 import AlunosList from '../Pages/Diretor/Alunos/AlunosList';
 import Boletim from '../Pages/Aluno/Boletim'
+import AlunoAdd from '../Pages/Diretor/Alunos/AlunoAdd/AlunoAdd';
+import ProfessoresList from '../Pages/Diretor/Professor/ProfessoresList';
+import ProfessorAdd from '../Pages/Diretor/Professor/ProfessorAdd/ProfessorAdd';
 
 
 const Container = styled.div`
@@ -21,7 +24,7 @@ const Container = styled.div`
 
 const Page = styled.div`
     padding-top: ${props => props.showHeader ? 'var(--header-height)' : '0'};
-    margin-left: var(--nav-width-opened);
+    margin-left: ${props => props.showHeader ? 'var(--nav-width-opened)' : '0'};
     background: #ffffff;
     min-height: 100vh;
 
@@ -56,6 +59,9 @@ function AppRoutes () {
                         <Route path='/diretor/turmas' element={<TurmasList />} />
                         <Route path='/diretor/turmas/nova-turma' element={<TurmaAdd />} />
                         <Route path='/diretor/alunos' element={<AlunosList />} />
+                        <Route path='/diretor/alunos/novo-aluno' element={<AlunoAdd />} />
+                        <Route path='/diretor/professores' element={<ProfessoresList />} />
+                        <Route path='/diretor/professores/novo-professor' element={<ProfessorAdd />} />
                         {/* ROTAS REQUERIMENTO */}
                         <Route path='/requerimento' element={<Requerimento />} />
                         <Route path='/diretor/requerimento' element={<RequerimentoDiretor />} />
@@ -65,7 +71,6 @@ function AppRoutes () {
                         <Route path='/financeiro' element={<Financeiro />} />
                     </Routes>
                 </Content>
-                {showHeader && <Footer/>}
             </Page>
         </Container>
     )

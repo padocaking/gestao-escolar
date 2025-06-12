@@ -1,8 +1,5 @@
 import styled from 'styled-components'
-import * as yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ContentTitle } from '../Turmas.style'
+import { ContentTitle } from '../../Diretor.style'
 import Button from '../../../../Components/Button'
 import ButtonAlt from '../../../../Components/ButtonAlt';
 import SelectTwo from '../../../../Components/SelectTwo';

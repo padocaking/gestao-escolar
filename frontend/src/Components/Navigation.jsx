@@ -6,10 +6,10 @@ import MenuItems from '../Naoseidarnome/MenuItems';
 import useNavStore from '../Service/useNavStore';
 
 const Container = styled.nav`
-    position: absolute;
+    position: fixed;
     width: var(--nav-width-opened);
-    background-color: var(--bluish-gray);
-    height: 100vh;
+    background-color: var(--white);
+    height: 100%;
     padding-top: calc(var(--header-height));
     overflow-x: hidden;
     z-index: 100;
@@ -32,12 +32,10 @@ export default function Nagivation () {
 
     const { navOpened } = useNavStore()
 
-    console.log(navOpened)
-
     return (
         <Container className={navOpened ? 'opened' : 'closed'}>
 
-            {MenuItems['aluno'].map((item, i) => {
+            {MenuItems['diretor'].map((item, i) => {
                 if (item.subItem.length === 0) {
                     return (
                         <NavItem

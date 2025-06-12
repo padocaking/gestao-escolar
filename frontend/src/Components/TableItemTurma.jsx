@@ -56,7 +56,7 @@ const BtnsContainer = styled.div`
     }
 `
 
-export default function TableRowItem ({ ano, classe, turma, periodo, prof, aluno, status }) {
+export default function TableItemTurma ({ ano, classe, turma, periodo, prof, aluno, status }) {
     
 
     return (
@@ -64,7 +64,7 @@ export default function TableRowItem ({ ano, classe, turma, periodo, prof, aluno
             <td>{ano}</td>
             <td>{classe}</td>
             <td style={{textTransform: "uppercase"}}>{turma}</td>
-            <td>{periodo}</td>
+            <td style={{textTransform: 'capitalize'}}>{periodo}</td>
             <td>{prof} / {classe.includes('EM') ? '6' : '5'}</td>
             <td>{aluno}</td>
             <td>{status}</td>
