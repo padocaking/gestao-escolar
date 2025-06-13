@@ -51,11 +51,7 @@ Os wireframes foram criados com o Figma e representam telas como:
 ### Compilação do back-end
 
 ```bash
-# Linux
 go build -o gestao-escolar
-
-# Windows
-GOOS=windows GOARCH=amd64 go build -o gestao-escolar.exe
 ```
 
 ### Execução
@@ -63,10 +59,7 @@ GOOS=windows GOARCH=amd64 go build -o gestao-escolar.exe
 #### Back-End (Go)
 
 ```bash
-# Compilação
-GOOS=windows GOARCH=amd64 go build -o gestao-escolar.exe
-
-# Execução (Windows)
+# Execução
 gestao-escolar.exe
 ```
 
