@@ -51,7 +51,7 @@ Os wireframes foram criados com o Figma e representam telas como:
 ### Compilação do back-end
 
 ```bash
-go build -o gestao-escolar
+go build main.go
 ```
 
 ### Execução
